@@ -130,11 +130,16 @@ nav {
 
 .control-bar {
     display: flex;
-    flex-direction: column;
-    justify-content: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
     align-items: center;
     list-style: none;
     padding: 0;
+}
+
+.control-bar li:first-child {
+    width: 95%;
 }
 
 .control-bar li {
@@ -145,7 +150,7 @@ nav {
     text-align: center;
     border-radius: 4px;
     background: linear-gradient(60deg, rgb(188, 188, 223), rgb(188, 235, 253));
-    width: 250px;
+    width: 45%;
     margin-top: 10px;
     padding: 20px 10px;
     cursor: pointer;
