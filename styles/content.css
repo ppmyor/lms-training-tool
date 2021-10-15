@@ -55,25 +55,20 @@ nav {
 }
 
 .view-selector:hover {
-    color: rgb(85, 85, 85);
-}
-
-.fa-hand-pointer {
-    margin-right: 10px;
+    color: rgb(153, 153, 153);
 }
 
 .fa-chevron-down {
-    margin-left: 70px;
+    margin-left: 80px;
+    color: rgb(85, 85, 85);
 }
 
-/* full-screen button */
-.nav-header button {
-    border-style: none;
-    background-color: transparent;
-    cursor: pointer;
+/* full-screen */
+.nav-header span:last-child {
     border-left: 1px solid rgb(82, 82, 82);
-    padding: 15px 0;
+    padding: 10px 0;
     padding-left: 20px;
+    cursor: pointer;
 }
 
 /* nav-information section */
@@ -131,53 +126,37 @@ nav {
     background-color: rgb(63, 63, 63);
 }
 
-/* control-bar */
+/* control bar */
+
 .control-bar {
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+    flex-direction: column;
+    justify-content: center;
     align-items: center;
-    margin-top: 20px;
-    padding: 0 40px;
+    list-style: none;
+    padding: 0;
 }
 
-.control-bar button {
-    background-color: transparent;
-    border-style: none;
-    cursor: pointer;
-}
-
-.control-bar button:hover {
-    color: rgb(156, 113, 197);
-}
-
-.control-font {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin: 20px 40px;
-}
-
-.control-font label {
+.control-bar li {
     font-size: 15px;
     font-weight: 500;
     line-height: 1.5;
-    letter-spacing: 0.01em;
-}
-
-.fa-text-height {
-    margin-right: 5px;
-}
-
-.control-font input {
-    width: 55px;
-    height: 25px;
-    border-style: none;
+    letter-spacing: -0.01em;
+    text-align: center;
     border-radius: 4px;
-    border: 1px solid rgb(86, 155, 235);
-    outline: none;
+    background: linear-gradient(60deg, rgb(188, 188, 223), rgb(188, 235, 253));
+    width: 250px;
+    margin-top: 10px;
+    padding: 20px 10px;
+    cursor: pointer;
+    transition: transform 100ms ease-in;
 }
 
-.control-font input:focus {
-    border: 1px solid rgb(70, 129, 196);
+.control-bar li a {
+    text-decoration: none;
+    color: #000;
+}
+
+.control-bar li:hover {
+    transform: translateY(-3px);
 }
