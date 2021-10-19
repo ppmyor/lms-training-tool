@@ -23,17 +23,36 @@
                     실습하기
                     <i class="fas fa-chevron-down"></i>
                 </span>
-                <span>전체 화면</span>
+                <span class="full-screen-button">전체 화면</span>
             </div>
-            <div class="nav-contents">
-                <h1>콘텐츠 제목</h1>
-                <div class="information">
-                    <span>4단계</span>
-                    <span>1분</span>
+
+            <ul class="view-selector-drop-menu hidden">
+                <li class="step-view">
+                    <h3>보기</h3>
+                    <span>스크롤 가능한 목록으로 단계보기</span>
+                </li>
+                <li class="step-video">
+                    <h3>시청</h3>
+                    <span>비디오 단계보기</span>
+                </li>
+                <li class="step-print">
+                    <h3>인쇄하기</h3>
+                    <span>단계별 pdf 게시</span>
+                </li>
+            </ul>
+
+            <div class="nav-content">
+                <div class="nav-contents">
+                    <h1>콘텐츠 제목</h1>
+                    <div class="information">
+                        <span>4단계</span>
+                        <span>1분</span>
+                    </div>
+                    <a href="./1.html" class="fill-button">시작</a>
                 </div>
-                <a href="./1.html" class="fill-button">시작</a>
             </div>
         </nav>
         <script src="https://kit.fontawesome.com/c2252b4ab1.js" crossorigin="anonymous"></script>
+        <script src="./js/select-bar.js"></script>
     </body>
 </html>

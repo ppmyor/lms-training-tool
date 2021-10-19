@@ -20,6 +20,21 @@ body {
     height: 100%;
 }
 
+.clear-fix::after {
+    content: "";
+    display: block;
+    clear: both;
+}
+
+/* RESET CSS */
+ol,
+ul,
+li {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
 /* Entire Layout */
 
 section {
@@ -55,11 +70,38 @@ nav {
 
 .view-selector {
     padding-left: 10px;
+    transition: color 100ms ease-in-out;
     cursor: pointer;
 }
 
 .view-selector:hover {
-    color: rgb(153, 153, 153);
+    color: #fff;
+}
+
+.view-selector-drop-menu {
+    padding: 15px 10px;
+}
+
+.view-selector-drop-menu li {
+    padding: 10px 0;
+    transition: color 100ms ease-in-out;
+}
+
+.view-selector-drop-menu h3 {
+    font-size: 15px;
+    font-weight: 700;
+    line-height: 1.3333333333;
+}
+
+.view-selector-drop-menu span {
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 1.3333333333;
+}
+
+.view-selector-drop-menu li:hover {
+    color: #fff;
+    cursor: pointer;
 }
 
 /* full-screen */
@@ -122,4 +164,8 @@ nav {
 
 .information span:first-child::after {
     content: " /";
+}
+
+.hidden {
+    display: none;
 }

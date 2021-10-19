@@ -83,6 +83,7 @@ nav {
 
 .view-selector {
     padding-left: 10px;
+    transition: color 100ms ease-in-out;
     cursor: pointer;
 }
 
@@ -93,8 +94,11 @@ nav {
 .view-selector-drop-menu {
     padding: 15px 10px;
 }
+
 .view-selector-drop-menu li {
     padding: 10px 0;
+    transition: color 100ms ease-in-out;
+    cursor: pointer;
 }
 
 .view-selector-drop-menu h3 {
