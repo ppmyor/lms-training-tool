@@ -14,10 +14,12 @@
         <link rel="stylesheet" href="styles/style.css" />
     </head>
     <body>
-        <section>
+        <section class="practice-section">
             <h1 class="sr-only">작업 영역</h1>
+            <iframe src="./content-1.html" frameborder="0" id="working-space"></iframe>
         </section>
-        <nav>
+
+        <nav class="nav-section">
             <div class="nav-header">
                 <span class="view-selector">
                     실습하기
@@ -41,18 +43,57 @@
                 </li>
             </ul>
 
-            <div class="nav-content">
-                <div class="nav-contents">
-                    <h1>콘텐츠 제목</h1>
-                    <div class="information">
+            <div class="nav-content-section">
+                <div class="nav-index-contents">
+                    <h1 class="index-contents-title">콘텐츠 제목</h1>
+                    <div class="index-contents-info">
                         <span>4단계</span>
                         <span>1분</span>
                     </div>
-                    <a href="./1.html" class="fill-button">시작</a>
+                    <button type="submit" class="fill-button next-page-btn" id="go-main-page">시작</button>
+                </div>
+
+                <div class="nav-main-contents hidden">
+                    <h3 class="main-information">진행단계별로 따라가보세요.</h3>
+                    <div class="main-contents-desc">
+                        <p>콘텐츠 설명</p>
+                    </div>
+
+                    <!-- JS로 코드 변경 삽입 필요 -->
+                    <div class="page-progress-bar">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+
+                    <ul class="main-controller">
+                        <li class="go-home">처음단계</li>
+                        <li class="previous">이전단계</li>
+                        <li class="next">다음단계</li>
+                        <li class="font-resize">
+                            글자 크기
+                            <i class="fas fa-chevron-down"></i>
+                        </li>
+                        <li class="font-resize-selector hidden">
+                            <div class="small">
+                                <span>작게</span>
+                            </div>
+                            <div class="medium">
+                                <span>중간</span>
+                            </div>
+                            <div class="large">
+                                <span>크게</span>
+                            </div>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </nav>
+
         <script src="https://kit.fontawesome.com/c2252b4ab1.js" crossorigin="anonymous"></script>
         <script src="./js/select-bar.js"></script>
+        <script src="./js/tts-autoplay.js"></script>
+        <script src="./js/change-main-nav.js"></script>
     </body>
 </html>
