@@ -11,10 +11,11 @@ let volumeVariable = 0.5;
 const audioArray = [];
 audio1 = new Audio("./assets/ex-audio.wav");
 audio2 = new Audio("./assets/ex-audio2.wav");
-audioArray.push(audio1, audio2);
+audio3 = new Audio("./assets/ex-audio3.wav");
+audioArray.push(audio1, audio2, audio3);
 
 // Page Section
-const pageArray = ["./content-1.html", "./content-2.html"];
+const pageArray = ["./content-1.html", "./content-2.html", "./content-3.html"];
 
 const workingArea = document.getElementById("working-space");
 const goToMainPage = document.querySelector(".next-page-btn");
@@ -25,12 +26,15 @@ const goToPreviousPage = document.querySelector(".previous");
 const indexNav = document.querySelector(".nav-index-contents");
 const MainNav = document.querySelector(".nav-main-contents");
 
-const test = document.querySelector(".test");
+// page progress bar
+let i = 0;
+const pageProgressBar = document.querySelector(".page-progress-bar");
 
 // About Move Page
 // Index 의 시작 버튼 기능 구현
 goToMainPage.addEventListener("click", function () {
     if (pageVariable === 0) {
+        pageProgressBar.firstChild.id = "page-progress-bar-select";
         workingArea.src = pageArray[pageVariable];
         audioArray[pageVariable].volume = volumeVariable;
         audioArray[pageVariable].play();
@@ -39,6 +43,12 @@ goToMainPage.addEventListener("click", function () {
         console.log("done");
     }
 });
+
+// Page Progress bar
+for (i = 0; i < pageArray.length; i++) {
+    const pageProgressElement = document.createElement("span");
+    pageProgressBar.appendChild(pageProgressElement);
+}
 
 // 처음 단계, 이전 단계, 다음 단계 버튼 기능 구현
 goToIndexPage.addEventListener("click", function () {
@@ -51,6 +61,7 @@ goToIndexPage.addEventListener("click", function () {
 goToNextPage.addEventListener("click", function () {
     pageVariable++;
     if (pageVariable >= 0 && pageVariable < pageArray.length) {
+        pageProgressBar.childNodes[pageVariable].id = "page-progress-bar-select";
         workingArea.src = pageArray[pageVariable];
         audioArray[pageVariable].volume = volumeVariable;
         audioArray[pageVariable].play();
@@ -65,6 +76,7 @@ goToNextPage.addEventListener("click", function () {
 goToPreviousPage.addEventListener("click", function () {
     pageVariable--;
     if (pageVariable >= 0) {
+        pageProgressBar.childNodes[pageVariable + 1].id = "";
         workingArea.src = pageArray[pageVariable];
         audioArray[pageVariable].volume = volumeVariable;
         audioArray[pageVariable].play();
