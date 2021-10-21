@@ -3,10 +3,15 @@ const pauseButton = document.querySelector(".pause-button");
 const playButton = document.querySelector(".play-button");
 const volumeUpButton = document.querySelector(".volume-up");
 const volumeDownButton = document.querySelector(".volume-down");
-const audio = new Audio("./assets/ex-audio.wav");
 
 let pageVariable = 0;
 let volumeVariable = 0.5;
+
+// Audio Assets
+const audioArray = [];
+audio1 = new Audio("./assets/ex-audio.wav");
+audio2 = new Audio("./assets/ex-audio2.wav");
+audioArray.push(audio1, audio2);
 
 // Page Section
 const pageArray = ["./content-1.html", "./content-2.html"];
@@ -20,17 +25,22 @@ const goToPreviousPage = document.querySelector(".previous");
 const indexNav = document.querySelector(".nav-index-contents");
 const MainNav = document.querySelector(".nav-main-contents");
 
+const test = document.querySelector(".test");
+
+// About Move Page
+// Index 의 시작 버튼 기능 구현
 goToMainPage.addEventListener("click", function () {
     if (pageVariable === 0) {
         workingArea.src = pageArray[pageVariable];
-        audio.volume = volumeVariable;
-        audio.play();
-        audio.autoplay;
+        audioArray[pageVariable].volume = volumeVariable;
+        audioArray[pageVariable].play();
+        console.log(pageVariable);
     } else {
         console.log("done");
     }
 });
 
+// 처음 단계, 이전 단계, 다음 단계 버튼 기능 구현
 goToIndexPage.addEventListener("click", function () {
     pageVariable = 0;
     workingArea.src = pageArray[pageVariable];
@@ -42,9 +52,8 @@ goToNextPage.addEventListener("click", function () {
     pageVariable++;
     if (pageVariable >= 0 && pageVariable < pageArray.length) {
         workingArea.src = pageArray[pageVariable];
-        audio.volume = volumeVariable;
-        audio.play();
-        audio.autoplay;
+        audioArray[pageVariable].volume = volumeVariable;
+        audioArray[pageVariable].play();
         console.log(pageVariable);
     } else {
         console.log("last page");
@@ -57,9 +66,8 @@ goToPreviousPage.addEventListener("click", function () {
     pageVariable--;
     if (pageVariable >= 0) {
         workingArea.src = pageArray[pageVariable];
-        audio.volume = volumeVariable;
-        audio.play();
-        audio.autoplay;
+        audioArray[pageVariable].volume = volumeVariable;
+        audioArray[pageVariable].play();
         console.log(pageVariable);
     } else {
         console.log("first page");
@@ -68,6 +76,7 @@ goToPreviousPage.addEventListener("click", function () {
     }
 });
 
+// About Audio AutoPlay
 pauseButton.addEventListener("click", function () {
     audio.pause();
 });
@@ -82,6 +91,7 @@ volumeUpButton.addEventListener("click", function () {
         audio.volume = volumeVariable;
         console.log(volumeVariable);
     } else {
+        volumeVariable = 1.0;
         console.log("maxVolume");
     }
 });
@@ -92,6 +102,7 @@ volumeDownButton.addEventListener("click", function () {
         audio.volume = volumeVariable;
         console.log(volumeVariable);
     } else {
+        volumeVariable = 0;
         console.log("minVolume");
     }
 });
