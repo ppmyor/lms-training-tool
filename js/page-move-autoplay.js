@@ -37,6 +37,11 @@ const MainNav = document.querySelector(".nav-main-contents");
 let i = 0;
 const pageProgressBar = document.querySelector(".page-progress-bar");
 
+// handle local Storage function
+function handleLocalStorage(pageIndex) {
+    localStorage.setItem("pageNumber", pageIndex);
+}
+
 // handle Create Image
 function handleCreateImage(pageIndex) {
     // 기존의 이미지 태그 삭제
@@ -70,6 +75,7 @@ goToMainPage.addEventListener("click", function () {
         pageProgressBar.firstChild.id = "page-progress-bar-select";
         workingArea.src = pageArray[pageVariable];
         audioArray[pageVariable].volume = volumeVariable;
+        audioArray[pageVariable].load();
         audioArray[pageVariable].play();
         handleCreateImage(pageVariable);
         clickBox.classList.remove("hidden");
@@ -90,6 +96,9 @@ for (i = 0; i < pageArray.length; i++) {
 // 처음 단계 버튼 기능 구현
 goToIndexPage.addEventListener("click", function () {
     pageVariable = 0;
+    const previousPageNumber = parseInt(localStorage.getItem("pageNumber"));
+    audioArray[previousPageNumber].pause();
+    handleLocalStorage(pageVariable);
     workingArea.src = pageArray[pageVariable];
     indexNav.classList.toggle("hidden");
     MainNav.classList.toggle("hidden");
@@ -103,10 +112,13 @@ goToIndexPage.addEventListener("click", function () {
 goToNextPage.addEventListener("click", function () {
     pageVariable++;
     if (pageVariable >= 0 && pageVariable < pageArray.length) {
+        handleLocalStorage(pageVariable);
         pageProgressBar.childNodes[pageVariable].id = "page-progress-bar-select";
         workingArea.src = pageArray[pageVariable];
         audioArray[pageVariable].volume = volumeVariable;
+        audioArray[pageVariable].load();
         audioArray[pageVariable].play();
+        audioArray[pageVariable - 1].pause();
         handleCreateImage(pageVariable);
         handleCreateClickBox(pageVariable);
         handleRemoveNextClickBox(pageVariable);
@@ -122,10 +134,13 @@ goToNextPage.addEventListener("click", function () {
 clickBox.addEventListener("click", function () {
     pageVariable++;
     if (pageVariable >= 0 && pageVariable < pageArray.length) {
+        handleLocalStorage(pageVariable);
         pageProgressBar.childNodes[pageVariable].id = "page-progress-bar-select";
         workingArea.src = pageArray[pageVariable];
         audioArray[pageVariable].volume = volumeVariable;
+        audioArray[pageVariable].load();
         audioArray[pageVariable].play();
+        audioArray[pageVariable - 1].pause();
         handleCreateImage(pageVariable);
         handleCreateClickBox(pageVariable);
         handleRemoveNextClickBox(pageVariable);
@@ -141,10 +156,13 @@ clickBox.addEventListener("click", function () {
 goToPreviousPage.addEventListener("click", function () {
     pageVariable--;
     if (pageVariable >= 0) {
+        handleLocalStorage(pageVariable);
         pageProgressBar.childNodes[pageVariable + 1].id = "";
         workingArea.src = pageArray[pageVariable];
         audioArray[pageVariable].volume = volumeVariable;
+        audioArray[pageVariable].load();
         audioArray[pageVariable].play();
+        audioArray[pageVariable + 1].pause();
         handleCreateImage(pageVariable);
         handleCreateClickBox(pageVariable);
         handleRemovePreviousClickBox(pageVariable);
@@ -179,7 +197,7 @@ volumeUpButton.addEventListener("click", function () {
 volumeDownButton.addEventListener("click", function () {
     volumeVariable = volumeVariable - 0.1;
     if (volumeVariable > 0) {
-        audioArray[pageVa].volume = volumeVariable;
+        audioArray[pageVariable].volume = volumeVariable;
         console.log(volumeVariable);
     } else {
         volumeVariable = 0;
