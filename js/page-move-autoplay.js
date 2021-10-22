@@ -90,17 +90,17 @@ goToPreviousPage.addEventListener("click", function () {
 
 // About Audio AutoPlay
 pauseButton.addEventListener("click", function () {
-    audio.pause();
+    audioArray[pageVariable].pause();
 });
 
 playButton.addEventListener("click", function () {
-    audio.play();
+    audioArray[pageVariable].play();
 });
 
 volumeUpButton.addEventListener("click", function () {
     volumeVariable = volumeVariable + 0.1;
     if (volumeVariable < 1.0) {
-        audio.volume = volumeVariable;
+        audioArray[pageVariable].volume = volumeVariable;
         console.log(volumeVariable);
     } else {
         volumeVariable = 1.0;
@@ -111,7 +111,7 @@ volumeUpButton.addEventListener("click", function () {
 volumeDownButton.addEventListener("click", function () {
     volumeVariable = volumeVariable - 0.1;
     if (volumeVariable > 0) {
-        audio.volume = volumeVariable;
+        audioArray[pageVariable].volume = volumeVariable;
         console.log(volumeVariable);
     } else {
         volumeVariable = 0;
