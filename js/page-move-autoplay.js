@@ -53,9 +53,14 @@ function handleCreateClickBox(pageIndex) {
     clickBox.classList.add("page-" + pageIndex);
 }
 
-function handleRemoveClickBox(pageIndex) {
+function handleRemoveNextClickBox(pageIndex) {
     previousIndex = pageIndex - 1;
     clickBox.classList.remove("page-" + previousIndex);
+}
+
+function handleRemovePreviousClickBox(pageIndex) {
+    nextIndex = pageIndex + 1;
+    clickBox.classList.remove("page-" + nextIndex);
 }
 
 // About Move Page
@@ -104,7 +109,7 @@ goToNextPage.addEventListener("click", function () {
         audioArray[pageVariable].play();
         handleCreateImage(pageVariable);
         handleCreateClickBox(pageVariable);
-        handleRemoveClickBox(pageVariable);
+        handleRemoveNextClickBox(pageVariable);
         console.log(pageVariable);
     } else {
         console.log("last page");
@@ -123,7 +128,7 @@ clickBox.addEventListener("click", function () {
         audioArray[pageVariable].play();
         handleCreateImage(pageVariable);
         handleCreateClickBox(pageVariable);
-        handleRemoveClickBox(pageVariable);
+        handleRemoveNextClickBox(pageVariable);
         console.log(pageVariable);
     } else {
         console.log("last page");
@@ -142,6 +147,7 @@ goToPreviousPage.addEventListener("click", function () {
         audioArray[pageVariable].play();
         handleCreateImage(pageVariable);
         handleCreateClickBox(pageVariable);
+        handleRemovePreviousClickBox(pageVariable);
         console.log(pageVariable);
     } else {
         console.log("first page");
