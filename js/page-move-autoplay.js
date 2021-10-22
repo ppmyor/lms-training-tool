@@ -4,6 +4,13 @@ const playButton = document.querySelector(".play-button");
 const volumeUpButton = document.querySelector(".volume-up");
 const volumeDownButton = document.querySelector(".volume-down");
 
+// Click Area Section
+const practiceClickArea = document.querySelector(".click-area");
+const contentImage = ["./assets/bus-ex.png", "./assets/bus-ex2.png", "./assets/bus-ex3.png"];
+
+// click box 위치 조정
+const clickBox = document.querySelector(".correct-click");
+
 let pageVariable = 0;
 let volumeVariable = 0.5;
 
@@ -18,7 +25,7 @@ audioArray.push(audio1, audio2, audio3);
 const pageArray = ["./content-1.html", "./content-2.html", "./content-3.html"];
 
 const workingArea = document.getElementById("working-space");
-const goToMainPage = document.querySelector(".next-page-btn");
+const goToMainPage = document.querySelector("#go-main-page");
 const goToIndexPage = document.querySelector(".go-home");
 const goToNextPage = document.querySelector(".next");
 const goToPreviousPage = document.querySelector(".previous");
@@ -30,6 +37,27 @@ const MainNav = document.querySelector(".nav-main-contents");
 let i = 0;
 const pageProgressBar = document.querySelector(".page-progress-bar");
 
+// handle Create Image
+function handleCreateImage(pageIndex) {
+    // 기존의 이미지 태그 삭제
+    const currentContentImage = practiceClickArea.querySelector("img");
+    practiceClickArea.removeChild(currentContentImage);
+
+    // 새로운 이미지 태그 생성
+    const createImage = document.createElement("img");
+    createImage.src = contentImage[pageIndex];
+    practiceClickArea.appendChild(createImage);
+}
+
+function handleCreateClickBox(pageIndex) {
+    clickBox.classList.add("page-" + pageIndex);
+}
+
+function handleRemoveClickBox(pageIndex) {
+    previousIndex = pageIndex - 1;
+    clickBox.classList.remove("page-" + previousIndex);
+}
+
 // About Move Page
 // Index 의 시작 버튼 기능 구현
 goToMainPage.addEventListener("click", function () {
@@ -38,6 +66,9 @@ goToMainPage.addEventListener("click", function () {
         workingArea.src = pageArray[pageVariable];
         audioArray[pageVariable].volume = volumeVariable;
         audioArray[pageVariable].play();
+        handleCreateImage(pageVariable);
+        clickBox.classList.remove("hidden");
+        handleCreateClickBox(pageVariable);
         console.log(pageVariable);
     } else {
         console.log("done");
@@ -51,13 +82,19 @@ for (i = 0; i < pageArray.length; i++) {
 }
 
 // 처음 단계, 이전 단계, 다음 단계 버튼 기능 구현
+// 처음 단계 버튼 기능 구현
 goToIndexPage.addEventListener("click", function () {
     pageVariable = 0;
     workingArea.src = pageArray[pageVariable];
     indexNav.classList.toggle("hidden");
     MainNav.classList.toggle("hidden");
+    // class reset
+    clickBox.className = "";
+    clickBox.classList.add("correct-click");
+    clickBox.classList.add("hidden");
 });
 
+// 다음 단계 버튼 기능 구현
 goToNextPage.addEventListener("click", function () {
     pageVariable++;
     if (pageVariable >= 0 && pageVariable < pageArray.length) {
@@ -65,6 +102,9 @@ goToNextPage.addEventListener("click", function () {
         workingArea.src = pageArray[pageVariable];
         audioArray[pageVariable].volume = volumeVariable;
         audioArray[pageVariable].play();
+        handleCreateImage(pageVariable);
+        handleCreateClickBox(pageVariable);
+        handleRemoveClickBox(pageVariable);
         console.log(pageVariable);
     } else {
         console.log("last page");
@@ -73,6 +113,26 @@ goToNextPage.addEventListener("click", function () {
     }
 });
 
+// click box 클릭 시 다음 단계로 넘어가는 기능 구현
+clickBox.addEventListener("click", function () {
+    pageVariable++;
+    if (pageVariable >= 0 && pageVariable < pageArray.length) {
+        pageProgressBar.childNodes[pageVariable].id = "page-progress-bar-select";
+        workingArea.src = pageArray[pageVariable];
+        audioArray[pageVariable].volume = volumeVariable;
+        audioArray[pageVariable].play();
+        handleCreateImage(pageVariable);
+        handleCreateClickBox(pageVariable);
+        handleRemoveClickBox(pageVariable);
+        console.log(pageVariable);
+    } else {
+        console.log("last page");
+        pageVariable = pageArray.length - 1;
+        console.log(pageVariable);
+    }
+});
+
+// 이전 단계 버튼 기능 구현
 goToPreviousPage.addEventListener("click", function () {
     pageVariable--;
     if (pageVariable >= 0) {
@@ -80,6 +140,8 @@ goToPreviousPage.addEventListener("click", function () {
         workingArea.src = pageArray[pageVariable];
         audioArray[pageVariable].volume = volumeVariable;
         audioArray[pageVariable].play();
+        handleCreateImage(pageVariable);
+        handleCreateClickBox(pageVariable);
         console.log(pageVariable);
     } else {
         console.log("first page");
@@ -111,7 +173,7 @@ volumeUpButton.addEventListener("click", function () {
 volumeDownButton.addEventListener("click", function () {
     volumeVariable = volumeVariable - 0.1;
     if (volumeVariable > 0) {
-        audioArray[pageVariable].volume = volumeVariable;
+        audioArray[pageVa].volume = volumeVariable;
         console.log(volumeVariable);
     } else {
         volumeVariable = 0;

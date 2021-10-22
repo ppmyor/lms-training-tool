@@ -60,8 +60,30 @@ button {
 
 /* Working Space Section */
 .practice-section #working-space {
+    display: none;
     width: 100%;
     height: 100%;
+}
+
+.click-area {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(199, 199, 199);
+}
+
+.click-area img {
+    display: block;
+    margin: 0 auto;
+}
+
+.correct-click {
+    position: absolute;
+    background-color: rgba(255, 107, 107, 0.5);
+    cursor: pointer;
 }
 
 /* Nav Header Section */
@@ -312,4 +334,25 @@ button {
 /* About JS */
 .hidden {
     display: none;
+}
+
+/* click box position*/
+.page-0 {
+    width: 175px;
+    height: 110px;
+    margin-bottom: 340px;
+    margin-right: 185px;
+}
+
+.page-1 {
+    width: 40px;
+    height: 30px;
+    margin-top: 150px;
+    margin-right: 50px;
+}
+
+.page-2 {
+    width: 30px;
+    height: 30px;
+    margin-top: 380px;
 }
