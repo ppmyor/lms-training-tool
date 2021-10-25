@@ -22,7 +22,7 @@ audio3 = new Audio("./assets/ex-audio3.wav");
 audioArray.push(audio1, audio2, audio3);
 
 // Page Section
-const pageArray = ["./content-1.html", "./content-2.html", "./content-3.html"];
+const pageArray = ["./content-1.html"];
 
 const workingArea = document.getElementById("working-space");
 const goToMainPage = document.querySelector("#go-main-page");
@@ -73,7 +73,7 @@ function handleRemovePreviousClickBox(pageIndex) {
 goToMainPage.addEventListener("click", function () {
     if (pageVariable === 0) {
         pageProgressBar.firstChild.id = "page-progress-bar-select";
-        workingArea.src = pageArray[pageVariable];
+        workingArea.src = pageArray[0];
         audioArray[pageVariable].volume = volumeVariable;
         audioArray[pageVariable].load();
         audioArray[pageVariable].play();
@@ -87,7 +87,7 @@ goToMainPage.addEventListener("click", function () {
 });
 
 // Page Progress bar
-for (i = 0; i < pageArray.length; i++) {
+for (i = 0; i < contentImage.length; i++) {
     const pageProgressElement = document.createElement("span");
     pageProgressBar.appendChild(pageProgressElement);
 }
@@ -99,7 +99,7 @@ goToIndexPage.addEventListener("click", function () {
     const previousPageNumber = parseInt(localStorage.getItem("pageNumber"));
     audioArray[previousPageNumber].pause();
     handleLocalStorage(pageVariable);
-    workingArea.src = pageArray[pageVariable];
+    workingArea.src = pageArray[0];
     indexNav.classList.toggle("hidden");
     MainNav.classList.toggle("hidden");
     // class reset
@@ -111,10 +111,10 @@ goToIndexPage.addEventListener("click", function () {
 // 다음 단계 버튼 기능 구현
 goToNextPage.addEventListener("click", function () {
     pageVariable++;
-    if (pageVariable >= 0 && pageVariable < pageArray.length) {
+    if (pageVariable >= 0 && pageVariable < contentImage.length) {
         handleLocalStorage(pageVariable);
         pageProgressBar.childNodes[pageVariable].id = "page-progress-bar-select";
-        workingArea.src = pageArray[pageVariable];
+        workingArea.src = pageArray[0];
         audioArray[pageVariable].volume = volumeVariable;
         audioArray[pageVariable].load();
         audioArray[pageVariable].play();
@@ -125,7 +125,7 @@ goToNextPage.addEventListener("click", function () {
         console.log(pageVariable);
     } else {
         console.log("last page");
-        pageVariable = pageArray.length - 1;
+        pageVariable = contentImage.length - 1;
         console.log(pageVariable);
     }
 });
@@ -133,10 +133,10 @@ goToNextPage.addEventListener("click", function () {
 // click box 클릭 시 다음 단계로 넘어가는 기능 구현
 clickBox.addEventListener("click", function () {
     pageVariable++;
-    if (pageVariable >= 0 && pageVariable < pageArray.length) {
+    if (pageVariable >= 0 && pageVariable < contentImage.length) {
         handleLocalStorage(pageVariable);
         pageProgressBar.childNodes[pageVariable].id = "page-progress-bar-select";
-        workingArea.src = pageArray[pageVariable];
+        workingArea.src = pageArray[0];
         audioArray[pageVariable].volume = volumeVariable;
         audioArray[pageVariable].load();
         audioArray[pageVariable].play();
@@ -147,7 +147,7 @@ clickBox.addEventListener("click", function () {
         console.log(pageVariable);
     } else {
         console.log("last page");
-        pageVariable = pageArray.length - 1;
+        pageVariable = contentImage.length - 1;
         console.log(pageVariable);
     }
 });
@@ -158,7 +158,7 @@ goToPreviousPage.addEventListener("click", function () {
     if (pageVariable >= 0) {
         handleLocalStorage(pageVariable);
         pageProgressBar.childNodes[pageVariable + 1].id = "";
-        workingArea.src = pageArray[pageVariable];
+        workingArea.src = pageArray[0];
         audioArray[pageVariable].volume = volumeVariable;
         audioArray[pageVariable].load();
         audioArray[pageVariable].play();
