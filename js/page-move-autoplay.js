@@ -5,11 +5,14 @@ const volumeUpButton = document.querySelector(".volume-up");
 const volumeDownButton = document.querySelector(".volume-down");
 
 // Click Area Section
+// working area 에서 click box 이외의 위치
 const practiceClickArea = document.querySelector(".click-area");
 const contentImage = ["./assets/bus-ex.png", "./assets/bus-ex2.png", "./assets/bus-ex3.png"];
 
 // click box 위치 조정
 const clickBox = document.querySelector(".correct-click");
+
+const wrongClickBox = document.querySelector(".wrong-click-area");
 
 let pageVariable = 0;
 let volumeVariable = 0.5;
@@ -150,6 +153,15 @@ clickBox.addEventListener("click", function () {
         pageVariable = contentImage.length - 1;
         console.log(pageVariable);
     }
+});
+
+wrongClickBox.addEventListener("click", function () {
+    wrongClickBox.style.border = "3px solid rgb(117, 119, 255)";
+    clickBox.style.backgroundColor = "rgba(117, 119, 255, 0.5)";
+    setTimeout(function () {
+        wrongClickBox.style.border = "none";
+        clickBox.style.backgroundColor = "rgba(255, 107, 107, 0.5)";
+    }, 800);
 });
 
 // 이전 단계 버튼 기능 구현

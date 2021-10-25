@@ -69,21 +69,29 @@ button {
     display: flex;
     justify-content: center;
     align-items: center;
-    position: relative;
     width: 100%;
     height: 100%;
+    position: relative;
     background-color: rgb(199, 199, 199);
+    overflow: auto;
 }
 
 .click-area img {
     display: block;
-    margin: 0 auto;
+    position: absolute;
+}
+
+.wrong-click-area {
+    width: 100%;
+    height: 100%;
+    z-index: 1;
 }
 
 .correct-click {
     position: absolute;
-    background-color: rgba(255, 107, 107, 0.5);
+    background-color: rgba(247, 76, 76, 0.5);
     cursor: pointer;
+    z-index: 2;
 }
 
 /* Nav Header Section */
