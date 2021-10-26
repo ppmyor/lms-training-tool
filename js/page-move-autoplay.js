@@ -3,6 +3,8 @@ const pauseButton = document.querySelector(".pause-button");
 const playButton = document.querySelector(".play-button");
 const volumeUpButton = document.querySelector(".volume-up");
 const volumeDownButton = document.querySelector(".volume-down");
+const mobilePlayButton = document.querySelector(".mobile-play-button");
+const mobilePauseButton = document.querySelector(".mobile-pause-button");
 
 // Click Area Section
 // working area 에서 click box 이외의 위치
@@ -32,6 +34,8 @@ const goToMainPage = document.querySelector("#go-main-page");
 const goToIndexPage = document.querySelector(".go-home");
 const goToNextPage = document.querySelector(".next");
 const goToPreviousPage = document.querySelector(".previous");
+
+const mobileGoToIndexPage = document.querySelector(".mobile-go-home");
 
 const indexNav = document.querySelector(".nav-index-contents");
 const MainNav = document.querySelector(".nav-main-contents");
@@ -105,6 +109,21 @@ goToIndexPage.addEventListener("click", function () {
     workingArea.src = pageArray[0];
     indexNav.classList.toggle("hidden");
     MainNav.classList.toggle("hidden");
+    // class reset
+    clickBox.className = "";
+    clickBox.classList.add("correct-click");
+    clickBox.classList.add("hidden");
+});
+
+mobileGoToIndexPage.addEventListener("click", function () {
+    pageVariable = 0;
+    const previousPageNumber = parseInt(localStorage.getItem("pageNumber"));
+    audioArray[previousPageNumber].pause();
+    handleLocalStorage(pageVariable);
+    workingArea.src = pageArray[0];
+    mainDesc.classList.toggle(HIDDEN_MOBILE_CLASSNAME);
+    practiceArea.classList.toggle(HIDDEN_MOBILE_CLASSNAME);
+    navHeader.classList.toggle(HIDDEN_MOBILE_CLASSNAME);
     // class reset
     clickBox.className = "";
     clickBox.classList.add("correct-click");
@@ -215,4 +234,15 @@ volumeDownButton.addEventListener("click", function () {
         volumeVariable = 0;
         console.log("minVolume");
     }
+});
+
+// Mobile
+
+mobilePlayButton.addEventListener("click", function () {
+    audioArray[pageVariable].load();
+    audioArray[pageVariable].play();
+});
+
+mobilePauseButton.addEventListener("click", function () {
+    audioArray[pageVariable].pause();
 });
