@@ -542,10 +542,21 @@ button {
     }
 
     /* Main */
+    /* Nav Section */
     .small,
     .medium,
     .large {
         padding: 0 6px;
+        font-size: 12px;
+    }
+
+    .audio-control-selector {
+        justify-content: space-around;
+    }
+
+    .audio-control-selector button {
+        color: #000;
+        font-size: 12px;
     }
 
     /* click box position*/
@@ -619,10 +630,21 @@ button {
     }
 
     /* Main */
+    /* Nav Section */
     .small,
     .medium,
     .large {
         padding: 0 6px;
+        font-size: 12px;
+    }
+
+    .audio-control-selector {
+        justify-content: space-around;
+    }
+
+    .audio-control-selector button {
+        color: #000;
+        font-size: 12px;
     }
 
     /* click box position*/
@@ -692,10 +714,21 @@ button {
     }
 
     /* Main */
+    /* Nav Section */
     .small,
     .medium,
     .large {
         padding: 0 6px;
+        font-size: 12px;
+    }
+
+    .audio-control-selector {
+        justify-content: space-around;
+    }
+
+    .audio-control-selector button {
+        color: #000;
+        font-size: 12px;
     }
 
     /* click box position*/
@@ -765,10 +798,21 @@ button {
     }
 
     /* Main */
+    /* Nav Section */
     .small,
     .medium,
     .large {
         padding: 0 6px;
+        font-size: 12px;
+    }
+
+    .audio-control-selector {
+        justify-content: space-around;
+    }
+
+    .audio-control-selector button {
+        color: #000;
+        font-size: 12px;
     }
 
     /* click box position*/
