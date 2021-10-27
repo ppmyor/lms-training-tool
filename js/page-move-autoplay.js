@@ -99,6 +99,13 @@ for (i = 0; i < contentImage.length; i++) {
     pageProgressBar.appendChild(pageProgressElement);
 }
 
+// handle selected page Progress
+function handleSelectedPage(pageCount) {
+    for (j = 0; j < pageCount; j++) {
+        pageProgressBar.childNodes[j].id = "";
+    }
+}
+
 // 처음 단계, 이전 단계, 다음 단계 버튼 기능 구현
 // 처음 단계 버튼 기능 구현
 goToIndexPage.addEventListener("click", function () {
@@ -109,18 +116,7 @@ goToIndexPage.addEventListener("click", function () {
     workingArea.src = pageArray[0];
     indexNav.classList.toggle("hidden");
     MainNav.classList.toggle("hidden");
-    // class reset
-    clickBox.className = "";
-    clickBox.classList.add("correct-click");
-    clickBox.classList.add("hidden");
-});
-
-mobileGoToIndexPage.addEventListener("click", function () {
-    pageVariable = 0;
-    const previousPageNumber = parseInt(localStorage.getItem("pageNumber"));
-    audioArray[previousPageNumber].pause();
-    handleLocalStorage(pageVariable);
-    workingArea.src = pageArray[0];
+    // MOBILE
     mainDesc.classList.toggle(HIDDEN_MOBILE_CLASSNAME);
     practiceArea.classList.toggle(HIDDEN_MOBILE_CLASSNAME);
     navHeader.classList.toggle(HIDDEN_MOBILE_CLASSNAME);
@@ -128,6 +124,7 @@ mobileGoToIndexPage.addEventListener("click", function () {
     clickBox.className = "";
     clickBox.classList.add("correct-click");
     clickBox.classList.add("hidden");
+    handleSelectedPage(i);
 });
 
 // 다음 단계 버튼 기능 구현
