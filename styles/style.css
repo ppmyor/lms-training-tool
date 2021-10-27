@@ -166,6 +166,7 @@ button {
 .nav-index-contents {
     margin: 20vh 30px;
     height: 10vh;
+    text-align: center;
 }
 
 .nav-index-contents .nav-contents-title {
@@ -179,7 +180,7 @@ button {
     display: block;
     text-decoration: none;
     text-align: center;
-    width: 220px;
+    width: 200px;
     height: 45px;
     font-size: 15px;
     font-weight: 700;
@@ -190,8 +191,7 @@ button {
     border-radius: 4px;
     background-color: rgb(26, 26, 26);
     cursor: pointer;
-    margin-top: 7vh;
-    padding: 0 auto;
+    margin: 7vh auto;
     box-shadow: 3px 3px 10px rgb(85, 85, 85, 0.7);
     transition: transform 100ms ease-in;
 }
@@ -372,8 +372,27 @@ button {
 }
 
 /* MOBILE STYLE (0~576px) */
+/* portait */
+@media screen and (max-width: 575.98px) and (orientation: portrait) {
+    /* RESET CSS */
+    .nav-header .view-selector:hover,
+    .full-screen-button:hover,
+    .view-selector-drop-menu li:hover,
+    .go-home:hover,
+    .previous:hover,
+    .next:hover {
+        color: inherit;
+    }
 
-@media screen and (max-width: 576px) {
+    .nav-header .view-selector:active,
+    .full-screen-button:active,
+    .view-selector-drop-menu li:active,
+    .go-home:active,
+    .previous:active,
+    .next:active {
+        color: rgb(153, 153, 153);
+    }
+
     .mobile-icon {
         display: block;
     }
@@ -456,8 +475,307 @@ button {
     .page-0 {
         width: 125px;
         height: 80px;
-        margin-bottom: 245px;
-        margin-left: 45px;
+        margin: 0;
+    }
+
+    .page-1 {
+        width: 40px;
+        height: 30px;
+        margin: 0;
+    }
+
+    .page-2 {
+        width: 30px;
+        height: 30px;
+        margin: 0;
+    }
+}
+
+/* landscape */
+@media screen and (max-width: 813px) and (orientation: landscape) {
+    /* RESET CSS */
+    .nav-header .view-selector:hover,
+    .full-screen-button:hover,
+    .view-selector-drop-menu li:hover,
+    .go-home:hover,
+    .previous:hover,
+    .next:hover,
+    .font-resize:hover,
+    .audio-control:hover,
+    .font-resize-selector .small:hover,
+    .font-resize-selector .medium:hover,
+    .font-resize-selector .large:hover,
+    .audio-control-selector button:hover {
+        color: inherit;
+    }
+
+    .nav-header .view-selector:active,
+    .full-screen-button:active,
+    .view-selector-drop-menu li:active,
+    .go-home:active,
+    .previous:active,
+    .next:active,
+    .font-resize:active,
+    .audio-control:active,
+    .font-resize-selector .small:active,
+    .font-resize-selector .medium:active,
+    .font-resize-selector .large:active,
+    .audio-control-selector button:active {
+        color: rgb(153, 153, 153);
+    }
+
+    /* Index */
+    /* Practice Index Section */
+    .click-area img {
+        max-width: 160px;
+        height: auto;
+    }
+
+    /* Nav Index Section */
+    /* nav index content */
+    .nav-section {
+        padding: 0;
+    }
+
+    .fill-button {
+        max-width: 160px;
+    }
+
+    /* Main */
+    .small,
+    .medium,
+    .large {
+        padding: 0 6px;
+    }
+
+    /* click box position*/
+    .page-0 {
+        width: 125px;
+        height: 80px;
+        margin: 0;
+    }
+
+    .page-1 {
+        width: 40px;
+        height: 30px;
+        margin: 0;
+    }
+
+    .page-2 {
+        width: 30px;
+        height: 30px;
+        margin: 0;
+    }
+}
+
+/* TABELET STYLE (577px~768px) */
+@media screen and (min-width: 576px) and (max-width: 767.98px) and (orientation: portrait) {
+    /* RESET CSS */
+    .nav-header .view-selector:hover,
+    .full-screen-button:hover,
+    .view-selector-drop-menu li:hover,
+    .go-home:hover,
+    .previous:hover,
+    .next:hover,
+    .font-resize:hover,
+    .audio-control:hover,
+    .font-resize-selector .small:hover,
+    .font-resize-selector .medium:hover,
+    .font-resize-selector .large:hover,
+    .audio-control-selector button:hover {
+        color: inherit;
+    }
+
+    .nav-header .view-selector:active,
+    .full-screen-button:active,
+    .view-selector-drop-menu li:active,
+    .go-home:active,
+    .previous:active,
+    .next:active,
+    .font-resize:active,
+    .audio-control:active,
+    .font-resize-selector .small:active,
+    .font-resize-selector .medium:active,
+    .font-resize-selector .large:active,
+    .audio-control-selector button:active {
+        color: rgb(153, 153, 153);
+    }
+
+    /* Index */
+    /* Practice Index Section */
+    .click-area img {
+        max-width: 280px;
+        height: auto;
+    }
+
+    /* Nav Index Section */
+    /* nav index content */
+    .nav-section {
+        padding: 0;
+    }
+
+    .fill-button {
+        max-width: 180px;
+    }
+
+    /* Main */
+    .small,
+    .medium,
+    .large {
+        padding: 0 6px;
+    }
+
+    /* click box position*/
+    .page-0 {
+        width: 125px;
+        height: 80px;
+        margin: 0;
+    }
+
+    .page-1 {
+        width: 40px;
+        height: 30px;
+        margin: 0;
+    }
+
+    .page-2 {
+        width: 30px;
+        height: 30px;
+        margin: 0;
+    }
+}
+
+/* TABELET STYLE (769px~998px) */
+@media screen and (min-width: 768px) and (max-width: 998.98px) and (orientation: portrait) {
+    /* RESET CSS */
+    .nav-header .view-selector:hover,
+    .full-screen-button:hover,
+    .view-selector-drop-menu li:hover,
+    .go-home:hover,
+    .previous:hover,
+    .next:hover,
+    .font-resize:hover,
+    .audio-control:hover,
+    .font-resize-selector .small:hover,
+    .font-resize-selector .medium:hover,
+    .font-resize-selector .large:hover,
+    .audio-control-selector button:hover {
+        color: inherit;
+    }
+
+    .nav-header .view-selector:active,
+    .full-screen-button:active,
+    .view-selector-drop-menu li:active,
+    .go-home:active,
+    .previous:active,
+    .next:active,
+    .font-resize:active,
+    .audio-control:active,
+    .font-resize-selector .small:active,
+    .font-resize-selector .medium:active,
+    .font-resize-selector .large:active,
+    .audio-control-selector button:active {
+        color: rgb(153, 153, 153);
+    }
+
+    /* Index */
+    /* Practice Index Section */
+    .click-area img {
+        max-width: 320px;
+        height: auto;
+    }
+
+    /* Nav Index Section */
+    /* nav index content */
+    .nav-section {
+        padding: 0;
+    }
+
+    /* Main */
+    .small,
+    .medium,
+    .large {
+        padding: 0 6px;
+    }
+
+    /* click box position*/
+    .page-0 {
+        width: 125px;
+        height: 80px;
+        margin: 0;
+    }
+
+    .page-1 {
+        width: 40px;
+        height: 30px;
+        margin: 0;
+    }
+
+    .page-2 {
+        width: 30px;
+        height: 30px;
+        margin: 0;
+    }
+}
+
+/* TABELET STYLE (999px~1119px) */
+@media screen and (min-width: 999px) and (max-width: 1119.98px) {
+    /* RESET CSS */
+    .nav-header .view-selector:hover,
+    .full-screen-button:hover,
+    .view-selector-drop-menu li:hover,
+    .go-home:hover,
+    .previous:hover,
+    .next:hover,
+    .font-resize:hover,
+    .audio-control:hover,
+    .font-resize-selector .small:hover,
+    .font-resize-selector .medium:hover,
+    .font-resize-selector .large:hover,
+    .audio-control-selector button:hover {
+        color: inherit;
+    }
+
+    .nav-header .view-selector:active,
+    .full-screen-button:active,
+    .view-selector-drop-menu li:active,
+    .go-home:active,
+    .previous:active,
+    .next:active,
+    .font-resize:active,
+    .audio-control:active,
+    .font-resize-selector .small:active,
+    .font-resize-selector .medium:active,
+    .font-resize-selector .large:active,
+    .audio-control-selector button:active {
+        color: rgb(153, 153, 153);
+    }
+
+    /* Index */
+    /* Practice Index Section */
+    .click-area img {
+        max-width: 340px;
+        height: auto;
+    }
+
+    /* Nav Index Section */
+    /* nav index content */
+    .nav-section {
+        padding: 0;
+    }
+
+    /* Main */
+    .small,
+    .medium,
+    .large {
+        padding: 0 6px;
+    }
+
+    /* click box position*/
+    .page-0 {
+        width: 125px;
+        height: 80px;
+        margin: 0;
     }
 
     .page-1 {
