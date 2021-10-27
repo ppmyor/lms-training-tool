@@ -5,10 +5,8 @@ const compressIcon = document.querySelectorAll("fa-compress");
 fullScreenButton.addEventListener("click", function () {
     if (!document.fullscreenElement) {
         fullScreen(document.body);
-        fullScreenButton.innerText = "종료";
     } else if (document.exitFullscreen) {
         exitFullScreen();
-        fullScreenButton.innerText = "전체화면";
     }
 });
 
