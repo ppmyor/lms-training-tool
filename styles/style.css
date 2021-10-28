@@ -492,7 +492,7 @@ button {
 }
 
 /* landscape */
-@media screen and (max-width: 813px) and (orientation: landscape) {
+@media screen and (max-width: 927px) and (orientation: landscape) {
     /* RESET CSS */
     .nav-header .view-selector:hover,
     .full-screen-button:hover,
@@ -752,7 +752,7 @@ button {
 }
 
 /* TABELET STYLE (999px~1119px) */
-@media screen and (min-width: 999px) and (max-width: 1119.98px) {
+@media screen and (min-width: 999px) and (max-width: 1119.98px) and (orientation: landscape) {
     /* RESET CSS */
     .nav-header .view-selector:hover,
     .full-screen-button:hover,
