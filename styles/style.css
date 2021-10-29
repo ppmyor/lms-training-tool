@@ -54,7 +54,6 @@ button {
     width: 350px;
     height: 100vh;
     position: relative;
-    /* background: linear-gradient(120deg, #a1b9ec, #96ce9f, #fae77e, #eeaea6); */
     background-color: #fff;
     overflow: auto;
 }
@@ -62,6 +61,10 @@ button {
 /* Working Space Section */
 .practice-section {
     position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(199, 199, 199);
 }
 
 .practice-section #working-space {
@@ -71,27 +74,24 @@ button {
 }
 
 .click-area {
-    width: 100%;
-    height: 100%;
+    display: inline-block;
     position: relative;
-    background-color: rgb(199, 199, 199);
-    overflow: auto;
+    max-width: 100%;
+    max-height: 100%;
 }
 
 .click-area img {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
     display: block;
     max-width: 100%;
-    max-height: 100%;
-    margin: 0 auto;
+    max-height: 100vh;
 }
 
 .wrong-click-area {
     width: 100%;
     height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
     z-index: 1;
 }
 
@@ -453,13 +453,21 @@ button {
         height: 90%;
     }
 
+    .click-area {
+        max-height: 90vh;
+    }
+
+    .click-area img {
+        max-height: 90vh;
+    }
+
     /* Nav Main Section */
     .nav-section {
         overflow: visible;
     }
 
     .nav-main-contents {
-        height: 10%;
+        height: 10vh;
     }
 
     /* Main Controller Section */
