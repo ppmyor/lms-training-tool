@@ -419,6 +419,7 @@ button {
         width: 100%;
         height: auto;
         padding: 0 10px;
+        overflow: hidden;
     }
 
     /* nav header */
@@ -462,10 +463,6 @@ button {
     }
 
     /* Nav Main Section */
-    .nav-section {
-        overflow: visible;
-    }
-
     .nav-main-contents {
         height: 10vh;
     }

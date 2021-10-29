@@ -36,6 +36,8 @@ const goToNextPage = document.querySelector(".next");
 const goToPreviousPage = document.querySelector(".previous");
 
 const mobileGoToIndexPage = document.querySelector(".mobile-go-home");
+const mobileGoToNextPage = document.querySelector(".mobile-next");
+const mobileGoToPreviousPage = document.querySelector(".mobile-previous");
 
 const indexNav = document.querySelector(".nav-index-contents");
 const MainNav = document.querySelector(".nav-main-contents");
@@ -127,8 +129,48 @@ goToIndexPage.addEventListener("click", function () {
     handleSelectedPage(i);
 });
 
+mobileGoToIndexPage.addEventListener("click", function () {
+    pageVariable = 0;
+    const previousPageNumber = parseInt(localStorage.getItem("pageNumber"));
+    audioArray[previousPageNumber].pause();
+    handleLocalStorage(pageVariable);
+    workingArea.src = pageArray[0];
+    indexNav.classList.toggle("hidden");
+    MainNav.classList.toggle("hidden");
+    // MOBILE
+    mainDesc.classList.toggle(HIDDEN_MOBILE_CLASSNAME);
+    practiceArea.classList.toggle(HIDDEN_MOBILE_CLASSNAME);
+    navHeader.classList.toggle(HIDDEN_MOBILE_CLASSNAME);
+    // class reset
+    clickBox.className = "";
+    clickBox.classList.add("correct-click");
+    clickBox.classList.add("hidden");
+    handleSelectedPage(i);
+});
+
 // 다음 단계 버튼 기능 구현
 goToNextPage.addEventListener("click", function () {
+    pageVariable++;
+    if (pageVariable >= 0 && pageVariable < contentImage.length) {
+        handleLocalStorage(pageVariable);
+        pageProgressBar.childNodes[pageVariable].id = "page-progress-bar-select";
+        workingArea.src = pageArray[0];
+        audioArray[pageVariable].volume = volumeVariable;
+        audioArray[pageVariable].load();
+        audioArray[pageVariable].play();
+        audioArray[pageVariable - 1].pause();
+        handleCreateImage(pageVariable);
+        handleCreateClickBox(pageVariable);
+        handleRemoveNextClickBox(pageVariable);
+        console.log(pageVariable);
+    } else {
+        console.log("last page");
+        pageVariable = contentImage.length - 1;
+        console.log(pageVariable);
+    }
+});
+
+mobileGoToNextPage.addEventListener("click", function () {
     pageVariable++;
     if (pageVariable >= 0 && pageVariable < contentImage.length) {
         handleLocalStorage(pageVariable);
@@ -182,6 +224,27 @@ wrongClickBox.addEventListener("click", function () {
 
 // 이전 단계 버튼 기능 구현
 goToPreviousPage.addEventListener("click", function () {
+    pageVariable--;
+    if (pageVariable >= 0) {
+        handleLocalStorage(pageVariable);
+        pageProgressBar.childNodes[pageVariable + 1].id = "";
+        workingArea.src = pageArray[0];
+        audioArray[pageVariable].volume = volumeVariable;
+        audioArray[pageVariable].load();
+        audioArray[pageVariable].play();
+        audioArray[pageVariable + 1].pause();
+        handleCreateImage(pageVariable);
+        handleCreateClickBox(pageVariable);
+        handleRemovePreviousClickBox(pageVariable);
+        console.log(pageVariable);
+    } else {
+        console.log("first page");
+        pageVariable = 0;
+        console.log(pageVariable);
+    }
+});
+
+mobileGoToPreviousPage.addEventListener("click", function () {
     pageVariable--;
     if (pageVariable >= 0) {
         handleLocalStorage(pageVariable);
