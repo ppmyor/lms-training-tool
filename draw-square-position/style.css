@@ -1,0 +1,34 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+}
+
+body {
+    display: flex;
+}
+
+#draw-box {
+    width: 375px;
+    height: 667px;
+}
+
+#draw-canvas {
+    border: 1px solid black;
+    background-image: url("../assets/bus-ex.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+}
+
+#painted-box {
+    width: 262.5px;
+    height: 466.9px;
+}
+
+#painted-canvas {
+    border: 1px solid black;
+    background-image: url("../assets/bus-ex.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+}
