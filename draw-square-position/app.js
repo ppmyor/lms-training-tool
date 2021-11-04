@@ -38,6 +38,10 @@ drawCanvas.addEventListener("mouseup", function (event) {
     data.push({ endX: endX, endY: endY });
 });
 
+paintedCanvas.addEventListener("click", function (event) {
+    clickCanvas(event);
+});
+
 function handleMouseDown(event) {
     startX = event.offsetX;
     startY = event.offsetY;
@@ -65,6 +69,18 @@ function rateCalcurate(currentX, currentY) {
     startRateY = (startY / drawHeight) * paintedHeight;
     currentRateX = (currentX / drawWidth) * paintedWidth;
     currentRateY = (currentY / drawHeight) * paintedHeight;
+}
+
+function clickCanvas(event) {
+    let clickX = event.offsetX;
+    let clickY = event.offsetY;
+    if (clickX >= startRateX && clickY >= startRateY && clickX <= currentRateX && clickY <= currentRateY) {
+        console.log("correct area");
+    } else if (clickX <= startRateX && clickY <= startRateY && clickX >= currentRateX && clickY >= currentRateY) {
+        console.log("correct area!");
+    } else {
+        paintedCanvas.style.border = "2px solid #000000";
+    }
 }
 
 function handleDraw(currentX, currentY) {

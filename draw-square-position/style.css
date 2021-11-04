@@ -13,7 +13,6 @@ body {
 }
 
 #draw-canvas {
-    border: 1px solid black;
     background-image: url("../assets/bus-ex.png");
     background-repeat: no-repeat;
     background-size: contain;
@@ -26,7 +25,6 @@ body {
 }
 
 #painted-canvas {
-    border: 1px solid black;
     background-image: url("../assets/bus-ex.png");
     background-repeat: no-repeat;
     background-size: contain;
