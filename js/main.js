@@ -6,6 +6,15 @@ const volumeDownButton = document.querySelector(".volume-down");
 const mobilePlayButton = document.querySelector(".mobile-play-button");
 const mobilePauseButton = document.querySelector(".mobile-pause-button");
 
+// Contents Description Section
+const pageDescription = document.querySelector(".content-desc");
+const pageDescArray = [];
+page1 =
+    "이번 시간에는, 네이버 지도를 사용해서, 보다 편하게, 길을 찾아보도록 하겠습니다. 휴대폰에서 네이버 앱을 실행하면, 다음과 같은 대기화면이 나타납니다. 다음 페이지로, 넘어가주세요.";
+page2 = "네이버 지도의, 기능을 소개하는 화면입니다. 화살표를 눌러주세요.";
+page3 = "화살표를 눌러주세요.";
+pageDescArray.push(page1, page2, page3);
+
 // Click Area Section
 // working area 에서 click box 이외의 위치
 const practiceClickArea = document.querySelector(".click-area");
@@ -89,6 +98,7 @@ goToMainPage.addEventListener("click", function () {
         handleCreateImage(pageVariable);
         clickBox.classList.remove("hidden");
         handleCreateClickBox(pageVariable);
+        pageDescription.innerText = pageDescArray[pageVariable];
         console.log(pageVariable);
     } else {
         console.log("done");
@@ -162,6 +172,7 @@ goToNextPage.addEventListener("click", function () {
         handleCreateImage(pageVariable);
         handleCreateClickBox(pageVariable);
         handleRemoveNextClickBox(pageVariable);
+        pageDescription.innerText = pageDescArray[pageVariable];
         console.log(pageVariable);
     } else {
         console.log("last page");
@@ -205,6 +216,7 @@ clickBox.addEventListener("click", function () {
         handleCreateImage(pageVariable);
         handleCreateClickBox(pageVariable);
         handleRemoveNextClickBox(pageVariable);
+        pageDescription.innerText = pageDescArray[pageVariable];
         console.log(pageVariable);
     } else {
         console.log("last page");
@@ -236,6 +248,7 @@ goToPreviousPage.addEventListener("click", function () {
         handleCreateImage(pageVariable);
         handleCreateClickBox(pageVariable);
         handleRemovePreviousClickBox(pageVariable);
+        pageDescription.innerText = pageDescArray[pageVariable];
         console.log(pageVariable);
     } else {
         console.log("first page");
