@@ -357,27 +357,6 @@ button {
     display: none;
 }
 
-/* click box position*/
-.page-0 {
-    width: 175px;
-    height: 110px;
-    margin-bottom: 340px;
-    margin-right: 185px;
-}
-
-.page-1 {
-    width: 40px;
-    height: 30px;
-    margin-top: 150px;
-    margin-right: 50px;
-}
-
-.page-2 {
-    width: 30px;
-    height: 30px;
-    margin-top: 380px;
-}
-
 /* About Mobile */
 .mobile-icon {
     display: none;
@@ -487,25 +466,6 @@ button {
     .mobile-hidden {
         display: none;
     }
-
-    /* click box position*/
-    .page-0 {
-        width: 125px;
-        height: 80px;
-        margin: 0;
-    }
-
-    .page-1 {
-        width: 40px;
-        height: 30px;
-        margin: 0;
-    }
-
-    .page-2 {
-        width: 30px;
-        height: 30px;
-        margin: 0;
-    }
 }
 
 /* landscape */
@@ -580,25 +540,6 @@ button {
         color: #000;
         font-size: 12px;
     }
-
-    /* click box position*/
-    .page-0 {
-        width: 125px;
-        height: 80px;
-        margin: 0;
-    }
-
-    .page-1 {
-        width: 40px;
-        height: 30px;
-        margin: 0;
-    }
-
-    .page-2 {
-        width: 30px;
-        height: 30px;
-        margin: 0;
-    }
 }
 
 /* TABELET STYLE (577px~768px) */
@@ -662,25 +603,6 @@ button {
         color: #000;
         font-size: 12px;
     }
-
-    /* click box position*/
-    .page-0 {
-        width: 125px;
-        height: 80px;
-        margin: 0;
-    }
-
-    .page-1 {
-        width: 40px;
-        height: 30px;
-        margin: 0;
-    }
-
-    .page-2 {
-        width: 30px;
-        height: 30px;
-        margin: 0;
-    }
 }
 
 /* TABELET STYLE (769px~998px) */
@@ -740,25 +662,6 @@ button {
         color: #000;
         font-size: 12px;
     }
-
-    /* click box position*/
-    .page-0 {
-        width: 125px;
-        height: 80px;
-        margin: 0;
-    }
-
-    .page-1 {
-        width: 40px;
-        height: 30px;
-        margin: 0;
-    }
-
-    .page-2 {
-        width: 30px;
-        height: 30px;
-        margin: 0;
-    }
 }
 
 /* TABELET STYLE (999px~1119px) */
@@ -817,24 +720,5 @@ button {
     .audio-control-selector button {
         color: #000;
         font-size: 12px;
-    }
-
-    /* click box position*/
-    .page-0 {
-        width: 125px;
-        height: 80px;
-        margin: 0;
-    }
-
-    .page-1 {
-        width: 40px;
-        height: 30px;
-        margin: 0;
-    }
-
-    .page-2 {
-        width: 30px;
-        height: 30px;
-        margin: 0;
     }
 }
