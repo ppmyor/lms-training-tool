@@ -40,7 +40,7 @@ drawCanvas.addEventListener("mousemove", function (event) {
 drawCanvas.addEventListener("mouseup", function (event) {
     handleMouseUp(event);
     data.push({ endX: endX, endY: endY });
-    coordinateCodeArea.innerText = `${startRateX}, ${startRateY}, ${currentRateX}, ${currentRateY}`;
+    coordinateCodeArea.innerText = `startRateX: ${startRateX}, startRateY: ${startRateY}, endRateX: ${currentRateX}, endRateY: ${currentRateY}`;
     console.log(startRateX, startRateY, currentRateX, currentRateY);
     console.log(drawStartRateX, drawStartRateY, drawCurrentRateX, drawCurrentRateY);
 });
