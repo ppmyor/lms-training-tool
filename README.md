@@ -1,2 +1,3 @@
-# lms-traning-tool
-🖥 lms traning tool site
+# lms-training-tool
+
+🖥 lms training tool site
