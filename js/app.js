@@ -266,10 +266,6 @@ const mobileGoToPreviousPage = document.querySelector(".mobile-previous");
 const indexNav = document.querySelector(".nav-index-contents");
 const MainNav = document.querySelector(".nav-main-contents");
 
-// page progress bar
-let i = 0;
-const pageProgressBar = document.querySelector(".page-progress-bar");
-
 imageVariable = 0;
 loadBackgroundImage(imageVariable);
 
@@ -299,7 +295,6 @@ function loadBackgroundImage(page) {
 // Index 의 시작 버튼 기능 구현
 goToMainPage.addEventListener("click", function () {
     if (pageVariable === 0) {
-        pageProgressBar.firstChild.id = "page-progress-bar-select";
         workingArea.src = pageArray[0];
         audioArray[pageVariable].volume = volumeVariable;
         audioArray[pageVariable].load();
@@ -312,19 +307,6 @@ goToMainPage.addEventListener("click", function () {
         console.log("done");
     }
 });
-
-// Page Progress bar
-for (i = 0; i < contentImage.length; i++) {
-    const pageProgressElement = document.createElement("span");
-    pageProgressBar.appendChild(pageProgressElement);
-}
-
-// handle selected page Progress
-function handleSelectedPage(pageCount) {
-    for (j = 0; j < pageCount; j++) {
-        pageProgressBar.childNodes[j].id = "";
-    }
-}
 
 // 처음 단계, 이전 단계, 다음 단계 버튼 기능 구현
 // 처음 단계 버튼 기능 구현
@@ -340,7 +322,6 @@ goToIndexPage.addEventListener("click", function () {
     mainDesc.classList.toggle(HIDDEN_MOBILE_CLASSNAME);
     practiceArea.classList.toggle(HIDDEN_MOBILE_CLASSNAME);
     navHeader.classList.toggle(HIDDEN_MOBILE_CLASSNAME);
-    handleSelectedPage(i);
 });
 
 mobileGoToIndexPage.addEventListener("click", function () {
@@ -355,7 +336,6 @@ mobileGoToIndexPage.addEventListener("click", function () {
     mainDesc.classList.toggle(HIDDEN_MOBILE_CLASSNAME);
     practiceArea.classList.toggle(HIDDEN_MOBILE_CLASSNAME);
     navHeader.classList.toggle(HIDDEN_MOBILE_CLASSNAME);
-    handleSelectedPage(i);
 });
 
 // 다음 단계 버튼 기능 구현
@@ -363,7 +343,6 @@ goToNextPage.addEventListener("click", function () {
     pageVariable++;
     if (pageVariable >= 0 && pageVariable < contentImage.length) {
         handleLocalStorage(pageVariable);
-        pageProgressBar.childNodes[pageVariable].id = "page-progress-bar-select";
         workingArea.src = pageArray[0];
         audioArray[pageVariable].volume = volumeVariable;
         audioArray[pageVariable].load();
@@ -384,7 +363,6 @@ mobileGoToNextPage.addEventListener("click", function () {
     pageVariable++;
     if (pageVariable >= 0 && pageVariable < contentImage.length) {
         handleLocalStorage(pageVariable);
-        pageProgressBar.childNodes[pageVariable].id = "page-progress-bar-select";
         workingArea.src = pageArray[0];
         audioArray[pageVariable].volume = volumeVariable;
         audioArray[pageVariable].load();
@@ -406,7 +384,6 @@ paintedCanvas.addEventListener("click", function (event) {
     if (clickX >= nowStartX && clickY >= nowStartY && clickX <= nowEndX && clickY <= nowEndY) {
         pageVariable++;
         handleLocalStorage(pageVariable);
-        pageProgressBar.childNodes[pageVariable].id = "page-progress-bar-select";
         workingArea.src = pageArray[0];
         audioArray[pageVariable].volume = volumeVariable;
         audioArray[pageVariable].load();
@@ -426,7 +403,6 @@ goToPreviousPage.addEventListener("click", function () {
     pageVariable--;
     if (pageVariable >= 0) {
         handleLocalStorage(pageVariable);
-        pageProgressBar.childNodes[pageVariable + 1].id = "";
         workingArea.src = pageArray[0];
         audioArray[pageVariable].volume = volumeVariable;
         audioArray[pageVariable].load();
@@ -447,7 +423,6 @@ mobileGoToPreviousPage.addEventListener("click", function () {
     pageVariable--;
     if (pageVariable >= 0) {
         handleLocalStorage(pageVariable);
-        pageProgressBar.childNodes[pageVariable + 1].id = "";
         workingArea.src = pageArray[0];
         audioArray[pageVariable].volume = volumeVariable;
         audioArray[pageVariable].load();

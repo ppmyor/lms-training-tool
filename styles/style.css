@@ -234,31 +234,6 @@ button {
     padding: 10px 10px 10px 20px;
 }
 
-/* page progress bar */
-.page-progress-bar {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    width: 100%;
-    margin: 10px 0;
-    padding: 0 20px;
-}
-
-/* past page progress bar */
-#page-progress-bar-select {
-    background-color: rgb(63, 63, 63);
-}
-
-.page-progress-bar span {
-    display: block;
-    background-color: rgb(199, 199, 199);
-    width: 100%;
-    margin: 0 1px;
-    height: 3px;
-    border-radius: 4px;
-    cursor: pointer;
-}
-
 /* Main Conrtoller */
 
 .main-controller {
