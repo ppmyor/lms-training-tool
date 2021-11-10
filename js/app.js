@@ -1,8 +1,6 @@
 // Audio Section
 const pauseButton = document.querySelector(".pause-button");
 const playButton = document.querySelector(".play-button");
-const volumeUpButton = document.querySelector(".volume-up");
-const volumeDownButton = document.querySelector(".volume-down");
 const mobilePlayButton = document.querySelector(".mobile-play-button");
 const mobilePauseButton = document.querySelector(".mobile-pause-button");
 
@@ -73,7 +71,6 @@ for (j = 1; j <= pageNum; j++) {
 }
 
 let pageVariable = 0;
-let volumeVariable = 0.5;
 
 // Canvas area
 const paintedCanvas = document.getElementById("painted-canvas");
@@ -296,7 +293,6 @@ function loadBackgroundImage(page) {
 goToMainPage.addEventListener("click", function () {
     if (pageVariable === 0) {
         workingArea.src = pageArray[0];
-        audioArray[pageVariable].volume = volumeVariable;
         audioArray[pageVariable].load();
         audioArray[pageVariable].play();
         loadBackgroundImage(pageVariable);
@@ -344,7 +340,6 @@ goToNextPage.addEventListener("click", function () {
     if (pageVariable >= 0 && pageVariable < contentImage.length) {
         handleLocalStorage(pageVariable);
         workingArea.src = pageArray[0];
-        audioArray[pageVariable].volume = volumeVariable;
         audioArray[pageVariable].load();
         audioArray[pageVariable].play();
         audioArray[pageVariable - 1].pause();
@@ -364,7 +359,6 @@ mobileGoToNextPage.addEventListener("click", function () {
     if (pageVariable >= 0 && pageVariable < contentImage.length) {
         handleLocalStorage(pageVariable);
         workingArea.src = pageArray[0];
-        audioArray[pageVariable].volume = volumeVariable;
         audioArray[pageVariable].load();
         audioArray[pageVariable].play();
         audioArray[pageVariable - 1].pause();
@@ -385,7 +379,6 @@ paintedCanvas.addEventListener("click", function (event) {
         pageVariable++;
         handleLocalStorage(pageVariable);
         workingArea.src = pageArray[0];
-        audioArray[pageVariable].volume = volumeVariable;
         audioArray[pageVariable].load();
         audioArray[pageVariable].play();
         audioArray[pageVariable - 1].pause();
@@ -404,7 +397,6 @@ goToPreviousPage.addEventListener("click", function () {
     if (pageVariable >= 0) {
         handleLocalStorage(pageVariable);
         workingArea.src = pageArray[0];
-        audioArray[pageVariable].volume = volumeVariable;
         audioArray[pageVariable].load();
         audioArray[pageVariable].play();
         audioArray[pageVariable + 1].pause();
@@ -424,7 +416,6 @@ mobileGoToPreviousPage.addEventListener("click", function () {
     if (pageVariable >= 0) {
         handleLocalStorage(pageVariable);
         workingArea.src = pageArray[0];
-        audioArray[pageVariable].volume = volumeVariable;
         audioArray[pageVariable].load();
         audioArray[pageVariable].play();
         audioArray[pageVariable + 1].pause();
@@ -445,28 +436,6 @@ pauseButton.addEventListener("click", function () {
 
 playButton.addEventListener("click", function () {
     audioArray[pageVariable].play();
-});
-
-volumeUpButton.addEventListener("click", function () {
-    volumeVariable = volumeVariable + 0.1;
-    if (volumeVariable < 1.0) {
-        audioArray[pageVariable].volume = volumeVariable;
-        console.log(volumeVariable);
-    } else {
-        volumeVariable = 1.0;
-        console.log("maxVolume");
-    }
-});
-
-volumeDownButton.addEventListener("click", function () {
-    volumeVariable = volumeVariable - 0.1;
-    if (volumeVariable > 0) {
-        audioArray[pageVariable].volume = volumeVariable;
-        console.log(volumeVariable);
-    } else {
-        volumeVariable = 0;
-        console.log("minVolume");
-    }
 });
 
 // Mobile
