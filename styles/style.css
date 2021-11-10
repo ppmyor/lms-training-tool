@@ -103,15 +103,13 @@ button {
     border-bottom: 1px solid rgb(82, 82, 82);
 }
 
-/* view-selector Section */
-
-.nav-header .view-selector {
+.nav-header .hint-button {
     padding-left: 10px;
     transition: color 100ms ease-in-out;
     cursor: pointer;
 }
 
-.nav-header .view-selector:hover {
+.nav-header .hint-button:hover {
     color: rgb(153, 153, 153);
 }
 
@@ -125,33 +123,6 @@ button {
 
 .full-screen-button:hover {
     color: rgb(153, 153, 153);
-}
-
-/* Drop Menu Bar */
-.view-selector-drop-menu {
-    padding: 15px 10px;
-}
-
-.view-selector-drop-menu li {
-    padding: 10px 0;
-    transition: color 100ms ease-in-out;
-}
-
-.view-selector-drop-menu h3 {
-    font-size: 15px;
-    font-weight: 700;
-    line-height: 1.3333333333;
-}
-
-.view-selector-drop-menu span {
-    font-size: 13px;
-    font-weight: 400;
-    line-height: 1.3333333333;
-}
-
-.view-selector-drop-menu li:hover {
-    color: rgb(153, 153, 153);
-    cursor: pointer;
 }
 
 /* nav Content Section */
@@ -325,18 +296,16 @@ button {
 /* portait */
 @media screen and (max-width: 575.98px) and (orientation: portrait) {
     /* RESET CSS */
-    .nav-header .view-selector:hover,
+    .nav-header .hint-button:hover,
     .full-screen-button:hover,
-    .view-selector-drop-menu li:hover,
     .go-home:hover,
     .previous:hover,
     .next:hover {
         color: inherit;
     }
 
-    .nav-header .view-selector:active,
+    .nav-header .hint-button:active,
     .full-screen-button:active,
-    .view-selector-drop-menu li:active,
     .go-home:active,
     .previous:active,
     .next:active {
@@ -430,9 +399,8 @@ button {
 /* landscape */
 @media screen and (max-width: 927px) and (max-height: 428px) and (orientation: landscape) {
     /* RESET CSS */
-    .nav-header .view-selector:hover,
+    .nav-header .hint-button:hover,
     .full-screen-button:hover,
-    .view-selector-drop-menu li:hover,
     .go-home:hover,
     .previous:hover,
     .next:hover,
@@ -445,9 +413,8 @@ button {
         color: inherit;
     }
 
-    .nav-header .view-selector:active,
+    .nav-header .hint-button:active,
     .full-screen-button:active,
-    .view-selector-drop-menu li:active,
     .go-home:active,
     .previous:active,
     .next:active,
@@ -504,9 +471,8 @@ button {
 /* TABELET STYLE (577px~768px) */
 @media screen and (min-width: 576px) and (max-width: 767.98px) and (orientation: portrait) {
     /* RESET CSS */
-    .nav-header .view-selector:hover,
+    .nav-header .hint-button:hover,
     .full-screen-button:hover,
-    .view-selector-drop-menu li:hover,
     .go-home:hover,
     .previous:hover,
     .next:hover,
@@ -519,9 +485,8 @@ button {
         color: inherit;
     }
 
-    .nav-header .view-selector:active,
+    .nav-header .hint-button:active,
     .full-screen-button:active,
-    .view-selector-drop-menu li:active,
     .go-home:active,
     .previous:active,
     .next:active,
@@ -567,9 +532,8 @@ button {
 /* TABELET STYLE (769px~998px) */
 @media screen and (min-width: 768px) and (max-width: 998.98px) and (orientation: portrait) {
     /* RESET CSS */
-    .nav-header .view-selector:hover,
+    .nav-header .hint-button:hover,
     .full-screen-button:hover,
-    .view-selector-drop-menu li:hover,
     .go-home:hover,
     .previous:hover,
     .next:hover,
@@ -582,9 +546,8 @@ button {
         color: inherit;
     }
 
-    .nav-header .view-selector:active,
+    .nav-header .hint-button:active,
     .full-screen-button:active,
-    .view-selector-drop-menu li:active,
     .go-home:active,
     .previous:active,
     .next:active,
@@ -626,9 +589,8 @@ button {
 /* TABELET STYLE (999px~1119px) */
 @media screen and (min-width: 999px) and (max-width: 1119.98px) and (orientation: landscape) {
     /* RESET CSS */
-    .nav-header .view-selector:hover,
+    .nav-header .hint-button:hover,
     .full-screen-button:hover,
-    .view-selector-drop-menu li:hover,
     .go-home:hover,
     .previous:hover,
     .next:hover,
@@ -641,9 +603,8 @@ button {
         color: inherit;
     }
 
-    .nav-header .view-selector:active,
+    .nav-header .hint-button:active,
     .full-screen-button:active,
-    .view-selector-drop-menu li:active,
     .go-home:active,
     .previous:active,
     .next:active,
