@@ -77,12 +77,13 @@ const paintedCanvas = document.getElementById("painted-canvas");
 const paintedContext = paintedCanvas.getContext("2d");
 const practiceClickArea = document.querySelector(".click-area");
 
+const hintButton = document.querySelector(".hint-button");
+
 const paintedWidth = practiceClickArea.clientWidth;
 const paintedHeight = practiceClickArea.clientHeight;
 paintedCanvas.width = paintedWidth;
 paintedCanvas.height = paintedHeight;
 paintedContext.lineWidth = 2;
-paintedContext.fillStyle = "rgba(200, 124, 124, 0.5)";
 
 const coordinateArray = [];
 coordinate1 = {
@@ -268,6 +269,16 @@ function handlePaint(currentPage) {
     paintedContext.fillRect(nowStartX, nowStartY, nowEndX - nowStartX, nowEndY - nowStartY);
 }
 
+function handleTransparentPaint(currentPage) {
+    paintedContext.fillStyle = "rgba(200, 124, 124, 0)";
+    handlePaint(currentPage);
+}
+
+hintButton.addEventListener("click", function () {
+    paintedContext.fillStyle = "rgba(200, 124, 124, 0.5)";
+    handlePaint(pageVariable);
+});
+
 function loadBackgroundImage(page) {
     paintedCanvas.style.backgroundImage = `url(${contentImage[page]})`;
 }
@@ -280,7 +291,7 @@ goToMainPage.addEventListener("click", function () {
         audioArray[pageVariable].load();
         audioArray[pageVariable].play();
         loadBackgroundImage(pageVariable);
-        handlePaint(pageVariable);
+        handleTransparentPaint(pageVariable);
         pageDescription.innerText = pageDescArray[pageVariable];
         console.log(pageVariable);
     } else {
@@ -329,7 +340,7 @@ goToNextPage.addEventListener("click", function () {
         audioArray[pageVariable - 1].pause();
         pageDescription.innerText = pageDescArray[pageVariable];
         loadBackgroundImage(pageVariable);
-        handlePaint(pageVariable);
+        handleTransparentPaint(pageVariable);
         console.log(pageVariable);
     } else {
         console.log("last page");
@@ -347,7 +358,7 @@ mobileGoToNextPage.addEventListener("click", function () {
         audioArray[pageVariable].play();
         audioArray[pageVariable - 1].pause();
         loadBackgroundImage(pageVariable);
-        handlePaint(pageVariable);
+        handleTransparentPaint(pageVariable);
         console.log(pageVariable);
     } else {
         console.log("last page");
@@ -382,7 +393,7 @@ function handleClickBox() {
         audioArray[pageVariable - 1].pause();
         pageDescription.innerText = pageDescArray[pageVariable];
         loadBackgroundImage(pageVariable);
-        handlePaint(pageVariable);
+        handleTransparentPaint(pageVariable);
         console.log(pageVariable);
     } else {
         console.log("last page");
@@ -402,7 +413,7 @@ goToPreviousPage.addEventListener("click", function () {
         audioArray[pageVariable + 1].pause();
         pageDescription.innerText = pageDescArray[pageVariable];
         loadBackgroundImage(pageVariable);
-        handlePaint(pageVariable);
+        handleTransparentPaint(pageVariable);
         console.log(pageVariable);
     } else {
         console.log("first page");
@@ -420,7 +431,7 @@ mobileGoToPreviousPage.addEventListener("click", function () {
         audioArray[pageVariable].play();
         audioArray[pageVariable + 1].pause();
         loadBackgroundImage(pageVariable);
-        handlePaint(pageVariable);
+        handleTransparentPaint(pageVariable);
         console.log(pageVariable);
     } else {
         console.log("first page");
