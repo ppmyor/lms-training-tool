@@ -360,7 +360,21 @@ paintedCanvas.addEventListener("click", function (event) {
     let clickX = event.offsetX;
     let clickY = event.offsetY;
     if (clickX >= nowStartX && clickY >= nowStartY && clickX <= nowEndX && clickY <= nowEndY) {
-        pageVariable++;
+        handleClickBox();
+    } else if (clickX <= nowStartX && clickY <= nowStartY && clickX >= nowEndX && clickY >= nowEndY) {
+        handleClickBox();
+    } else if (clickX <= nowStartX && clickY >= nowStartY && clickX >= nowEndX && clickY <= nowEndY) {
+        handleClickBox();
+    } else if (clickX >= nowStartX && clickY <= nowStartY && clickX <= nowEndX && clickY >= nowEndY) {
+        handleClickBox();
+    } else {
+        console.log("wrong area!");
+    }
+});
+
+function handleClickBox() {
+    pageVariable++;
+    if (pageVariable >= 0 && pageVariable < contentImage.length) {
         handleLocalStorage(pageVariable);
         workingArea.src = pageArray[0];
         audioArray[pageVariable].load();
@@ -371,9 +385,11 @@ paintedCanvas.addEventListener("click", function (event) {
         handlePaint(pageVariable);
         console.log(pageVariable);
     } else {
-        console.log("wrong area!");
+        console.log("last page");
+        pageVariable = contentImage.length - 1;
+        console.log(pageVariable);
     }
-});
+}
 
 // 이전 단계 버튼 기능 구현
 goToPreviousPage.addEventListener("click", function () {
