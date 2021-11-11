@@ -149,10 +149,10 @@ coordinate9 = {
 };
 
 coordinate10 = {
-    startRateX: 0.0028328611898017,
-    startRateY: 0.3053435114503817,
-    endRateX: 0.9971671388101983,
-    endRateY: 0.40610687022900765,
+    startRateX: 0.0056657223796034,
+    startRateY: 0.41374045801526715,
+    endRateX: 0.9943342776203966,
+    endRateY: 0.5068702290076336,
 };
 
 coordinate11 = {
