@@ -34,8 +34,8 @@ body {
 }
 
 #draw-box {
-    width: 375px;
-    height: 667px;
+    width: 353px;
+    height: 655px;
 }
 
 #draw-canvas {
@@ -72,8 +72,8 @@ body {
 }
 
 #painted-box {
-    width: 262.5px;
-    height: 466.9px;
+    width: 235.3px;
+    height: 436.6px;
 }
 
 #painted-canvas {

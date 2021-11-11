@@ -2,7 +2,7 @@ const changeButton = document.querySelector(".change-btn");
 const imageArray = [];
 
 const codeDescription = document.querySelector(".code-area-desc");
-const pageNum = 21;
+const pageNum = 18;
 const pageName = "네이버길찾기";
 
 for (i = 1; i <= pageNum; i++) {
