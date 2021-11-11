@@ -183,7 +183,7 @@ button {
 /* nav-main-contents Section */
 
 .nav-main-contents .main-information {
-    font-size: 15px;
+    font-size: 16px;
     font-weight: 400;
     line-height: 1.5;
     letter-spacing: -0.01em;
@@ -195,14 +195,17 @@ button {
 }
 
 .nav-main-contents .main-contents-desc {
-    font-size: 16px;
-    font-weight: 400;
-    line-height: 1.5;
-    letter-spacing: -0.01em;
     width: 100%;
     height: 30vh;
     overflow: auto;
     padding: 10px 10px 10px 20px;
+}
+
+.content-desc {
+    font-size: 1.2em;
+    font-weight: 400;
+    line-height: 1.5;
+    letter-spacing: -0.01em;
 }
 
 /* Main Conrtoller */
