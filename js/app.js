@@ -368,7 +368,7 @@ paintedCanvas.addEventListener("click", function (event) {
     } else if (clickX >= nowStartX && clickY <= nowStartY && clickX <= nowEndX && clickY >= nowEndY) {
         handleClickBox();
     } else {
-        console.log("wrong area!");
+        alert("다시 생각해 보세요!");
     }
 });
 
