@@ -71,6 +71,10 @@ for (j = 1; j <= pageNum; j++) {
 }
 
 let pageVariable = 0;
+let isInput = false;
+
+const inputPage1 = 8;
+const inputPage2 = 10;
 
 // Canvas area
 const paintedCanvas = document.getElementById("painted-canvas");
@@ -269,15 +273,36 @@ function handlePaint(currentPage) {
     paintedContext.fillRect(nowStartX, nowStartY, nowEndX - nowStartX, nowEndY - nowStartY);
 }
 
+// !!!수정 필요!!!
 function handleTransparentPaint(currentPage) {
     paintedContext.fillStyle = "rgba(200, 124, 124, 0)";
-    handlePaint(currentPage);
+    if (currentPage === inputPage1) {
+        handleInputBox(currentPage);
+    } else if (currentPage === inputPage1 + 1) {
+        practiceClickArea.removeChild(document.querySelector(".input-answer"));
+    } else if (currentPage === inputPage2) {
+        handleInputBox(currentPage);
+    } else if (currentPage === inputPage2 + 1) {
+        practiceClickArea.removeChild(document.querySelector(".input-answer"));
+    } else {
+        handlePaint(currentPage);
+    }
 }
 
-hintButton.addEventListener("click", function () {
-    paintedContext.fillStyle = "rgba(200, 124, 124, 0.5)";
-    handlePaint(pageVariable);
-});
+function handleInputBox(pageNumber) {
+    rateCalculator(pageNumber);
+    let inputAnswer = document.createElement("input");
+    inputAnswer.className += "input-answer";
+    inputAnswer.type = "text";
+    inputAnswer.style.position = "fixed";
+    inputAnswer.style.left = practiceClickArea.offsetLeft + nowStartX + "px";
+    inputAnswer.style.top = practiceClickArea.offsetTop + nowStartY + "px";
+    console.log(inputAnswer.style.left, inputAnswer.style.top);
+    inputAnswer.style.width = nowEndX - nowStartX + "px";
+    inputAnswer.style.height = nowEndY - nowStartY + "px";
+    practiceClickArea.appendChild(inputAnswer);
+    isInput = true;
+}
 
 function loadBackgroundImage(page) {
     paintedCanvas.style.backgroundImage = `url(${contentImage[page]})`;
@@ -438,6 +463,11 @@ mobileGoToPreviousPage.addEventListener("click", function () {
         pageVariable = 0;
         console.log(pageVariable);
     }
+});
+
+hintButton.addEventListener("click", function () {
+    paintedContext.fillStyle = "rgba(200, 124, 124, 0.5)";
+    handlePaint(pageVariable);
 });
 
 // About Audio AutoPlay
