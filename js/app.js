@@ -72,6 +72,7 @@ for (j = 1; j <= pageNum; j++) {
 
 let pageVariable = 0;
 let isInput = false;
+let userInputValue = "";
 
 const inputPage = [
     { page: 8, correctAnswer: "남부터미널" },
@@ -295,18 +296,37 @@ function DrawInputBox(pageNumber) {
     inputAnswer.style.width = nowEndX - nowStartX + "px";
     inputAnswer.style.height = nowEndY - nowStartY + "px";
     practiceClickArea.appendChild(inputAnswer);
-    isInput = true;
 }
 
 function handleInput(pageNumber) {
     for (i = 0; i < inputPage.length; i++) {
         if (pageNumber === inputPage[i].page) {
             DrawInputBox(pageNumber);
+            let answer = inputPage[i].correctAnswer;
+            document.querySelector(".input-answer").addEventListener("keydown", function (event) {
+                if (event.keyCode === 13) {
+                    if (this.value === answer) {
+                        handleClickBox();
+                    } else if (this.value !== answer) {
+                        alert("다시 생각해보세요!");
+                    }
+                }
+            });
         } else if (document.querySelector(".input-answer") !== null && pageNumber === inputPage[i].page - 1) {
             practiceClickArea.removeChild(document.querySelector(".input-answer"));
         } else if (document.querySelector(".input-answer") !== null && pageNumber === inputPage[i].page + 1) {
             practiceClickArea.removeChild(document.querySelector(".input-answer"));
         }
+    }
+}
+
+function checkInputAnswer(pageNumber) {
+    if (inputPage[pageNumber].correctAnswer === userInputValue) {
+        console.log("correct");
+    } else if (inputPage[pageNumber].correctAnswer !== userInputValue) {
+        alert("wrong");
+    } else {
+        return;
     }
 }
 
