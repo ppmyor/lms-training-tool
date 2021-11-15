@@ -73,8 +73,13 @@ for (j = 1; j <= pageNum; j++) {
 let pageVariable = 0;
 let isInput = false;
 
-const inputPage1 = 8;
-const inputPage2 = 10;
+const inputPage = [
+    { page: 8, correctAnswer: "남부터미널" },
+    {
+        page: 10,
+        correctAnswer: "서울디지털재단",
+    },
+];
 
 // Canvas area
 const paintedCanvas = document.getElementById("painted-canvas");
@@ -273,23 +278,12 @@ function handlePaint(currentPage) {
     paintedContext.fillRect(nowStartX, nowStartY, nowEndX - nowStartX, nowEndY - nowStartY);
 }
 
-// !!!수정 필요!!!
 function handleTransparentPaint(currentPage) {
     paintedContext.fillStyle = "rgba(200, 124, 124, 0)";
-    if (currentPage === inputPage1) {
-        handleInputBox(currentPage);
-    } else if (currentPage === inputPage1 + 1) {
-        practiceClickArea.removeChild(document.querySelector(".input-answer"));
-    } else if (currentPage === inputPage2) {
-        handleInputBox(currentPage);
-    } else if (currentPage === inputPage2 + 1) {
-        practiceClickArea.removeChild(document.querySelector(".input-answer"));
-    } else {
-        handlePaint(currentPage);
-    }
+    handlePaint(currentPage);
 }
 
-function handleInputBox(pageNumber) {
+function DrawInputBox(pageNumber) {
     rateCalculator(pageNumber);
     let inputAnswer = document.createElement("input");
     inputAnswer.className += "input-answer";
@@ -302,6 +296,18 @@ function handleInputBox(pageNumber) {
     inputAnswer.style.height = nowEndY - nowStartY + "px";
     practiceClickArea.appendChild(inputAnswer);
     isInput = true;
+}
+
+function handleInput(pageNumber) {
+    for (i = 0; i < inputPage.length; i++) {
+        if (pageNumber === inputPage[i].page) {
+            DrawInputBox(pageNumber);
+        } else if (document.querySelector(".input-answer") !== null && pageNumber === inputPage[i].page - 1) {
+            practiceClickArea.removeChild(document.querySelector(".input-answer"));
+        } else if (document.querySelector(".input-answer") !== null && pageNumber === inputPage[i].page + 1) {
+            practiceClickArea.removeChild(document.querySelector(".input-answer"));
+        }
+    }
 }
 
 function loadBackgroundImage(page) {
@@ -317,6 +323,7 @@ goToMainPage.addEventListener("click", function () {
         audioArray[pageVariable].play();
         loadBackgroundImage(pageVariable);
         handleTransparentPaint(pageVariable);
+        handleInput(pageVariable);
         pageDescription.innerText = pageDescArray[pageVariable];
         console.log(pageVariable);
     } else {
@@ -366,6 +373,7 @@ goToNextPage.addEventListener("click", function () {
         pageDescription.innerText = pageDescArray[pageVariable];
         loadBackgroundImage(pageVariable);
         handleTransparentPaint(pageVariable);
+        handleInput(pageVariable);
         console.log(pageVariable);
     } else {
         console.log("last page");
@@ -384,6 +392,7 @@ mobileGoToNextPage.addEventListener("click", function () {
         audioArray[pageVariable - 1].pause();
         loadBackgroundImage(pageVariable);
         handleTransparentPaint(pageVariable);
+        handleInput(pageVariable);
         console.log(pageVariable);
     } else {
         console.log("last page");
@@ -419,6 +428,7 @@ function handleClickBox() {
         pageDescription.innerText = pageDescArray[pageVariable];
         loadBackgroundImage(pageVariable);
         handleTransparentPaint(pageVariable);
+        handleInput(pageVariable);
         console.log(pageVariable);
     } else {
         console.log("last page");
@@ -439,6 +449,7 @@ goToPreviousPage.addEventListener("click", function () {
         pageDescription.innerText = pageDescArray[pageVariable];
         loadBackgroundImage(pageVariable);
         handleTransparentPaint(pageVariable);
+        handleInput(pageVariable);
         console.log(pageVariable);
     } else {
         console.log("first page");
@@ -457,6 +468,7 @@ mobileGoToPreviousPage.addEventListener("click", function () {
         audioArray[pageVariable + 1].pause();
         loadBackgroundImage(pageVariable);
         handleTransparentPaint(pageVariable);
+        handleInput(pageVariable);
         console.log(pageVariable);
     } else {
         console.log("first page");
