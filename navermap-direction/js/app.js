@@ -82,18 +82,7 @@ const inputPage = [
     },
 ];
 
-// Canvas area
-const paintedCanvas = document.getElementById("painted-canvas");
-const paintedContext = paintedCanvas.getContext("2d");
-const practiceClickArea = document.querySelector(".click-area");
-
 const hintButton = document.querySelector(".hint-button");
-
-const paintedWidth = practiceClickArea.clientWidth;
-const paintedHeight = practiceClickArea.clientHeight;
-paintedCanvas.width = paintedWidth;
-paintedCanvas.height = paintedHeight;
-paintedContext.lineWidth = 2;
 
 const coordinateArray = [];
 coordinate1 = {
@@ -258,50 +247,40 @@ const mobileGoToPreviousPage = document.querySelector(".mobile-previous");
 const indexNav = document.querySelector(".nav-index-contents");
 const MainNav = document.querySelector(".nav-main-contents");
 
-imageVariable = 0;
-loadBackgroundImage(imageVariable);
+const practiceClickArea = document.querySelector(".click-area");
 
 // handle local Storage function
 function handleLocalStorage(pageIndex) {
     localStorage.setItem("pageNumber", pageIndex);
 }
 
-function rateCalculator(pageCount) {
-    nowStartX = coordinateArray[pageCount].startRateX * paintedWidth;
-    nowStartY = coordinateArray[pageCount].startRateY * paintedHeight;
-    nowEndX = coordinateArray[pageCount].endRateX * paintedWidth;
-    nowEndY = coordinateArray[pageCount].endRateY * paintedHeight;
+function loadBackgroundImage(pageNumber) {
+    if (document.querySelector(".bg-image") !== null) {
+        practiceClickArea.removeChild(practiceClickArea.querySelector(".bg-image"));
+    }
+    let backgroundImage = document.createElement("img");
+    backgroundImage.className = "bg-image";
+    backgroundImage.src = contentImage[pageNumber];
+    practiceClickArea.appendChild(backgroundImage);
 }
 
-function handlePaint(currentPage) {
-    paintedContext.clearRect(0, 0, paintedContext.canvas.width, paintedContext.canvas.height);
-    rateCalculator(currentPage);
-    paintedContext.fillRect(nowStartX, nowStartY, nowEndX - nowStartX, nowEndY - nowStartY);
-}
-
-function handleTransparentPaint(currentPage) {
-    paintedContext.fillStyle = "rgba(200, 124, 124, 0)";
-    handlePaint(currentPage);
-}
-
-function DrawInputBox(pageNumber) {
-    rateCalculator(pageNumber);
+function DrawInputBox() {
     let inputAnswer = document.createElement("input");
     inputAnswer.className += "input-answer";
     inputAnswer.type = "text";
     inputAnswer.style.position = "fixed";
-    inputAnswer.style.left = practiceClickArea.offsetLeft + nowStartX + "px";
-    inputAnswer.style.top = practiceClickArea.offsetTop + nowStartY + "px";
+    // inputAnswer.style.left = practiceClickArea.offsetLeft + nowStartX + "px";
+    // inputAnswer.style.top = practiceClickArea.offsetTop + nowStartY + "px";
     console.log(inputAnswer.style.left, inputAnswer.style.top);
-    inputAnswer.style.width = nowEndX - nowStartX + "px";
-    inputAnswer.style.height = nowEndY - nowStartY + "px";
+    // inputAnswer.style.width = nowEndX - nowStartX + "px";
+    // inputAnswer.style.height = nowEndY - nowStartY + "px";
     practiceClickArea.appendChild(inputAnswer);
 }
 
 function handleInput(pageNumber) {
     for (i = 0; i < inputPage.length; i++) {
         if (pageNumber === inputPage[i].page) {
-            DrawInputBox(pageNumber);
+            DrawInputBox();
             let answer = inputPage[i].correctAnswer;
             document.querySelector(".input-answer").addEventListener("keydown", function (event) {
                 if (event.keyCode === 13) {
@@ -330,9 +309,8 @@ function checkInputAnswer(pageNumber) {
     }
 }
 
-function loadBackgroundImage(page) {
-    paintedCanvas.style.backgroundImage = `url(${contentImage[page]})`;
-}
+// 가장 첫페이지의 백그라운드 이미지 로드
+loadBackgroundImage(0);
 
 // About Move Page
 // Index 의 시작 버튼 기능 구현
@@ -342,7 +320,6 @@ goToMainPage.addEventListener("click", function () {
         audioArray[pageVariable].load();
         audioArray[pageVariable].play();
         loadBackgroundImage(pageVariable);
-        handleTransparentPaint(pageVariable);
         handleInput(pageVariable);
         pageDescription.innerText = pageDescArray[pageVariable];
         console.log(pageVariable);
@@ -361,6 +338,7 @@ goToIndexPage.addEventListener("click", function () {
     workingArea.src = pageArray[0];
     indexNav.classList.toggle("hidden");
     MainNav.classList.toggle("hidden");
+    loadBackgroundImage(pageVariable);
     // MOBILE
     mainDesc.classList.toggle(HIDDEN_MOBILE_CLASSNAME);
     practiceArea.classList.toggle(HIDDEN_MOBILE_CLASSNAME);
@@ -392,7 +370,6 @@ goToNextPage.addEventListener("click", function () {
         audioArray[pageVariable - 1].pause();
         pageDescription.innerText = pageDescArray[pageVariable];
         loadBackgroundImage(pageVariable);
-        handleTransparentPaint(pageVariable);
         handleInput(pageVariable);
         console.log(pageVariable);
     } else {
@@ -411,29 +388,12 @@ mobileGoToNextPage.addEventListener("click", function () {
         audioArray[pageVariable].play();
         audioArray[pageVariable - 1].pause();
         loadBackgroundImage(pageVariable);
-        handleTransparentPaint(pageVariable);
         handleInput(pageVariable);
         console.log(pageVariable);
     } else {
         console.log("last page");
         pageVariable = contentImage.length - 1;
         console.log(pageVariable);
-    }
-});
-
-paintedCanvas.addEventListener("click", function (event) {
-    let clickX = event.offsetX;
-    let clickY = event.offsetY;
-    if (clickX >= nowStartX && clickY >= nowStartY && clickX <= nowEndX && clickY <= nowEndY) {
-        handleClickBox();
-    } else if (clickX <= nowStartX && clickY <= nowStartY && clickX >= nowEndX && clickY >= nowEndY) {
-        handleClickBox();
-    } else if (clickX <= nowStartX && clickY >= nowStartY && clickX >= nowEndX && clickY <= nowEndY) {
-        handleClickBox();
-    } else if (clickX >= nowStartX && clickY <= nowStartY && clickX <= nowEndX && clickY >= nowEndY) {
-        handleClickBox();
-    } else {
-        alert("다시 생각해 보세요!");
     }
 });
 
@@ -447,7 +407,6 @@ function handleClickBox() {
         audioArray[pageVariable - 1].pause();
         pageDescription.innerText = pageDescArray[pageVariable];
         loadBackgroundImage(pageVariable);
-        handleTransparentPaint(pageVariable);
         handleInput(pageVariable);
         console.log(pageVariable);
     } else {
@@ -468,7 +427,6 @@ goToPreviousPage.addEventListener("click", function () {
         audioArray[pageVariable + 1].pause();
         pageDescription.innerText = pageDescArray[pageVariable];
         loadBackgroundImage(pageVariable);
-        handleTransparentPaint(pageVariable);
         handleInput(pageVariable);
         console.log(pageVariable);
     } else {
@@ -487,7 +445,6 @@ mobileGoToPreviousPage.addEventListener("click", function () {
         audioArray[pageVariable].play();
         audioArray[pageVariable + 1].pause();
         loadBackgroundImage(pageVariable);
-        handleTransparentPaint(pageVariable);
         handleInput(pageVariable);
         console.log(pageVariable);
     } else {
@@ -495,11 +452,6 @@ mobileGoToPreviousPage.addEventListener("click", function () {
         pageVariable = 0;
         console.log(pageVariable);
     }
-});
-
-hintButton.addEventListener("click", function () {
-    paintedContext.fillStyle = "rgba(200, 124, 124, 0.5)";
-    handlePaint(pageVariable);
 });
 
 // About Audio AutoPlay
