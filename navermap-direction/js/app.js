@@ -70,6 +70,7 @@ for (j = 1; j <= pageNum; j++) {
     audioArray.push(audio);
 }
 
+// user input answer
 let pageVariable = 0;
 let isInput = false;
 let userInputValue = "";
@@ -82,8 +83,7 @@ const inputPage = [
     },
 ];
 
-const hintButton = document.querySelector(".hint-button");
-
+// 좌표
 const coordinateArray = [];
 coordinate1 = {
     startRateX: 0,
@@ -91,6 +91,7 @@ coordinate1 = {
     endRateX: 1,
     endRateY: 1,
 };
+
 coordinate2 = {
     startRateX: 0.9971671388101983,
     startRateY: 0.0717557251908397,
@@ -231,6 +232,12 @@ coordinateArray.push(
     coordinate18
 );
 
+let isClick = false;
+const hintButton = document.querySelector(".hint-button");
+
+let imageWidth;
+let imageHeight;
+
 // Page Section
 const pageArray = ["./content-1.html"];
 
@@ -248,12 +255,15 @@ const indexNav = document.querySelector(".nav-index-contents");
 const MainNav = document.querySelector(".nav-main-contents");
 
 const practiceClickArea = document.querySelector(".click-area");
+const clickButton = document.createElement("button");
+clickButton.className = "click-button";
 
 // handle local Storage function
 function handleLocalStorage(pageIndex) {
     localStorage.setItem("pageNumber", pageIndex);
 }
 
+// handle load background image
 function loadBackgroundImage(pageNumber) {
     if (document.querySelector(".bg-image") !== null) {
         practiceClickArea.removeChild(practiceClickArea.querySelector(".bg-image"));
@@ -264,23 +274,114 @@ function loadBackgroundImage(pageNumber) {
     practiceClickArea.appendChild(backgroundImage);
 }
 
-function DrawInputBox() {
+// handle Click Button
+function buttonPositionCalcurate(coordinate) {
+    let nowX;
+    let nowY;
+    let nowWidth;
+    let nowHeight;
+
+    if (document.querySelector(".click-button") !== null) {
+        deleteButton();
+    }
+    if (coordinate.startRateX < coordinate.endRateX && coordinate.startRateY < coordinate.endRateY) {
+        nowX = coordinate.startRateX * imageWidth;
+        nowY = coordinate.startRateY * imageHeight;
+        nowWidth = coordinate.endRateX * imageWidth - nowX;
+        nowHeight = coordinate.endRateY * imageHeight - nowY;
+        console.log(nowX, nowY, nowWidth, nowHeight);
+    } else if (coordinate.startRateX > coordinate.endRateX && coordinate.startRateY < coordinate.endRateY) {
+        nowX = coordinate.endRateX * imageWidth;
+        nowY = coordinate.startRateY * imageHeight;
+        nowWidth = coordinate.startRateX * imageWidth - nowX;
+        nowHeight = coordinate.endRateY * imageHeight - nowY;
+        console.log(nowX, nowY, nowWidth, nowHeight);
+    } else if (coordinate.startRateX > coordinate.endRateX && coordinate.startRateY > coordinate.endRateY) {
+        nowX = coordinate.endRateX * imageWidth;
+        nowY = coordinate.endRateY * imageHeight;
+        nowWidth = coordinate.startRateX * imageWidth - nowX;
+        nowHeight = coordinate.startRateY * imageHeight - nowY;
+        console.log(nowX, nowY, nowWidth, nowHeight);
+    } else {
+        nowX = coordinate.startRateX * imageWidth;
+        nowY = coordinate.endRateY * imageHeight;
+        nowWidth = coordinate.endRateX * imageWidth - nowX;
+        nowHeight = coordinate.startRateY * imageHeight - nowY;
+        console.log(nowX, nowY, nowWidth, nowHeight);
+    }
+    createButton(nowX, nowY, nowWidth, nowHeight);
+}
+
+function positionCalcurate(coordinate) {
+    if (coordinate.startRateX < coordinate.endRateX && coordinate.startRateY < coordinate.endRateY) {
+        nowX = coordinate.startRateX * imageWidth;
+        nowY = coordinate.startRateY * imageHeight;
+        endX = coordinate.endRateX * imageWidth;
+        endY = coordinate.endRateY * imageHeight;
+        nowWidth = endX - nowX;
+        nowHeight = endY - nowY;
+        console.log(nowX, nowY, nowWidth, nowHeight);
+    } else if (coordinate.startRateX > coordinate.endRateX && coordinate.startRateY < coordinate.endRateY) {
+        nowX = coordinate.endRateX * imageWidth;
+        nowY = coordinate.startRateY * imageHeight;
+        endX = coordinate.startRateX * imageWidth;
+        endY = coordinate.endRateY * imageHeight;
+        nowWidth = endX - nowX;
+        nowHeight = endY - nowY;
+        console.log(nowX, nowY, nowWidth, nowHeight);
+    } else if (coordinate.startRateX > coordinate.endRateX && coordinate.startRateY > coordinate.endRateY) {
+        nowX = coordinate.endRateX * imageWidth;
+        nowY = coordinate.endRateY * imageHeight;
+        endX = coordinate.startRateX * imageWidth;
+        endY = coordinate.startRateY * imageHeight;
+        nowWidth = endX - nowX;
+        nowHeight = endY - nowY;
+        console.log(nowX, nowY, nowWidth, nowHeight);
+    } else {
+        nowX = coordinate.startRateX * imageWidth;
+        nowY = coordinate.endRateY * imageHeight;
+        endX = coordinate.endRateX * imageWidth;
+        endY = coordinate.startRateY * imageHeight;
+        nowWidth = endX - nowX;
+        nowHeight = endY - nowY;
+        console.log(nowX, nowY, nowWidth, nowHeight);
+    }
+}
+
+function createButton(currentX, currentY, currentWidth, currentHeight) {
+    clickButton.style.position = "absolute";
+    clickButton.style.left = currentX + "px";
+    clickButton.style.top = currentY + "px";
+    clickButton.style.width = currentWidth + "px";
+    clickButton.style.height = currentHeight + "px";
+    clickButton.style.backgroundColor = "transparent";
+    practiceClickArea.appendChild(clickButton);
+}
+
+function deleteButton() {
+    practiceClickArea.removeChild(practiceClickArea.querySelector(".click-button"));
+}
+
+// Draw user Input box
+function DrawInputBox(coordinate) {
+    positionCalcurate(coordinate);
     let inputAnswer = document.createElement("input");
     inputAnswer.className += "input-answer";
     inputAnswer.type = "text";
-    inputAnswer.style.position = "fixed";
-    // inputAnswer.style.left = practiceClickArea.offsetLeft + nowStartX + "px";
-    // inputAnswer.style.top = practiceClickArea.offsetTop + nowStartY + "px";
+    inputAnswer.style.position = "absolute";
+    inputAnswer.style.left = nowX + "px";
+    inputAnswer.style.top = nowY + "px";
     console.log(inputAnswer.style.left, inputAnswer.style.top);
-    // inputAnswer.style.width = nowEndX - nowStartX + "px";
-    // inputAnswer.style.height = nowEndY - nowStartY + "px";
+    inputAnswer.style.width = nowWidth + "px";
+    inputAnswer.style.height = nowHeight + "px";
     practiceClickArea.appendChild(inputAnswer);
+    practiceClickArea.removeChild(document.querySelector(".click-button"));
 }
 
 function handleInput(pageNumber) {
     for (i = 0; i < inputPage.length; i++) {
         if (pageNumber === inputPage[i].page) {
-            DrawInputBox();
+            DrawInputBox(coordinateArray[pageNumber]);
             let answer = inputPage[i].correctAnswer;
             document.querySelector(".input-answer").addEventListener("keydown", function (event) {
                 if (event.keyCode === 13) {
@@ -312,6 +413,18 @@ function checkInputAnswer(pageNumber) {
 // 가장 첫페이지의 백그라운드 이미지 로드
 loadBackgroundImage(0);
 
+window.addEventListener("resize", function () {
+    console.log("resize");
+    imageWidth = document.querySelector(".bg-image").clientWidth;
+    imageHeight = document.querySelector(".bg-image").clientHeight;
+    buttonPositionCalcurate(coordinateArray[pageVariable]);
+});
+
+window.addEventListener("load", function () {
+    imageWidth = document.querySelector(".bg-image").clientWidth;
+    imageHeight = document.querySelector(".bg-image").clientHeight;
+});
+
 // About Move Page
 // Index 의 시작 버튼 기능 구현
 goToMainPage.addEventListener("click", function () {
@@ -320,6 +433,7 @@ goToMainPage.addEventListener("click", function () {
         audioArray[pageVariable].load();
         audioArray[pageVariable].play();
         loadBackgroundImage(pageVariable);
+        buttonPositionCalcurate(coordinateArray[pageVariable]);
         handleInput(pageVariable);
         pageDescription.innerText = pageDescArray[pageVariable];
         console.log(pageVariable);
@@ -370,6 +484,7 @@ goToNextPage.addEventListener("click", function () {
         audioArray[pageVariable - 1].pause();
         pageDescription.innerText = pageDescArray[pageVariable];
         loadBackgroundImage(pageVariable);
+        buttonPositionCalcurate(coordinateArray[pageVariable]);
         handleInput(pageVariable);
         console.log(pageVariable);
     } else {
@@ -388,12 +503,28 @@ mobileGoToNextPage.addEventListener("click", function () {
         audioArray[pageVariable].play();
         audioArray[pageVariable - 1].pause();
         loadBackgroundImage(pageVariable);
+        buttonPositionCalcurate(coordinateArray[pageVariable]);
         handleInput(pageVariable);
         console.log(pageVariable);
     } else {
         console.log("last page");
         pageVariable = contentImage.length - 1;
         console.log(pageVariable);
+    }
+});
+
+clickButton.addEventListener("click", function () {
+    isClick = true;
+});
+
+practiceClickArea.addEventListener("click", function () {
+    if (isClick === true) {
+        handleClickBox();
+        isClick = false;
+    } else if (document.querySelector(".click-button") === null) {
+        return;
+    } else {
+        alert("다시 생각해보세요!");
     }
 });
 
@@ -407,6 +538,7 @@ function handleClickBox() {
         audioArray[pageVariable - 1].pause();
         pageDescription.innerText = pageDescArray[pageVariable];
         loadBackgroundImage(pageVariable);
+        buttonPositionCalcurate(coordinateArray[pageVariable]);
         handleInput(pageVariable);
         console.log(pageVariable);
     } else {
@@ -427,6 +559,7 @@ goToPreviousPage.addEventListener("click", function () {
         audioArray[pageVariable + 1].pause();
         pageDescription.innerText = pageDescArray[pageVariable];
         loadBackgroundImage(pageVariable);
+        buttonPositionCalcurate(coordinateArray[pageVariable]);
         handleInput(pageVariable);
         console.log(pageVariable);
     } else {
@@ -445,6 +578,7 @@ mobileGoToPreviousPage.addEventListener("click", function () {
         audioArray[pageVariable].play();
         audioArray[pageVariable + 1].pause();
         loadBackgroundImage(pageVariable);
+        buttonPositionCalcurate(coordinateArray[pageVariable]);
         handleInput(pageVariable);
         console.log(pageVariable);
     } else {
@@ -452,6 +586,11 @@ mobileGoToPreviousPage.addEventListener("click", function () {
         pageVariable = 0;
         console.log(pageVariable);
     }
+});
+
+// About hint button
+hintButton.addEventListener("click", function () {
+    document.querySelector(".click-button").style.backgroundColor = "rgba(200, 150, 150, 0.5)";
 });
 
 // About Audio AutoPlay
