@@ -368,8 +368,9 @@ function DrawInputBox(coordinate) {
     let inputAnswer = document.createElement("input");
     inputAnswer.className += "input-answer";
     inputAnswer.type = "text";
-    inputAnswer.style.position = "absolute";
-    inputAnswer.style.left = nowX + "px";
+    inputAnswer.style.position = "fixed";
+    inputAnswer.style.left = practiceClickArea.offsetLeft + "px";
+    inputAnswer.style.transform = "translateX(-50%)";
     inputAnswer.style.top = nowY + "px";
     console.log(inputAnswer.style.left, inputAnswer.style.top);
     inputAnswer.style.width = nowWidth + "px";
