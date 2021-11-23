@@ -362,15 +362,22 @@ function deleteButton() {
     practiceClickArea.removeChild(practiceClickArea.querySelector(".click-button"));
 }
 
+function deleteInputBox() {
+    practiceClickArea.removeChild(practiceClickArea.querySelector(".input-answer"));
+}
+
 // Draw user Input box
 function DrawInputBox(coordinate) {
+    if (document.querySelector(".input-answer") !== null) {
+        deleteInputBox();
+    }
+
     positionCalcurate(coordinate);
     let inputAnswer = document.createElement("input");
     inputAnswer.className += "input-answer";
     inputAnswer.type = "text";
-    inputAnswer.style.position = "fixed";
-    inputAnswer.style.left = practiceClickArea.offsetLeft + "px";
-    inputAnswer.style.transform = "translateX(-50%)";
+    inputAnswer.style.position = "absolute";
+    inputAnswer.style.left = nowX + "px";
     inputAnswer.style.top = nowY + "px";
     console.log(inputAnswer.style.left, inputAnswer.style.top);
     inputAnswer.style.width = nowWidth + "px";
@@ -419,6 +426,7 @@ window.addEventListener("resize", function () {
     imageWidth = document.querySelector(".bg-image").clientWidth;
     imageHeight = document.querySelector(".bg-image").clientHeight;
     buttonPositionCalcurate(coordinateArray[pageVariable]);
+    DrawInputBox(coordinateArray[pageVariable]);
 });
 
 window.addEventListener("load", function () {
