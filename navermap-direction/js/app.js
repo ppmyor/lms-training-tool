@@ -438,7 +438,7 @@ function goToMain(pageNumber) {
 }
 
 function goToIndex(pageNumber) {
-    pageNumber = 0;
+    pageVariable = 0;
     const previousPageNumber = parseInt(localStorage.getItem("pageNumber"));
     audioArray[previousPageNumber].pause();
     handleLocalStorage(pageNumber);
