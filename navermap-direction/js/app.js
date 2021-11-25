@@ -1,3 +1,10 @@
+// 콘텐츠 연동
+// var JS = document.createElement("script");
+// JS.type = "text/javascript";
+// JS.charset = "UTF-8";
+// JS.src = "/common/js/content_tracking.js";
+// document.getElementsByTagName("head")[0].appendChild(JS);
+
 // Audio Section
 const pauseButton = document.querySelector(".pause-button");
 const playButton = document.querySelector(".play-button");
@@ -426,7 +433,11 @@ window.addEventListener("resize", function () {
     imageWidth = document.querySelector(".bg-image").clientWidth;
     imageHeight = document.querySelector(".bg-image").clientHeight;
     buttonPositionCalcurate(coordinateArray[pageVariable]);
-    DrawInputBox(coordinateArray[pageVariable]);
+    for (i = 0; i < inputPage.length; i++) {
+        if (pageVariable === inputPage[i].page) {
+            DrawInputBox(coordinateArray[pageVariable]);
+        }
+    }
 });
 
 window.addEventListener("load", function () {
@@ -437,6 +448,7 @@ window.addEventListener("load", function () {
 // About Move Page
 // Index 의 시작 버튼 기능 구현
 goToMainPage.addEventListener("click", function () {
+    // fn_FinshPage();
     if (pageVariable === 0) {
         workingArea.src = pageArray[0];
         audioArray[pageVariable].load();
@@ -449,11 +461,13 @@ goToMainPage.addEventListener("click", function () {
     } else {
         console.log("done");
     }
+    // fn_StartPage(pageVariable);
 });
 
 // 처음 단계, 이전 단계, 다음 단계 버튼 기능 구현
 // 처음 단계 버튼 기능 구현
 goToIndexPage.addEventListener("click", function () {
+    // fn_FinshPage();
     pageVariable = 0;
     const previousPageNumber = parseInt(localStorage.getItem("pageNumber"));
     audioArray[previousPageNumber].pause();
@@ -466,9 +480,11 @@ goToIndexPage.addEventListener("click", function () {
     mainDesc.classList.toggle(HIDDEN_MOBILE_CLASSNAME);
     practiceArea.classList.toggle(HIDDEN_MOBILE_CLASSNAME);
     navHeader.classList.toggle(HIDDEN_MOBILE_CLASSNAME);
+    // fn_StartPage(pageVariable);
 });
 
 mobileGoToIndexPage.addEventListener("click", function () {
+    // fn_FinshPage();
     pageVariable = 0;
     const previousPageNumber = parseInt(localStorage.getItem("pageNumber"));
     audioArray[previousPageNumber].pause();
@@ -480,10 +496,12 @@ mobileGoToIndexPage.addEventListener("click", function () {
     mainDesc.classList.toggle(HIDDEN_MOBILE_CLASSNAME);
     practiceArea.classList.toggle(HIDDEN_MOBILE_CLASSNAME);
     navHeader.classList.toggle(HIDDEN_MOBILE_CLASSNAME);
+    // fn_StartPage(pageVariable);
 });
 
 // 다음 단계 버튼 기능 구현
 goToNextPage.addEventListener("click", function () {
+    // fn_FinshPage();
     pageVariable++;
     if (pageVariable >= 0 && pageVariable < contentImage.length) {
         handleLocalStorage(pageVariable);
@@ -501,9 +519,11 @@ goToNextPage.addEventListener("click", function () {
         pageVariable = contentImage.length - 1;
         console.log(pageVariable);
     }
+    // fn_StartPage(pageVariable);
 });
 
 mobileGoToNextPage.addEventListener("click", function () {
+    // fn_FinshPage();
     pageVariable++;
     if (pageVariable >= 0 && pageVariable < contentImage.length) {
         handleLocalStorage(pageVariable);
@@ -520,6 +540,7 @@ mobileGoToNextPage.addEventListener("click", function () {
         pageVariable = contentImage.length - 1;
         console.log(pageVariable);
     }
+    // fn_StartPage(pageVariable);
 });
 
 clickButton.addEventListener("click", function () {
