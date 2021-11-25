@@ -446,6 +446,8 @@ function goToIndex(pageNumber) {
 }
 
 function goToNext(pageNumber) {
+    imageWidth = document.querySelector(".bg-image").clientWidth;
+    imageHeight = document.querySelector(".bg-image").clientHeight;
     handleLocalStorage(pageNumber);
     workingArea.src = pageArray[0];
     audioArray[pageNumber].load();
