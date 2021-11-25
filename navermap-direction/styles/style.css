@@ -21,12 +21,6 @@ body {
     height: calc(var(--vh, 1vh) * 100);
 }
 
-.clear-fix::after {
-    content: "";
-    display: block;
-    clear: both;
-}
-
 /* RESET CSS */
 ol,
 ul,
@@ -159,21 +153,6 @@ button {
 .nav-index-contents .fill-button:hover {
     background-color: rgba(85, 85, 85, 0.9);
     transform: translateY(-2px);
-}
-
-.nav-index-contents .nav-contents-info {
-    margin-top: 20px;
-}
-
-.nav-index-contents .nav-contents-info span {
-    font-size: 16px;
-    font-weight: 400;
-    line-height: 1.3333333333;
-    letter-spacing: 0.01em;
-}
-
-.nav-index-contents .nav-contents-info span:first-child::after {
-    content: " /";
 }
 
 /* nav-main-contents Section */
@@ -340,10 +319,6 @@ button {
         display: none;
     }
 
-    .mobile-full-screen-button {
-        display: none;
-    }
-
     /* nav index content */
     .nav-index-contents {
         text-align: center;
@@ -450,10 +425,6 @@ button {
     /* Full Screen button */
     .full-screen-button {
         border-left: none;
-        display: none;
-    }
-
-    .mobile-full-screen-button {
         display: none;
     }
 
