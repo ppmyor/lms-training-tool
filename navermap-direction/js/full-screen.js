@@ -1,7 +1,3 @@
-const fullScreenButton = document.querySelector(".full-screen-button");
-const expandIcon = document.querySelector("fa-expand");
-const compressIcon = document.querySelectorAll("fa-compress");
-
 fullScreenButton.addEventListener("click", function () {
     if (!document.fullscreenElement) {
         fullScreen(document.body);

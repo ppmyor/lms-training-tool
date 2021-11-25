@@ -239,9 +239,6 @@ coordinateArray.push(
     coordinate18
 );
 
-let isClick = false;
-const hintButton = document.querySelector(".hint-button");
-
 let imageWidth;
 let imageHeight;
 
@@ -261,13 +258,158 @@ const mobileGoToPreviousPage = document.querySelector(".mobile-previous");
 const indexNav = document.querySelector(".nav-index-contents");
 const MainNav = document.querySelector(".nav-main-contents");
 
+const practiceArea = document.querySelector(".practice-section");
 const practiceClickArea = document.querySelector(".click-area");
+
+const mainDesc = document.querySelector(".main-desc");
+
+const navHeader = document.querySelector(".nav-header");
+const fullScreenButton = document.querySelector(".full-screen-button");
+
+const fontResizeSmall = document.querySelector(".small");
+const fontResizeMedium = document.querySelector(".medium");
+const fontResizeLarge = document.querySelector(".large");
+
 const clickButton = document.createElement("button");
 clickButton.className = "click-button";
+let isClick = false;
+
+const hintButton = document.querySelector(".hint-button");
+
+const HIDDEN_CLASSNAME = "hidden";
+const HIDDEN_MOBILE_CLASSNAME = "mobile-hidden";
+
+const RETRY_MESSAGE = "다시 생각해보세요!";
+
+// 가장 첫페이지의 백그라운드 이미지 로드
+loadBackgroundImage(0);
+
+window.addEventListener("resize", function () {
+    console.log("resize");
+    imageWidth = document.querySelector(".bg-image").clientWidth;
+    imageHeight = document.querySelector(".bg-image").clientHeight;
+    buttonPositionCalcurate(coordinateArray[pageVariable]);
+    for (i = 0; i < inputPage.length; i++) {
+        if (pageVariable === inputPage[i].page) {
+            DrawInputBox(coordinateArray[pageVariable]);
+        }
+    }
+});
+
+window.addEventListener("load", function () {
+    imageWidth = document.querySelector(".bg-image").clientWidth;
+    imageHeight = document.querySelector(".bg-image").clientHeight;
+});
+
+// About Move Page
+// Index 의 시작 버튼 기능 구현
+goToMainPage.addEventListener("click", function () {
+    goToMain(pageVariable);
+    showDescriptionText(pageVariable);
+});
+
+// 처음 단계, 이전 단계, 다음 단계 버튼 기능 구현
+// 처음 단계 버튼 기능 구현
+goToIndexPage.addEventListener("click", function () {
+    goToIndex(pageVariable);
+    loadBackgroundImage(pageVariable);
+});
+
+mobileGoToIndexPage.addEventListener("click", function () {
+    goToIndex(pageVariable);
+});
+
+// 다음 단계 버튼 기능 구현
+goToNextPage.addEventListener("click", function () {
+    pageVariable++;
+    if (pageVariable >= 0 && pageVariable < contentImage.length) {
+        goToNext(pageVariable);
+        showDescriptionText(pageVariable);
+    } else {
+        console.log("last page");
+        pageVariable = contentImage.length - 1;
+        console.log(pageVariable);
+    }
+});
+
+mobileGoToNextPage.addEventListener("click", function () {
+    pageVariable++;
+    if (pageVariable >= 0 && pageVariable < contentImage.length) {
+        goToNext(pageVariable);
+    } else {
+        console.log("last page");
+        pageVariable = contentImage.length - 1;
+        console.log(pageVariable);
+    }
+});
+
+clickButton.addEventListener("click", function () {
+    isClick = true;
+});
+
+practiceClickArea.addEventListener("click", function () {
+    if (isClick === true) {
+        handleClickBox();
+        isClick = false;
+    } else if (document.querySelector(".click-button") === null) {
+        return;
+    } else {
+        alert(RETRY_MESSAGE);
+    }
+});
+
+// 이전 단계 버튼 기능 구현
+goToPreviousPage.addEventListener("click", function () {
+    pageVariable--;
+    if (pageVariable >= 0) {
+        goToPrevious(pageVariable);
+        showDescriptionText(pageVariable);
+    } else {
+        console.log("first page");
+        pageVariable = 0;
+        console.log(pageVariable);
+    }
+});
+
+mobileGoToPreviousPage.addEventListener("click", function () {
+    pageVariable--;
+    if (pageVariable >= 0) {
+        goToPrevious(pageVariable);
+    } else {
+        console.log("first page");
+        pageVariable = 0;
+        console.log(pageVariable);
+    }
+});
+
+// About hint button
+hintButton.addEventListener("click", function () {
+    document.querySelector(".click-button").style.backgroundColor = "rgba(200, 150, 150, 0.5)";
+});
+
+// About Audio AutoPlay
+pauseButton.addEventListener("click", function () {
+    audioArray[pageVariable].pause();
+});
+
+playButton.addEventListener("click", function () {
+    audioArray[pageVariable].play();
+});
+
+// Mobile Audio AutoPlay
+
+mobilePlayButton.addEventListener("click", function () {
+    audioArray[pageVariable].load();
+    audioArray[pageVariable].play();
+});
+
+mobilePauseButton.addEventListener("click", function () {
+    audioArray[pageVariable].pause();
+});
 
 // handle local Storage function
-function handleLocalStorage(pageIndex) {
-    localStorage.setItem("pageNumber", pageIndex);
+function handleLocalStorage(pageNumber) {
+    localStorage.setItem("pageNumber", pageNumber);
 }
 
 // handle load background image
@@ -279,6 +421,68 @@ function loadBackgroundImage(pageNumber) {
     backgroundImage.className = "bg-image";
     backgroundImage.src = contentImage[pageNumber];
     practiceClickArea.appendChild(backgroundImage);
+}
+
+function goToMain(pageNumber) {
+    if (pageNumber === 0) {
+        workingArea.src = pageArray[0];
+        audioArray[pageNumber].load();
+        audioArray[pageNumber].play();
+        loadBackgroundImage(pageNumber);
+        buttonPositionCalcurate(coordinateArray[pageNumber]);
+        handleInput(pageNumber);
+        console.log(pageNumber);
+    } else {
+        console.log("done");
+    }
+}
+
+function goToIndex(pageNumber) {
+    pageNumber = 0;
+    const previousPageNumber = parseInt(localStorage.getItem("pageNumber"));
+    audioArray[previousPageNumber].pause();
+    handleLocalStorage(pageNumber);
+    workingArea.src = pageArray[0];
+}
+
+function goToNext(pageNumber) {
+    handleLocalStorage(pageNumber);
+    workingArea.src = pageArray[0];
+    audioArray[pageNumber].load();
+    audioArray[pageNumber].play();
+    audioArray[pageNumber - 1].pause();
+    loadBackgroundImage(pageNumber);
+    buttonPositionCalcurate(coordinateArray[pageNumber]);
+    handleInput(pageNumber);
+    console.log(pageNumber);
+}
+
+function goToPrevious(pageNumber) {
+    handleLocalStorage(pageNumber);
+    workingArea.src = pageArray[0];
+    audioArray[pageNumber].load();
+    audioArray[pageNumber].play();
+    audioArray[pageNumber + 1].pause();
+    loadBackgroundImage(pageNumber);
+    buttonPositionCalcurate(coordinateArray[pageNumber]);
+    handleInput(pageNumber);
+    console.log(pageNumber);
+}
+
+function showDescriptionText(pageNumber) {
+    pageDescription.innerText = pageDescArray[pageNumber];
+}
+
+function handleClickBox() {
+    pageVariable++;
+    if (pageVariable >= 0 && pageVariable < contentImage.length) {
+        goToNext(pageVariable);
+        showDescriptionText(pageVariable);
+    } else {
+        console.log("last page");
+        pageVariable = contentImage.length - 1;
+        console.log(pageVariable);
+    }
 }
 
 // handle Click Button
@@ -369,10 +573,6 @@ function deleteButton() {
     practiceClickArea.removeChild(practiceClickArea.querySelector(".click-button"));
 }
 
-function deleteInputBox() {
-    practiceClickArea.removeChild(practiceClickArea.querySelector(".input-answer"));
-}
-
 // Draw user Input box
 function DrawInputBox(coordinate) {
     if (document.querySelector(".input-answer") !== null) {
@@ -380,17 +580,25 @@ function DrawInputBox(coordinate) {
     }
 
     positionCalcurate(coordinate);
-    let inputAnswer = document.createElement("input");
+    createInput(nowX, nowY, nowWidth, nowHeight);
+    practiceClickArea.removeChild(document.querySelector(".click-button"));
+}
+
+function createInput(currentX, currentY, currentWidth, currentHeight) {
+    const inputAnswer = document.createElement("input");
     inputAnswer.className += "input-answer";
     inputAnswer.type = "text";
     inputAnswer.style.position = "absolute";
-    inputAnswer.style.left = nowX + "px";
-    inputAnswer.style.top = nowY + "px";
+    inputAnswer.style.left = currentX + "px";
+    inputAnswer.style.top = currentY + "px";
     console.log(inputAnswer.style.left, inputAnswer.style.top);
-    inputAnswer.style.width = nowWidth + "px";
-    inputAnswer.style.height = nowHeight + "px";
+    inputAnswer.style.width = currentWidth + "px";
+    inputAnswer.style.height = currentHeight + "px";
     practiceClickArea.appendChild(inputAnswer);
-    practiceClickArea.removeChild(document.querySelector(".click-button"));
+}
+
+function deleteInputBox() {
+    practiceClickArea.removeChild(practiceClickArea.querySelector(".input-answer"));
 }
 
 function handleInput(pageNumber) {
@@ -403,7 +611,7 @@ function handleInput(pageNumber) {
                     if (this.value === answer) {
                         handleClickBox();
                     } else if (this.value !== answer) {
-                        alert("다시 생각해보세요!");
+                        alert(RETRY_MESSAGE);
                     }
                 }
             });
@@ -424,221 +632,3 @@ function checkInputAnswer(pageNumber) {
         return;
     }
 }
-
-// 가장 첫페이지의 백그라운드 이미지 로드
-loadBackgroundImage(0);
-
-window.addEventListener("resize", function () {
-    console.log("resize");
-    imageWidth = document.querySelector(".bg-image").clientWidth;
-    imageHeight = document.querySelector(".bg-image").clientHeight;
-    buttonPositionCalcurate(coordinateArray[pageVariable]);
-    for (i = 0; i < inputPage.length; i++) {
-        if (pageVariable === inputPage[i].page) {
-            DrawInputBox(coordinateArray[pageVariable]);
-        }
-    }
-});
-
-window.addEventListener("load", function () {
-    imageWidth = document.querySelector(".bg-image").clientWidth;
-    imageHeight = document.querySelector(".bg-image").clientHeight;
-});
-
-// About Move Page
-// Index 의 시작 버튼 기능 구현
-goToMainPage.addEventListener("click", function () {
-    // fn_FinshPage();
-    if (pageVariable === 0) {
-        workingArea.src = pageArray[0];
-        audioArray[pageVariable].load();
-        audioArray[pageVariable].play();
-        loadBackgroundImage(pageVariable);
-        buttonPositionCalcurate(coordinateArray[pageVariable]);
-        handleInput(pageVariable);
-        pageDescription.innerText = pageDescArray[pageVariable];
-        console.log(pageVariable);
-    } else {
-        console.log("done");
-    }
-    // fn_StartPage(pageVariable);
-});
-
-// 처음 단계, 이전 단계, 다음 단계 버튼 기능 구현
-// 처음 단계 버튼 기능 구현
-goToIndexPage.addEventListener("click", function () {
-    // fn_FinshPage();
-    pageVariable = 0;
-    const previousPageNumber = parseInt(localStorage.getItem("pageNumber"));
-    audioArray[previousPageNumber].pause();
-    handleLocalStorage(pageVariable);
-    workingArea.src = pageArray[0];
-    indexNav.classList.toggle("hidden");
-    MainNav.classList.toggle("hidden");
-    loadBackgroundImage(pageVariable);
-    // MOBILE
-    mainDesc.classList.toggle(HIDDEN_MOBILE_CLASSNAME);
-    practiceArea.classList.toggle(HIDDEN_MOBILE_CLASSNAME);
-    navHeader.classList.toggle(HIDDEN_MOBILE_CLASSNAME);
-    // fn_StartPage(pageVariable);
-});
-
-mobileGoToIndexPage.addEventListener("click", function () {
-    // fn_FinshPage();
-    pageVariable = 0;
-    const previousPageNumber = parseInt(localStorage.getItem("pageNumber"));
-    audioArray[previousPageNumber].pause();
-    handleLocalStorage(pageVariable);
-    workingArea.src = pageArray[0];
-    indexNav.classList.toggle("hidden");
-    MainNav.classList.toggle("hidden");
-    // MOBILE
-    mainDesc.classList.toggle(HIDDEN_MOBILE_CLASSNAME);
-    practiceArea.classList.toggle(HIDDEN_MOBILE_CLASSNAME);
-    navHeader.classList.toggle(HIDDEN_MOBILE_CLASSNAME);
-    // fn_StartPage(pageVariable);
-});
-
-// 다음 단계 버튼 기능 구현
-goToNextPage.addEventListener("click", function () {
-    // fn_FinshPage();
-    pageVariable++;
-    if (pageVariable >= 0 && pageVariable < contentImage.length) {
-        handleLocalStorage(pageVariable);
-        workingArea.src = pageArray[0];
-        audioArray[pageVariable].load();
-        audioArray[pageVariable].play();
-        audioArray[pageVariable - 1].pause();
-        pageDescription.innerText = pageDescArray[pageVariable];
-        loadBackgroundImage(pageVariable);
-        buttonPositionCalcurate(coordinateArray[pageVariable]);
-        handleInput(pageVariable);
-        console.log(pageVariable);
-    } else {
-        console.log("last page");
-        pageVariable = contentImage.length - 1;
-        console.log(pageVariable);
-    }
-    // fn_StartPage(pageVariable);
-});
-
-mobileGoToNextPage.addEventListener("click", function () {
-    // fn_FinshPage();
-    pageVariable++;
-    if (pageVariable >= 0 && pageVariable < contentImage.length) {
-        handleLocalStorage(pageVariable);
-        workingArea.src = pageArray[0];
-        audioArray[pageVariable].load();
-        audioArray[pageVariable].play();
-        audioArray[pageVariable - 1].pause();
-        loadBackgroundImage(pageVariable);
-        buttonPositionCalcurate(coordinateArray[pageVariable]);
-        handleInput(pageVariable);
-        console.log(pageVariable);
-    } else {
-        console.log("last page");
-        pageVariable = contentImage.length - 1;
-        console.log(pageVariable);
-    }
-    // fn_StartPage(pageVariable);
-});
-
-clickButton.addEventListener("click", function () {
-    isClick = true;
-});
-
-practiceClickArea.addEventListener("click", function () {
-    if (isClick === true) {
-        handleClickBox();
-        isClick = false;
-    } else if (document.querySelector(".click-button") === null) {
-        return;
-    } else {
-        alert("다시 생각해보세요!");
-    }
-});
-
-function handleClickBox() {
-    pageVariable++;
-    if (pageVariable >= 0 && pageVariable < contentImage.length) {
-        handleLocalStorage(pageVariable);
-        workingArea.src = pageArray[0];
-        audioArray[pageVariable].load();
-        audioArray[pageVariable].play();
-        audioArray[pageVariable - 1].pause();
-        pageDescription.innerText = pageDescArray[pageVariable];
-        loadBackgroundImage(pageVariable);
-        buttonPositionCalcurate(coordinateArray[pageVariable]);
-        handleInput(pageVariable);
-        console.log(pageVariable);
-    } else {
-        console.log("last page");
-        pageVariable = contentImage.length - 1;
-        console.log(pageVariable);
-    }
-}
-
-// 이전 단계 버튼 기능 구현
-goToPreviousPage.addEventListener("click", function () {
-    pageVariable--;
-    if (pageVariable >= 0) {
-        handleLocalStorage(pageVariable);
-        workingArea.src = pageArray[0];
-        audioArray[pageVariable].load();
-        audioArray[pageVariable].play();
-        audioArray[pageVariable + 1].pause();
-        pageDescription.innerText = pageDescArray[pageVariable];
-        loadBackgroundImage(pageVariable);
-        buttonPositionCalcurate(coordinateArray[pageVariable]);
-        handleInput(pageVariable);
-        console.log(pageVariable);
-    } else {
-        console.log("first page");
-        pageVariable = 0;
-        console.log(pageVariable);
-    }
-});
-
-mobileGoToPreviousPage.addEventListener("click", function () {
-    pageVariable--;
-    if (pageVariable >= 0) {
-        handleLocalStorage(pageVariable);
-        workingArea.src = pageArray[0];
-        audioArray[pageVariable].load();
-        audioArray[pageVariable].play();
-        audioArray[pageVariable + 1].pause();
-        loadBackgroundImage(pageVariable);
-        buttonPositionCalcurate(coordinateArray[pageVariable]);
-        handleInput(pageVariable);
-        console.log(pageVariable);
-    } else {
-        console.log("first page");
-        pageVariable = 0;
-        console.log(pageVariable);
-    }
-});
-
-// About hint button
-hintButton.addEventListener("click", function () {
-    document.querySelector(".click-button").style.backgroundColor = "rgba(200, 150, 150, 0.5)";
-});
-
-// About Audio AutoPlay
-pauseButton.addEventListener("click", function () {
-    audioArray[pageVariable].pause();
-});
-
-playButton.addEventListener("click", function () {
-    audioArray[pageVariable].play();
-});
-
-// Mobile
-
-mobilePlayButton.addEventListener("click", function () {
-    audioArray[pageVariable].load();
-    audioArray[pageVariable].play();
-});
-
-mobilePauseButton.addEventListener("click", function () {
-    audioArray[pageVariable].pause();
-});
