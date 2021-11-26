@@ -275,6 +275,7 @@ clickButton.className = "click-button";
 let isClick = false;
 
 const hintButton = document.querySelector(".hint-button");
+const mobileHintButton = document.querySelector(".mobile-hint-button");
 
 const HIDDEN_CLASSNAME = "hidden";
 const HIDDEN_MOBILE_CLASSNAME = "mobile-hidden";
@@ -384,6 +385,11 @@ mobileGoToPreviousPage.addEventListener("click", function () {
 
 // About hint button
 hintButton.addEventListener("click", function () {
+    document.querySelector(".click-button").style.backgroundColor = "rgba(200, 150, 150, 0.5)";
+});
+
+// About mobile hint button
+mobileHintButton.addEventListener("click", function () {
     document.querySelector(".click-button").style.backgroundColor = "rgba(200, 150, 150, 0.5)";
 });
 
