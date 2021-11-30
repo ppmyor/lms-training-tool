@@ -293,9 +293,6 @@ const HIDDEN_MOBILE_CLASSNAME = "mobile-hidden";
 
 const RETRY_MESSAGE = "다시 생각해보세요!";
 
-// 가장 첫페이지의 백그라운드 이미지 로드
-loadBackgroundImage(0);
-
 window.addEventListener("resize", function () {
     console.log("resize");
     imageWidth = document.querySelector(".bg-image").clientWidth;
