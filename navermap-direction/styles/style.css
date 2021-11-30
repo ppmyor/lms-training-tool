@@ -343,14 +343,15 @@ button {
     .practice-section {
         width: 100%;
         height: 90%;
+        overflow: auto;
     }
 
     .click-area {
-        max-height: 80vh;
+        height: 90vh;
     }
 
     .click-area img {
-        max-height: 80vh;
+        height: 90vh;
     }
 
     /* Nav Main Section */
