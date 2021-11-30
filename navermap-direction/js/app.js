@@ -103,23 +103,23 @@ coordinate1 = {
 };
 
 coordinate2 = {
-    startRateX: 0.9971671388101983,
-    startRateY: 0.0717557251908397,
-    endRateX: 0.8668555240793201,
-    endRateY: 0.0015267175572519084,
+    startRateX: 0.8611898016997167,
+    startRateY: 0.0015267175572519084,
+    endRateX: 0.9971671388101983,
+    endRateY: 0.06870229007633588,
 };
 
 coordinate3 = {
-    startRateX: 0.9971671388101983,
-    startRateY: 0.0717557251908397,
-    endRateX: 0.8668555240793201,
-    endRateY: 0.0015267175572519084,
+    startRateX: 0.8611898016997167,
+    startRateY: 0.0015267175572519084,
+    endRateX: 0.9971671388101983,
+    endRateY: 0.06870229007633588,
 };
 
 coordinate4 = {
-    startRateX: 0.6713881019830028,
-    startRateY: 0.9206106870229007,
-    endRateX: 0.34844192634560905,
+    startRateX: 0.0028328611898017,
+    startRateY: 0.916030534351145,
+    endRateX: 1,
     endRateY: 1,
 };
 
@@ -138,87 +138,87 @@ coordinate6 = {
 };
 
 coordinate7 = {
-    startRateX: 0.5694050991501416,
-    startRateY: 0.5801526717557252,
-    endRateX: 0.7847025495750708,
-    endRateY: 0.6351145038167939,
-};
-
-coordinate8 = {
     startRateX: 0.8073654390934845,
     startRateY: 0.015267175572519083,
     endRateX: 0.9546742209631728,
     endRateY: 0.09312977099236641,
 };
 
+coordinate8 = {
+    startRateX: 0.1359773371104816,
+    startRateY: 0.015267175572519083,
+    endRateX: 0.8696883852691218,
+    endRateY: 0.0732824427480916,
+};
+
 coordinate9 = {
-    startRateX: 0.13314447592067988,
-    startRateY: 0.016793893129770993,
-    endRateX: 0.8668555240793201,
-    endRateY: 0.06717557251908397,
+    startRateX: 0.1359773371104816,
+    startRateY: 0.015267175572519083,
+    endRateX: 0.8696883852691218,
+    endRateY: 0.0732824427480916,
 };
 
 coordinate10 = {
-    startRateX: 0.5694050991501416,
-    startRateY: 0.5801526717557252,
-    endRateX: 0.7847025495750708,
-    endRateY: 0.6351145038167939,
+    startRateX: 1,
+    startRateY: 0.8122137404580153,
+    endRateX: 0,
+    endRateY: 0.6427480916030535,
 };
 
 coordinate11 = {
-    startRateX: 0.5694050991501416,
-    startRateY: 0.5801526717557252,
-    endRateX: 0.7847025495750708,
-    endRateY: 0.6351145038167939,
+    startRateX: 0.1359773371104816,
+    startRateY: 0.07633587786259542,
+    endRateX: 0.8668555240793201,
+    endRateY: 0.13587786259541984,
 };
 
 coordinate12 = {
-    startRateX: 0.13314447592067988,
-    startRateY: 0.016793893129770993,
-    endRateX: 0.8668555240793201,
-    endRateY: 0.06717557251908397,
+    startRateX: 0.1359773371104816,
+    startRateY: 0.015267175572519083,
+    endRateX: 0.8696883852691218,
+    endRateY: 0.0732824427480916,
 };
 
 coordinate13 = {
-    startRateX: 0.15864022662889518,
-    startRateY: 0.216793893129771,
-    endRateX: 0.32011331444759206,
-    endRateY: 0.28091603053435116,
+    startRateX: 0.9971671388101983,
+    startRateY: 0.32213740458015266,
+    endRateX: 0,
+    endRateY: 0.1465648854961832,
 };
 
 coordinate14 = {
-    startRateX: 0.5042492917847026,
-    startRateY: 0.22137404580152673,
-    endRateX: 0.3286118980169972,
-    endRateY: 0.2824427480916031,
+    startRateX: 0.15864022662889518,
+    startRateY: 0.2183206106870229,
+    endRateX: 0.32577903682719545,
+    endRateY: 0.28549618320610687,
 };
 
 coordinate15 = {
-    startRateX: 0.5694050991501416,
-    startRateY: 0.14198473282442747,
-    endRateX: 0.43626062322946174,
-    endRateY: 0.2015267175572519,
+    startRateX: 0.509915014164306,
+    startRateY: 0.2198473282442748,
+    endRateX: 0.32294617563739375,
+    endRateY: 0.2870229007633588,
 };
 
 coordinate16 = {
-    startRateX: 0.7818696883852692,
-    startRateY: 0.14045801526717558,
-    endRateX: 0.6430594900849859,
-    endRateY: 0.20458015267175572,
+    startRateX: 0.5722379603399433,
+    startRateY: 0.21374045801526717,
+    endRateX: 0.40226628895184136,
+    endRateY: 0.13282442748091602,
 };
 
 coordinate17 = {
-    startRateX: 0.9405099150141643,
-    startRateY: 0.1435114503816794,
-    endRateX: 0.8130311614730878,
-    endRateY: 0.20763358778625954,
+    startRateX: 0.7847025495750708,
+    startRateY: 0.216793893129771,
+    endRateX: 0.623229461756374,
+    endRateY: 0.13129770992366413,
 };
 
 coordinate18 = {
-    startRateX: 0,
-    startRateY: 0,
-    endRateX: 1,
-    endRateY: 1,
+    startRateX: 0.9971671388101983,
+    startRateY: 0.21374045801526717,
+    endRateX: 0.9121813031161473,
+    endRateY: 0.13587786259541984,
 };
 
 coordinate19 = {

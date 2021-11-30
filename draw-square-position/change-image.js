@@ -2,8 +2,8 @@ const changeButton = document.querySelector(".change-btn");
 const imageArray = [];
 
 const codeDescription = document.querySelector(".code-area-desc");
-const pageNum = 18;
-const pageName = "네이버길찾기";
+const pageNum = 19;
+const pageName = "SD12";
 
 for (i = 1; i <= pageNum; i++) {
     imageArray.push(`../assets/${pageName}/image/${i}.jpg`);
