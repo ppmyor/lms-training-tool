@@ -347,11 +347,11 @@ button {
     }
 
     .click-area {
-        height: 90vh;
+        height: 100%;
     }
 
     .click-area img {
-        height: 90vh;
+        height: 100%;
     }
 
     /* Nav Main Section */
