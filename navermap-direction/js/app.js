@@ -308,6 +308,7 @@ window.addEventListener("resize", function () {
 window.addEventListener("load", function () {
     imageWidth = document.querySelector(".bg-image").clientWidth;
     imageHeight = document.querySelector(".bg-image").clientHeight;
+    setTimeout(scrollTo, 0, 0, 1);
 });
 
 // About Move Page
