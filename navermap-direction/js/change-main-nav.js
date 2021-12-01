@@ -15,6 +15,9 @@ goToIndexPage.addEventListener("click", function () {
 });
 
 mobileGoToIndexPage.addEventListener("click", function () {
+    indexNav.classList.toggle(HIDDEN_CLASSNAME);
+    MainNav.classList.toggle(HIDDEN_CLASSNAME);
+
     indexNav.classList.toggle(HIDDEN_MOBILE_CLASSNAME);
     MainNav.classList.toggle(HIDDEN_MOBILE_CLASSNAME);
     mainDesc.classList.toggle(HIDDEN_MOBILE_CLASSNAME);
