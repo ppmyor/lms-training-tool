@@ -1,4 +1,4 @@
-const pageNum = 22;
+const pageNum = 26;
 const pageName = "SD25";
 for (j = 1; j <= pageNum; j++) {
     contentImage.push(`../assets/${pageName}/image/${j}.jpg`);
@@ -55,10 +55,20 @@ pageDescArray.push(
     page19,
     page20,
     page21,
-    page22
+    page22,
+    page23,
+    page24,
+    page25,
+    page26
 );
 
-const inputPage = [{ page: 5, correctAnswer: "759774" }];
+const inputPage = [
+    { page: 2, correctAnswer: "한글2자이상" },
+    { page: 3, correctAnswer: "숫자만6자리" },
+    { page: 4, correctAnswer: "숫자만1자리" },
+    { page: 5, correctAnswer: "숫자만10-11자리" },
+    { page: 9, correctAnswer: "759774" }
+];
 
 const coordinate1 = {
     startRateX: 0,
@@ -68,150 +78,178 @@ const coordinate1 = {
 };
 
 const coordinate2 = {
-    startRateX: 0.0226628895184136,
-    startRateY: 0.13129770992366413,
-    endRateX: 0.9745042492917847,
-    endRateY: 0.5572519083969466,
+    startRateX: 0,
+    startRateY: 0,
+    endRateX: 1,
+    endRateY: 1
 };
 
 const coordinate3 = {
-    startRateX: 0.056657223796033995,
-    startRateY: 0.8946564885496183,
-    endRateX: 0.9461756373937678,
-    endRateY: 0.9725190839694656,
+    startRateX: 0.053824362606232294, 
+    startRateY: 0.17251908396946564, 
+    endRateX: 0.9546742209631728, 
+    endRateY: 0.233587786259542
 };
 
 const coordinate4 = {
-    startRateX: 0.042492917847025496,
-    startRateY: 0.5984732824427481,
-    endRateX: 0.1359773371104816,
-    endRateY: 0.648854961832061,
+    startRateX: 0.056657223796033995, 
+    startRateY: 0.3297709923664122, 
+    endRateX: 0.46742209631728043, 
+    endRateY: 0.38778625954198476
 };
 
 const coordinate5 = {
-    startRateX: 0.053824362606232294,
-    startRateY: 0.9007633587786259,
-    endRateX: 0.9461756373937678,
-    endRateY: 0.9801526717557252,
+    startRateX: 0.5240793201133145, 
+    startRateY: 0.3282442748091603, 
+    endRateX: 0.5864022662889519, 
+    endRateY: 0.38778625954198476
 };
 
 const coordinate6 = {
-    startRateX: 0.05099150141643059,
-    startRateY: 0.1480916030534351,
-    endRateX: 0.830028328611898,
-    endRateY: 0.20305343511450383,
+    startRateX: 0.056657223796033995, 
+    startRateY: 0.48396946564885496, 
+    endRateX: 0.9461756373937678, 
+    endRateY: 0.5419847328244275
 };
 
 const coordinate7 = {
-    startRateX: 0.053824362606232294,
-    startRateY: 0.8931297709923665,
-    endRateX: 0.9461756373937678,
-    endRateY: 0.9725190839694656,
+    startRateX: 0.053824362606232294, 
+    startRateY: 0.8916030534351145, 
+    endRateX: 0.9461756373937678, 
+    endRateY: 0.9740458015267176
 };
 
 const coordinate8 = {
-    startRateX: 0,
-    startRateY: 0,
-    endRateX: 1,
-    endRateY: 1,
+    startRateX: 0.0226628895184136, 
+    startRateY: 0.583206106870229, 
+    endRateX: 0.9745042492917847, 
+    endRateY: 0.6595419847328244
 };
 
 const coordinate9 = {
-    startRateX: 0,
-    startRateY: 0,
-    endRateX: 1,
-    endRateY: 1,
+    startRateX: 0.05099150141643059, 
+    startRateY: 0.899236641221374, 
+    endRateX: 0.9490084985835694, 
+    endRateY: 0.981679389312977
 };
 
 const coordinate10 = {
-    startRateX: 0.6685552407932012,
-    startRateY: 0.6977099236641221,
-    endRateX: 1,
-    endRateY: 0.7725190839694657,
+    startRateX: 0.039660056657223795, 
+    startRateY: 0.1435114503816794, 
+    endRateX: 0.8413597733711048, 
+    endRateY: 0.20458015267175572
 };
 
 const coordinate11 = {
-    startRateX: 0.6657223796033994,
-    startRateY: 0.8473282442748091,
-    endRateX: 1,
-    endRateY: 0.9282442748091603,
+    startRateX: 0.9461756373937678, 
+    startRateY: 0.9725190839694656, 
+    endRateX: 0.053824362606232294, 
+    endRateY: 0.8900763358778626
 };
 
 const coordinate12 = {
-    startRateX: 0.6685552407932012,
-    startRateY: 0.6977099236641221,
-    endRateX: 1,
-    endRateY: 0.7725190839694657,
-};
-
-const coordinate13 = {
-    startRateX: 0.3286118980169972,
-    startRateY: 0.7709923664122137,
-    endRateX: 0.6713881019830028,
-    endRateY: 0.850381679389313,
-};
-
-const coordinate14 = {
-    startRateX: 0.3286118980169972,
-    startRateY: 0.7709923664122137,
-    endRateX: 0.6713881019830028,
-    endRateY: 0.850381679389313,
-};
-
-const coordinate15 = {
-    startRateX: 0.6685552407932012,
-    startRateY: 0.6977099236641221,
-    endRateX: 1,
-    endRateY: 0.7725190839694657,
-};
-
-const coordinate16 = {
-    startRateX: 0.6628895184135978,
-    startRateY: 0.7725190839694657,
-    endRateX: 1,
-    endRateY: 0.8519083969465648,
-};
-
-const coordinate17 = {
-    startRateX: 0.3314447592067989,
-    startRateY: 0.7725190839694657,
-    endRateX: 0.6685552407932012,
-    endRateY: 0.8519083969465648,
-};
-
-const coordinate18 = {
-    startRateX: 0.6628895184135978,
-    startRateY: 0.7725190839694657,
-    endRateX: 1,
-    endRateY: 0.8519083969465648,
-};
-
-const coordinate19 = {
-    startRateX: 0.3286118980169972,
-    startRateY: 0.6946564885496184,
-    endRateX: 0.6713881019830028,
-    endRateY: 0.7755725190839695,
-};
-
-const coordinate20 = {
-    startRateX: 0.3286118980169972,
-    startRateY: 0.6946564885496184,
-    endRateX: 0.6713881019830028,
-    endRateY: 0.7755725190839695,
-};
-
-const coordinate21 = {
-    startRateX: 0.6628895184135978,
-    startRateY: 0.7725190839694657,
-    endRateX: 1,
-    endRateY: 0.8519083969465648,
-};
-
-const coordinate22 = {
     startRateX: 0,
     startRateY: 0,
     endRateX: 1,
-    endRateY: 1,
+    endRateY: 1
+};
+
+const coordinate13 = {
+    startRateX: 0,
+    startRateY: 0,
+    endRateX: 1,
+    endRateY: 1
+};
+
+const coordinate14 = {
+    startRateX: 0.6685552407932012, 
+    startRateY: 0.6992366412213741, 
+    endRateX: 0.9971671388101983, 
+    endRateY: 0.7740458015267175
+};
+
+const coordinate15 = {
+    startRateX: 0.6685552407932012, 
+    startRateY: 0.8519083969465648, 
+    endRateX: 1, 
+    endRateY: 0.9282442748091603
+};
+
+const coordinate16 = {
+    startRateX: 0.6685552407932012, 
+    startRateY: 0.6992366412213741, 
+    endRateX: 0.9971671388101983, 
+    endRateY: 0.7740458015267175
+};
+
+const coordinate17 = {
+    startRateX: 0.3371104815864023, 
+    startRateY: 0.7740458015267175, 
+    endRateX: 0.660056657223796, 
+    endRateY: 0.850381679389313
+};
+
+const coordinate18 = {
+    startRateX: 0.3371104815864023, 
+    startRateY: 0.7740458015267175, 
+    endRateX: 0.660056657223796, 
+    endRateY: 0.850381679389313
+};
+
+const coordinate19 = {
+    startRateX: 0.6685552407932012, 
+    startRateY: 0.6992366412213741, 
+    endRateX: 0.9971671388101983, 
+    endRateY: 0.7740458015267175
+};
+
+const coordinate20 = {
+    startRateX: 0.6628895184135978, 
+    startRateY: 0.7755725190839695, 
+    endRateX: 1, 
+    endRateY: 0.8488549618320611
+};
+
+const coordinate21 = {
+    startRateX: 0.3314447592067989, 
+    startRateY: 0.7725190839694657, 
+    endRateX: 0.6685552407932012, 
+    endRateY: 0.8488549618320611
+};
+
+const coordinate22 = {
+    startRateX: 0.6628895184135978, 
+    startRateY: 0.7755725190839695, 
+    endRateX: 1, 
+    endRateY: 0.8488549618320611
+};
+
+const coordinate23 = {
+    startRateX: 0.3314447592067989, 
+    startRateY: 0.6992366412213741, 
+    endRateX: 0.660056657223796, 
+    endRateY: 0.7755725190839695
+};
+
+const coordinate24 = {
+    startRateX: 0.3314447592067989, 
+    startRateY: 0.6992366412213741, 
+    endRateX: 0.660056657223796, 
+    endRateY: 0.7755725190839695
+};
+
+const coordinate25 = {
+    startRateX: 0.6628895184135978, 
+    startRateY: 0.7755725190839695, 
+    endRateX: 1, 
+    endRateY: 0.8488549618320611
+};
+
+const coordinate26 = {
+    startRateX: 0,
+    startRateY: 0,
+    endRateX: 1,
+    endRateY: 1
 };
 
 coordinateArray.push(
@@ -236,5 +274,9 @@ coordinateArray.push(
     coordinate19,
     coordinate20,
     coordinate21,
-    coordinate22
+    coordinate22,
+    coordinate23,
+    coordinate24,
+    coordinate25,
+    coordinate26
 );

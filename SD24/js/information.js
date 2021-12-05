@@ -1,4 +1,4 @@
-const pageNum = 9;
+const pageNum = 13;
 const pageName = "SD24";
 for (j = 1; j <= pageNum; j++) {
     contentImage.push(`../assets/${pageName}/image/${j}.jpg`);
@@ -15,14 +15,16 @@ const page6 = "계좌번호 입력이 완료되었습니다. ARS 인증 전화 �
 const page7 = "전화를 받아서 ARS 인증을 진행해 주세요. 안내 음성을 잘 듣고 요청하는 정보를 키패드로 입력하면 인증됩니다. 실습에서는 화면을 눌러 다음으로 진행해 주세요.";
 const page8 = "ARS 인증을 통해 계좌 등록이 완료되었습니다. 화면 하단 파란색 확인 버튼을 눌러주세요.";
 const page9 = "계좌 연결이 완료되었습니다. 가맹점에서 비플제로페이로 결제하는 방법에는 크게 2가지가 있습니다. 화면을 눌러서 다음으로 진행해 주세요.";
-const page10 = "계좌 연결이 완료되었습니다. 가맹점에서 비플제로페이로 결제하는 방법에는 크게 2가지가 있습니다. 화면을 눌러서 다음으로 진행해 주세요.";
-const page11 = "계좌 연결이 완료되었습니다. 가맹점에서 비플제로페이로 결제하는 방법에는 크게 2가지가 있습니다. 화면을 눌러서 다음으로 진행해 주세요.";
-const page12 = "계좌 연결이 완료되었습니다. 가맹점에서 비플제로페이로 결제하는 방법에는 크게 2가지가 있습니다. 화면을 눌러서 다음으로 진행해 주세요.";
-const page13 = "계좌 연결이 완료되었습니다. 가맹점에서 비플제로페이로 결제하는 방법에는 크게 2가지가 있습니다. 화면을 눌러서 다음으로 진행해 주세요.";
+const page10 = "작업중";
+const page11 = "작업중";
+const page12 = "작업중";
+const page13 = "작업중";
 
-pageDescArray.push(page1, page2, page3, page4, page5, page6, page7, page8, page9);
+pageDescArray.push(page1, page2, page3, page4, page5, page6, page7, page8, page9, page10, page11, page12, page13);
 
-const inputPage = [{ page: null, correctAnswer: null }];
+const inputPage = [
+   { page: 4, correctAnswer: "숫자만" }
+];
 
 const coordinate1 = {
     startRateX: 0.9490084985835694,
@@ -46,17 +48,17 @@ const coordinate3 = {
 };
 
 const coordinate4 = {
-    startRateX: 0.6402266288951841,
-    startRateY: 0.17251908396946564,
-    endRateX: 0.9405099150141643,
-    endRateY: 0.26564885496183205,
+    startRateX: 0.042492917847025496, 
+    startRateY: 0.16793893129770993, 
+    endRateX: 0.9461756373937678, 
+    endRateY: 0.7938931297709924
 };
 
 const coordinate5 = {
-    startRateX: 0,
-    startRateY: 0.24427480916030533,
-    endRateX: 1,
-    endRateY: 1,
+    startRateX: 0.059490084985835696, 
+    startRateY: 0.31755725190839695, 
+    endRateX: 0.9376770538243626, 
+    endRateY: 0.383206106870229
 };
 
 const coordinate6 = {
@@ -67,10 +69,10 @@ const coordinate6 = {
 };
 
 const coordinate7 = {
-    startRateX: 0.059490084985835696,
-    startRateY: 0.15114503816793892,
-    endRateX: 0.40793201133144474,
-    endRateY: 0.22290076335877862,
+    startRateX: 0.0056657223796034, 
+    startRateY: 0.0015267175572519084, 
+    endRateX: 0.9971671388101983, 
+    endRateY: 0.9984732824427481
 };
 
 const coordinate8 = {
@@ -87,6 +89,34 @@ const coordinate9 = {
     endRateY: 1,
 };
 
+const coordinate10 = {
+    startRateX: 0,
+    startRateY: 0,
+    endRateX: 1,
+    endRateY: 1,
+};
+
+const coordinate11 = {
+    startRateX: 0,
+    startRateY: 0,
+    endRateX: 1,
+    endRateY: 1,
+};
+
+const coordinate12 = {
+    startRateX: 0,
+    startRateY: 0,
+    endRateX: 1,
+    endRateY: 1,
+};
+
+const coordinate13 = {
+    startRateX: 0,
+    startRateY: 0,
+    endRateX: 1,
+    endRateY: 1,
+};
+
 coordinateArray.push(
     coordinate1,
     coordinate2,
@@ -96,5 +126,9 @@ coordinateArray.push(
     coordinate6,
     coordinate7,
     coordinate8,
-    coordinate9
+    coordinate9,
+    coordinate10,
+    coordinate11,
+    coordinate12,
+    coordinate13
 );

@@ -92,10 +92,10 @@ const coordinate5 = {
 };
 
 const coordinate6 = {
-    startRateX: 0.5722379603399433,
-    startRateY: 0.5389312977099237,
-    endRateX: 0.7762039660056658,
-    endRateY: 0.5923664122137404,
+    startRateX: 0.5552407932011332, 
+    startRateY: 0.5221374045801527, 
+    endRateX: 0.9405099150141643, 
+    endRateY: 0.6106870229007634
 };
 
 const coordinate7 = {

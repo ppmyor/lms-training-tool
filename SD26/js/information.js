@@ -16,7 +16,7 @@ const page7 = "세 번째 자리 2를 눌러주세요.";
 const page8 = "네 번째 자리 1을 눌러주세요.";
 const page9 = "다섯 번째 자리 1을 눌러주세요.";
 const page10 = "여섯 번째 자리 2를 눌러주세요.";
-const page11 = "인증서 발급이 완료되었습니다. 이제 패스 인증서를 활용해 보세요. 이상으로 실습을 마치겠습니다.";
+const page11 = "인증서 발급이 완료되었습니다. 이제 패스 인증서를 활용해 보세요. ";
 
 pageDescArray.push(page1, page2, page3, page4, page5, page6, page7, page8, page9, page10, page11);
 
@@ -37,10 +37,10 @@ const coordinate2 = {
 };
 
 const coordinate3 = {
-    startRateX: 0.12464589235127478,
-    startRateY: 0.4687022900763359,
-    endRateX: 0.04815864022662889,
-    endRateY: 0.4259541984732824,
+    startRateX: 0.0339943342776204, 
+    startRateY: 0.4152671755725191, 
+    endRateX: 0.9745042492917847, 
+    endRateY: 0.48091603053435117
 };
 
 const coordinate4 = {
