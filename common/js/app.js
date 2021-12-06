@@ -238,6 +238,9 @@ function goToIndex(pageNumber) {
 }
 
 function goToNext(pageNumber) {
+    if (document.querySelector(".input-answer") !== null) {
+        deleteInputBox();
+    }
     imageWidth = document.querySelector(".bg-image").clientWidth;
     imageHeight = document.querySelector(".bg-image").clientHeight;
     handleLocalStorage(pageNumber);
@@ -252,6 +255,9 @@ function goToNext(pageNumber) {
 }
 
 function goToPrevious(pageNumber) {
+    if (document.querySelector(".input-answer") !== null) {
+        deleteInputBox();
+    }
     handleLocalStorage(pageNumber);
     workingArea.src = pageArray[0];
     audioArray[pageNumber].load();
@@ -409,10 +415,6 @@ function handleInput(pageNumber) {
                     }
                 }
             });
-        } else if (document.querySelector(".input-answer") !== null && pageNumber === inputPage[i].page - 1) {
-            practiceClickArea.removeChild(document.querySelector(".input-answer"));
-        } else if (document.querySelector(".input-answer") !== null && pageNumber === inputPage[i].page + 1) {
-            practiceClickArea.removeChild(document.querySelector(".input-answer"));
         }
     }
 }
