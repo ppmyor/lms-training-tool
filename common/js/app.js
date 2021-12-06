@@ -171,7 +171,11 @@ mobileGoToPreviousPage.addEventListener("click", function () {
 
 // About hint button
 hintButton.addEventListener("click", function () {
-    document.querySelector(".click-button").style.backgroundColor = "rgba(200, 150, 150, 0.5)";
+    if (document.querySelector(".input-answer") !== null) {
+        document.querySelector(".input-answer").placeholder = "힌트";
+    } else {
+        document.querySelector(".click-button").style.backgroundColor = "rgba(200, 150, 150, 0.5)";
+    }
 });
 
 // About mobile hint button
@@ -394,6 +398,7 @@ function createInput(currentX, currentY, currentWidth, currentHeight) {
     console.log(inputAnswer.style.left, inputAnswer.style.top);
     inputAnswer.style.width = currentWidth + "px";
     inputAnswer.style.height = currentHeight + "px";
+    inputAnswer.placeholder = "입력해주세요";
     practiceClickArea.appendChild(inputAnswer);
 }
 
