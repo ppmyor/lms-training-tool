@@ -172,7 +172,11 @@ mobileGoToPreviousPage.addEventListener("click", function () {
 // About hint button
 hintButton.addEventListener("click", function () {
     if (document.querySelector(".input-answer") !== null) {
-        document.querySelector(".input-answer").placeholder = "힌트";
+        for (i = 0; i < inputPage.length; i++) {
+            if (pageVariable === inputPage[i].page) {
+                document.querySelector(".input-answer").placeholder = `${inputPage[i].correctAnswer}을 입력하세요.`;
+            }
+        }
     } else {
         document.querySelector(".click-button").style.backgroundColor = "rgba(200, 150, 150, 0.5)";
     }
@@ -398,7 +402,7 @@ function createInput(currentX, currentY, currentWidth, currentHeight) {
     console.log(inputAnswer.style.left, inputAnswer.style.top);
     inputAnswer.style.width = currentWidth + "px";
     inputAnswer.style.height = currentHeight + "px";
-    inputAnswer.placeholder = "입력해주세요";
+    inputAnswer.placeholder = "여기에 정답을 입력해주세요.";
     practiceClickArea.appendChild(inputAnswer);
 }
 
