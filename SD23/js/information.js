@@ -74,10 +74,10 @@ pageDescArray.push(
 );
 
 const inputPage = [
-    { page: 1, correctAnswer: "한글2자이상" },
-    { page: 3, correctAnswer: "숫자6자리" },
-    { page: 4, correctAnswer: "숫자1자리" },
-    { page: 7, correctAnswer: "숫자10-11자리" },
+    { page: 1, correctAnswer: "이름" },
+    { page: 3, correctAnswer: "숫자 6자리" },
+    { page: 4, correctAnswer: "숫자 1자리" },
+    { page: 7, correctAnswer: "숫자 10~11자리" },
     { page: 11, correctAnswer: "224973" },
 ];
 
@@ -88,10 +88,36 @@ function handleInput(pageNumber) {
             let answer = inputPage[i].correctAnswer;
             document.querySelector(".input-answer").addEventListener("keydown", function (event) {
                 if (event.keyCode === 13) {
-                    if (this.value === answer) {
-                        handleClickBox();
-                    } else if (this.value !== answer) {
-                        alert(RETRY_MESSAGE);
+                    if (pageNumber === 1) {
+                        if (2 <= this.value.length && this.value.length <= 5) {
+                            handleClickBox();
+                        } else {
+                            alert(RETRY_MESSAGE);
+                        }
+                    } else if (pageNumber === 3) {
+                        if (this.value.length === 6) {
+                            handleClickBox();
+                        } else {
+                            alert(RETRY_MESSAGE);
+                        }
+                    } else if (pageNumber === 4) {
+                        if (this.value === "1" || this.value === "2" || this.value === "3" || this.value === "4") {
+                            handleClickBox();
+                        } else {
+                            alert(RETRY_MESSAGE);
+                        }
+                    } else if (pageNumber === 7) {
+                        if (10 <= this.value.length && this.value.length <= 11) {
+                            handleClickBox();
+                        } else {
+                            alert(RETRY_MESSAGE);
+                        }
+                    } else if (pageNumber === 11) {
+                        if (this.value === answer) {
+                            handleClickBox();
+                        } else {
+                            alert(RETRY_MESSAGE);
+                        }
                     }
                 }
             });
