@@ -409,31 +409,3 @@ function createInput(currentX, currentY, currentWidth, currentHeight) {
 function deleteInputBox() {
     practiceClickArea.removeChild(practiceClickArea.querySelector(".input-answer"));
 }
-
-function handleInput(pageNumber) {
-    for (i = 0; i < inputPage.length; i++) {
-        if (pageNumber === inputPage[i].page) {
-            DrawInputBox(coordinateArray[pageNumber]);
-            let answer = inputPage[i].correctAnswer;
-            document.querySelector(".input-answer").addEventListener("keydown", function (event) {
-                if (event.keyCode === 13) {
-                    if (this.value === answer) {
-                        handleClickBox();
-                    } else if (this.value !== answer) {
-                        alert(RETRY_MESSAGE);
-                    }
-                }
-            });
-        }
-    }
-}
-
-function checkInputAnswer(pageNumber) {
-    if (inputPage[pageNumber].correctAnswer === userInputValue) {
-        console.log("correct");
-    } else if (inputPage[pageNumber].correctAnswer !== userInputValue) {
-        alert("wrong");
-    } else {
-        return;
-    }
-}
