@@ -73,10 +73,10 @@ pageDescArray.push(
 );
 
 const inputPage = [
-    { page: 2, correctAnswer: "한글2자이상" },
-    { page: 3, correctAnswer: "숫자만6자리" },
-    { page: 4, correctAnswer: "숫자만1자리" },
-    { page: 5, correctAnswer: "숫자만10-11자리" },
+    { page: 2, correctAnswer: "이름" },
+    { page: 3, correctAnswer: "숫자 6자리" },
+    { page: 4, correctAnswer: "숫자 1자리" },
+    { page: 5, correctAnswer: "숫자 10~11자리" },
     { page: 9, correctAnswer: "759774" },
 ];
 
@@ -87,17 +87,42 @@ function handleInput(pageNumber) {
             let answer = inputPage[i].correctAnswer;
             document.querySelector(".input-answer").addEventListener("keydown", function (event) {
                 if (event.keyCode === 13) {
-                    if (this.value === answer) {
-                        handleClickBox();
-                    } else if (this.value !== answer) {
-                        alert(RETRY_MESSAGE);
+                    if (pageNumber === 2) {
+                        if (2 <= this.value.length && this.value.length <= 5) {
+                            handleClickBox();
+                        } else {
+                            alert(RETRY_MESSAGE);
+                        }
+                    } else if (pageNumber === 3) {
+                        if (this.value.length === 6) {
+                            handleClickBox();
+                        } else {
+                            alert(RETRY_MESSAGE);
+                        }
+                    } else if (pageNumber === 4) {
+                        if (this.value === "1" || this.value === "2" || this.value === "3" || this.value === "4") {
+                            handleClickBox();
+                        } else {
+                            alert(RETRY_MESSAGE);
+                        }
+                    } else if (pageNumber === 5) {
+                        if (10 <= this.value.length && this.value.length <= 11) {
+                            handleClickBox();
+                        } else {
+                            alert(RETRY_MESSAGE);
+                        }
+                    } else if (pageNumber === 9) {
+                        if (this.value === answer) {
+                            handleClickBox();
+                        } else {
+                            alert(RETRY_MESSAGE);
+                        }
                     }
                 }
             });
         }
     }
 }
-
 const coordinate1 = {
     startRateX: 0,
     startRateY: 0,
