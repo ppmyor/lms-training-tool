@@ -78,22 +78,35 @@ pageDescArray.push(
 
 const inputPage = [
     { page: 15, correctAnswer: "이름" },
-    { page: 16, correctAnswer: "숫자만10-11자리" },
-    { page: 17, correctAnswer: "숫자만" },
-    { page: 18, correctAnswer: "숫자만" },
+    { page: 16, correctAnswer: "숫자 10~11자리" },
+    { page: 17, correctAnswer: "숫자 5자리" },
+    { page: 18, correctAnswer: "숫자 5자리" },
 ];
 
 function handleInput(pageNumber) {
     for (i = 0; i < inputPage.length; i++) {
         if (pageNumber === inputPage[i].page) {
             DrawInputBox(coordinateArray[pageNumber]);
-            let answer = inputPage[i].correctAnswer;
             document.querySelector(".input-answer").addEventListener("keydown", function (event) {
                 if (event.keyCode === 13) {
-                    if (this.value === answer) {
-                        handleClickBox();
-                    } else if (this.value !== answer) {
-                        alert(RETRY_MESSAGE);
+                    if (pageNumber === 15) {
+                        if (2 <= this.value.length && this.value.length <= 5) {
+                            handleClickBox();
+                        } else {
+                            alert(RETRY_MESSAGE);
+                        }
+                    } else if (pageNumber === 16) {
+                        if (10 <= this.value.length && this.value.length <= 11) {
+                            handleClickBox();
+                        } else {
+                            alert(RETRY_MESSAGE);
+                        }
+                    } else if (pageNumber === 17 || pageNumber === 18) {
+                        if (this.value.length === 5) {
+                            handleClickBox();
+                        } else {
+                            alert(RETRY_MESSAGE);
+                        }
                     }
                 }
             });
