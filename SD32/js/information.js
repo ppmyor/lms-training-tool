@@ -21,7 +21,7 @@ const page8 = "'동의합니다'가 선택되었습니다. 비회원 신청 정�
 const page9 =
     "실습에서 입력한 정보는 저장 및 전송되지 않습니다. 이름과 주민등록번호는 필수 입력 사항입니다. 이름을 입력하고 엔터 또는 확인을 눌러주세요.";
 const page10 = "주민등록번호 앞자리(생년월일 6자리)를 입력하고 엔터 또는 확인을 눌러주세요.";
-const page11 = "주민등록번호 뒤 6자리를 입력하고 엔터 또는 확인을 눌러주세요.";
+const page11 = "주민등록번호 뒤 7자리를 입력하고 엔터 또는 확인을 눌러주세요.";
 const page12 = "입력 확인 항목에서는 화면에 출력 된 번호 4,0,0,3,5,7을 그대로 입력하고 엔터 또는 확인을 눌러주세요.";
 const page13 = "입력이 완료되었습니다. 화면 하단 확인 버튼을 눌러주세요.";
 const page14 =
@@ -45,9 +45,9 @@ pageDescArray.push(
 );
 
 const inputPage = [
-    { page: 8, correctAnswer: "한글2자이상" },
-    { page: 9, correctAnswer: "숫자만6자리" },
-    { page: 10, correctAnswer: "숫자만1자리" },
+    { page: 8, correctAnswer: "이름" },
+    { page: 9, correctAnswer: "숫자 6자리" },
+    { page: 10, correctAnswer: "숫자 7자리" },
     { page: 11, correctAnswer: "400357" },
 ];
 
@@ -58,10 +58,30 @@ function handleInput(pageNumber) {
             let answer = inputPage[i].correctAnswer;
             document.querySelector(".input-answer").addEventListener("keydown", function (event) {
                 if (event.keyCode === 13) {
-                    if (this.value === answer) {
-                        handleClickBox();
-                    } else if (this.value !== answer) {
-                        alert(RETRY_MESSAGE);
+                    if (pageNumber === 8) {
+                        if (2 <= this.value.length && this.value.length <= 5) {
+                            handleClickBox();
+                        } else {
+                            alert(RETRY_MESSAGE);
+                        }
+                    } else if (pageNumber === 9) {
+                        if (this.value.length === 6) {
+                            handleClickBox();
+                        } else {
+                            alert(RETRY_MESSAGE);
+                        }
+                    } else if (pageNumber === 10) {
+                        if (this.value.length === 7) {
+                            handleClickBox();
+                        } else {
+                            alert(RETRY_MESSAGE);
+                        }
+                    } else if (pageNumber === 11) {
+                        if (this.value === answer) {
+                            handleClickBox();
+                        } else {
+                            alert(RETRY_MESSAGE);
+                        }
                     }
                 }
             });
