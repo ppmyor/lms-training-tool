@@ -87,10 +87,10 @@ pageDescArray.push(
 );
 
 const inputPage = [
-    { page: 14, correctAnswer: "한글2자이상" },
-    { page: 15, correctAnswer: "숫자만6자리" },
-    { page: 16, correctAnswer: "숫자만6자리" },
-    { page: 19, correctAnswer: "숫자만10-11자리" },
+    { page: 14, correctAnswer: "이름" },
+    { page: 15, correctAnswer: "숫자 6자리" },
+    { page: 16, correctAnswer: "숫자 7자리" },
+    { page: 19, correctAnswer: "숫자 7~8자리" },
 ];
 
 function handleInput(pageNumber) {
@@ -100,10 +100,30 @@ function handleInput(pageNumber) {
             let answer = inputPage[i].correctAnswer;
             document.querySelector(".input-answer").addEventListener("keydown", function (event) {
                 if (event.keyCode === 13) {
-                    if (this.value === answer) {
-                        handleClickBox();
-                    } else if (this.value !== answer) {
-                        alert(RETRY_MESSAGE);
+                    if (pageNumber === 14) {
+                        if (2 <= this.value.length && this.value.length <= 5) {
+                            handleClickBox();
+                        } else {
+                            alert(RETRY_MESSAGE);
+                        }
+                    } else if (pageNumber === 15) {
+                        if (this.value.length === 6) {
+                            handleClickBox();
+                        } else {
+                            alert(RETRY_MESSAGE);
+                        }
+                    } else if (pageNumber === 16) {
+                        if (this.value.length === 7) {
+                            handleClickBox();
+                        } else {
+                            alert(RETRY_MESSAGE);
+                        }
+                    } else if (pageNumber === 19) {
+                        if (7 <= this.value.length && this.value.length <= 8) {
+                            handleClickBox();
+                        } else {
+                            alert(RETRY_MESSAGE);
+                        }
                     }
                 }
             });
