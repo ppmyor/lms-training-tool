@@ -117,10 +117,10 @@ const coordinate1 = {
 };
 
 const coordinate2 = {
-    startRateX: 0.0169971671388102,
-    startRateY: 0.3648854961832061,
-    endRateX: 0.9801699716713881,
-    endRateY: 0.6030534351145038,
+    startRateX: 0.028328611898016998,
+    startRateY: 0.11908396946564885,
+    endRateX: 0.1274787535410765,
+    endRateY: 0.17099236641221374,
 };
 
 const coordinate3 = {
@@ -166,24 +166,24 @@ const coordinate8 = {
 };
 
 const coordinate9 = {
-    startRateX: 0.9235127478753541,
-    startRateY: 0.2580152671755725,
-    endRateX: 0.0708215297450425,
-    endRateY: 0.20916030534351146,
+    startRateX: 0.0679886685552408,
+    startRateY: 0.21374045801526717,
+    endRateX: 0.9291784702549575,
+    endRateY: 0.2595419847328244,
 };
 
 const coordinate10 = {
-    startRateX: 0.6288951841359773,
-    startRateY: 0.36946564885496186,
-    endRateX: 0.5325779036827195,
-    endRateY: 0.31603053435114503,
+    startRateX: 0.0708215297450425,
+    startRateY: 0.32061068702290074,
+    endRateX: 0.45892351274787535,
+    endRateY: 0.36335877862595417,
 };
 
 const coordinate11 = {
-    startRateX: 0.6288951841359773,
-    startRateY: 0.36946564885496186,
-    endRateX: 0.5325779036827195,
-    endRateY: 0.31603053435114503,
+    startRateX: 0.6203966005665722,
+    startRateY: 0.3618320610687023,
+    endRateX: 0.5410764872521246,
+    endRateY: 0.32061068702290074,
 };
 
 const coordinate12 = {
@@ -194,17 +194,17 @@ const coordinate12 = {
 };
 
 const coordinate13 = {
-    startRateX: 0.9376770538243626,
-    startRateY: 0.5954198473282443,
-    endRateX: 0.4985835694050991,
-    endRateY: 0.5374045801526718,
+    startRateX: 0.5070821529745042,
+    startRateY: 0.5419847328244275,
+    endRateX: 0.9320113314447592,
+    endRateY: 0.5908396946564886,
 };
 
 const coordinate14 = {
-    startRateX: 0.9376770538243626,
-    startRateY: 0.5954198473282443,
-    endRateX: 0.4985835694050991,
-    endRateY: 0.5374045801526718,
+    startRateX: 0.06515580736543909,
+    startRateY: 0.20916030534351146,
+    endRateX: 0.9348441926345609,
+    endRateY: 0.26106870229007634,
 };
 
 const coordinate15 = {
