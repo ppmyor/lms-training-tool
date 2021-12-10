@@ -84,8 +84,10 @@ function handleInput(pageNumber) {
         if (pageNumber === inputPage[i].page) {
             DrawInputBox(coordinateArray[pageNumber]);
             let answer = inputPage[i].correctAnswer;
+            let typeofAnswer;
             document.querySelector(".input-answer").addEventListener("keydown", function (event) {
                 if (event.keyCode === 13) {
+                    typeofAnswer = Number(this.value);
                     if (pageNumber === 14) {
                         if (this.value === answer) {
                             handleClickBox();
@@ -93,7 +95,7 @@ function handleInput(pageNumber) {
                             alert(RETRY_MESSAGE);
                         }
                     } else if (pageNumber === 15) {
-                        if (10 <= this.value.length && this.value.length <= 11) {
+                        if (10 <= this.value.length && this.value.length <= 11 && isNaN(typeofAnswer) === false) {
                             handleClickBox();
                         } else {
                             alert(RETRY_MESSAGE);

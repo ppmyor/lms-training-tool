@@ -97,29 +97,30 @@ function handleInput(pageNumber) {
     for (i = 0; i < inputPage.length; i++) {
         if (pageNumber === inputPage[i].page) {
             DrawInputBox(coordinateArray[pageNumber]);
-            let answer = inputPage[i].correctAnswer;
+            let typeofAnswer;
             document.querySelector(".input-answer").addEventListener("keydown", function (event) {
                 if (event.keyCode === 13) {
+                    typeofAnswer = Number(this.value);
                     if (pageNumber === 14) {
-                        if (2 <= this.value.length && this.value.length <= 5) {
+                        if (2 <= this.value.length && this.value.length <= 5 && isNaN(typeofAnswer) === true) {
                             handleClickBox();
                         } else {
                             alert(RETRY_MESSAGE);
                         }
                     } else if (pageNumber === 15) {
-                        if (this.value.length === 6) {
+                        if (this.value.length === 6 && isNaN(typeofAnswer) === false) {
                             handleClickBox();
                         } else {
                             alert(RETRY_MESSAGE);
                         }
                     } else if (pageNumber === 16) {
-                        if (this.value.length === 7) {
+                        if (this.value.length === 7 && isNaN(typeofAnswer) === false) {
                             handleClickBox();
                         } else {
                             alert(RETRY_MESSAGE);
                         }
                     } else if (pageNumber === 19) {
-                        if (7 <= this.value.length && this.value.length <= 8) {
+                        if (7 <= this.value.length && this.value.length <= 8 && isNaN(typeofAnswer) === false) {
                             handleClickBox();
                         } else {
                             alert(RETRY_MESSAGE);

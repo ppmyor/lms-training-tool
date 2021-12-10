@@ -27,16 +27,18 @@ const page13 = "작업중";
 
 pageDescArray.push(page1, page2, page3, page4, page5, page6, page7, page8, page9, page10, page11, page12, page13);
 
-const inputPage = [{ page: 4, correctAnswer: "숫자만" }];
+const inputPage = [{ page: 4, correctAnswer: "계좌번호를 숫자만" }];
 
 function handleInput(pageNumber) {
     for (i = 0; i < inputPage.length; i++) {
         if (pageNumber === inputPage[i].page) {
             DrawInputBox(coordinateArray[pageNumber]);
+            let typeofAnswer;
             document.querySelector(".input-answer").addEventListener("keydown", function (event) {
                 if (event.keyCode === 13) {
+                    typeofAnswer = Number(this.value);
                     if (pageNumber === 4) {
-                        if (11 <= this.value.length && this.value.length <= 15) {
+                        if (11 <= this.value.length && this.value.length <= 15 && isNaN(typeofAnswer) === false) {
                             handleClickBox();
                         } else {
                             alert(RETRY_MESSAGE);

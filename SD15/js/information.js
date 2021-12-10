@@ -87,22 +87,24 @@ function handleInput(pageNumber) {
     for (i = 0; i < inputPage.length; i++) {
         if (pageNumber === inputPage[i].page) {
             DrawInputBox(coordinateArray[pageNumber]);
+            let typeofAnswer;
             document.querySelector(".input-answer").addEventListener("keydown", function (event) {
                 if (event.keyCode === 13) {
+                    typeofAnswer = Number(this.value);
                     if (pageNumber === 15) {
-                        if (2 <= this.value.length && this.value.length <= 5) {
+                        if (2 <= this.value.length && this.value.length <= 5 && isNaN(typeofAnswer) === true) {
                             handleClickBox();
                         } else {
                             alert(RETRY_MESSAGE);
                         }
                     } else if (pageNumber === 16) {
-                        if (10 <= this.value.length && this.value.length <= 11) {
+                        if (10 <= this.value.length && this.value.length <= 11 && isNaN(typeofAnswer) === false) {
                             handleClickBox();
                         } else {
                             alert(RETRY_MESSAGE);
                         }
                     } else if (pageNumber === 17 || pageNumber === 18) {
-                        if (this.value.length === 5) {
+                        if (this.value.length === 5 && isNaN(typeofAnswer) === false) {
                             handleClickBox();
                         } else {
                             alert(RETRY_MESSAGE);
