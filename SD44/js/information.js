@@ -2,7 +2,7 @@ const pageNum = 15;
 const pageName = "SD44";
 for (j = 1; j <= pageNum; j++) {
     contentImage.push(`../assets/${pageName}/image/${j}.jpg`);
-    audio = new Audio(`../assets/${pageName}/audio/${j}.wav`);
+    audio = new Audio(`../assets/${pageName}/audio/${j}.mp3`);
     audioArray.push(audio);
 }
 
