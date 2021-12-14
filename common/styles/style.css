@@ -37,6 +37,9 @@ button {
     background-color: transparent;
 }
 
+input {
+    background-color: #fff;
+}
 /* Entire Layout */
 
 .practice-section {
