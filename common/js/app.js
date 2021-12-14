@@ -75,11 +75,6 @@ window.addEventListener("resize", function () {
     imageWidth = document.querySelector(".bg-image").clientWidth;
     imageHeight = document.querySelector(".bg-image").clientHeight;
     buttonPositionCalcurate(coordinateArray[pageVariable]);
-    for (i = 0; i < inputPage.length; i++) {
-        if (pageVariable === inputPage[i].page) {
-            DrawInputBox(coordinateArray[pageVariable]);
-        }
-    }
 });
 
 window.addEventListener("load", function () {
