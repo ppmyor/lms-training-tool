@@ -111,6 +111,7 @@ function handleInput(pageNumber) {
                         }
                     }
                 }
+                isKeyboardActive = false;
             });
         }
     }

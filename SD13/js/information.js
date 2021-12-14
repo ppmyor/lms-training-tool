@@ -84,6 +84,7 @@ function handleInput(pageNumber) {
                         alert(RETRY_MESSAGE);
                     }
                 }
+                isKeyboardActive = false;
             });
         }
     }
