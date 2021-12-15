@@ -62,9 +62,6 @@ const clickButton = document.createElement("button");
 clickButton.className = "click-button";
 let isClick = false;
 
-const inputForm = document.querySelector(".input-answer");
-let isKeyboardActive = false;
-
 const hintButton = document.querySelector(".hint-button");
 const mobileHintButton = document.querySelector(".mobile-hint-button");
 
@@ -75,23 +72,10 @@ const RETRY_MESSAGE = "다시 생각해보세요!";
 
 window.addEventListener("resize", function () {
     console.log("resize");
-    if (isKeyboardActive === false) {
-        imageWidth = document.querySelector(".bg-image").clientWidth;
-        imageHeight = document.querySelector(".bg-image").clientHeight;
-        buttonPositionCalcurate(coordinateArray[pageVariable]);
-        for (i = 0; i < inputPage.length; i++) {
-            if (pageVariable === inputPage[i].page) {
-                DrawInputBox(coordinateArray[pageVariable]);
-            }
-        }
-    }
+    imageWidth = document.querySelector(".bg-image").clientWidth;
+    imageHeight = document.querySelector(".bg-image").clientHeight;
+    buttonPositionCalcurate(coordinateArray[pageVariable]);
 });
-
-if (inputForm !== null) {
-    inputForm.addEventListener("click", function () {
-        isKeyboardActive = true;
-    });
-}
 
 window.addEventListener("load", function () {
     imageWidth = document.querySelector(".bg-image").clientWidth;
