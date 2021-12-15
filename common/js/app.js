@@ -184,7 +184,15 @@ hintButton.addEventListener("click", function () {
 
 // About mobile hint button
 mobileHintButton.addEventListener("click", function () {
-    document.querySelector(".click-button").style.backgroundColor = "rgba(200, 150, 150, 0.5)";
+    if (document.querySelector(".input-answer") !== null) {
+        for (i = 0; i < inputPage.length; i++) {
+            if (pageVariable === inputPage[i].page) {
+                document.querySelector(".input-answer").placeholder = `${inputPage[i].correctAnswer}을 입력하세요.`;
+            }
+        }
+    } else {
+        document.querySelector(".click-button").style.backgroundColor = "rgba(200, 150, 150, 0.5)";
+    }
 });
 
 // About Audio AutoPlay
