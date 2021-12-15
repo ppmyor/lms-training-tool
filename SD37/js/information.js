@@ -75,7 +75,7 @@ function handleInput(pageNumber) {
                 if (event.keyCode === 13) {
                     typeofAnswer = Number(this.value);
                     if (pageNumber === 14) {
-                        if (this.value === answer) {
+                        if (2 <= this.value.length && this.value.length <= 8 && isNaN(typeofAnswer) === true) {
                             handleClickBox();
                         } else {
                             alert(RETRY_MESSAGE);
