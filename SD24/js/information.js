@@ -76,7 +76,7 @@ pageDescArray.push(
 
 const inputPage = [
     { page: 4, correctAnswer: "숫자만" },
-    { page: 20, correctAnswer: "12300을" },
+    { page: 20, correctAnswer: "12300" },
 ];
 
 function handleInput(pageNumber) {

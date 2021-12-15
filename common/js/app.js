@@ -174,7 +174,7 @@ hintButton.addEventListener("click", function () {
     if (document.querySelector(".input-answer") !== null) {
         for (i = 0; i < inputPage.length; i++) {
             if (pageVariable === inputPage[i].page) {
-                document.querySelector(".input-answer").placeholder = `${inputPage[i].correctAnswer}을 입력하세요.`;
+                document.querySelector(".input-answer").placeholder = `${inputPage[i].correctAnswer} 입력하세요.`;
             }
         }
     } else {
