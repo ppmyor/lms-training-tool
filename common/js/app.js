@@ -71,10 +71,7 @@ const HIDDEN_MOBILE_CLASSNAME = "mobile-hidden";
 const RETRY_MESSAGE = "다시 생각해보세요!";
 
 window.addEventListener("resize", function () {
-    if (document.querySelector(".input-answer") !== null) {
-        console.log("input form");
-    } else {
-        console.log("resize");
+    if (document.querySelector(".input-answer") === null) {
         imageWidth = document.querySelector(".bg-image").clientWidth;
         imageHeight = document.querySelector(".bg-image").clientHeight;
         buttonPositionCalcurate(coordinateArray[pageVariable]);
@@ -85,6 +82,23 @@ window.addEventListener("resize", function () {
         }
     }
 });
+
+function inputSizeHandler() {
+    if (document.querySelector(".input-answer") !== null) {
+        console.log("input");
+        document.querySelector(".input-answer").addEventListener("focusin", function () {
+            console.log("focus in");
+            imageWidth = document.querySelector(".bg-image").clientWidth;
+            imageHeight = document.querySelector(".bg-image").clientHeight;
+        });
+
+        document.querySelector(".input-answer").addEventListener("focusout", function () {
+            console.log("focus out");
+            imageWidth = document.querySelector(".bg-image").clientWidth;
+            imageHeight = document.querySelector(".bg-image").clientHeight;
+        });
+    }
+}
 
 window.addEventListener("load", function () {
     imageWidth = document.querySelector(".bg-image").clientWidth;
@@ -116,6 +130,7 @@ goToNextPage.addEventListener("click", function () {
     if (pageVariable >= 0 && pageVariable < contentImage.length) {
         goToNext(pageVariable);
         showDescriptionText(pageVariable);
+        inputSizeHandler();
     } else {
         console.log("last page");
         pageVariable = contentImage.length - 1;
@@ -127,6 +142,7 @@ mobileGoToNextPage.addEventListener("click", function () {
     pageVariable++;
     if (pageVariable >= 0 && pageVariable < contentImage.length) {
         goToNext(pageVariable);
+        inputSizeHandler();
     } else {
         console.log("last page");
         pageVariable = contentImage.length - 1;
