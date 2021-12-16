@@ -71,13 +71,17 @@ const HIDDEN_MOBILE_CLASSNAME = "mobile-hidden";
 const RETRY_MESSAGE = "다시 생각해보세요!";
 
 window.addEventListener("resize", function () {
-    console.log("resize");
-    imageWidth = document.querySelector(".bg-image").clientWidth;
-    imageHeight = document.querySelector(".bg-image").clientHeight;
-    buttonPositionCalcurate(coordinateArray[pageVariable]);
-    for (i = 0; i < inputPage.length; i++) {
-        if (pageVariable === inputPage[i].page) {
-            DrawInputBox(coordinateArray[pageVariable]);
+    if (document.querySelector(".input-answer") !== null) {
+        console.log("input form");
+    } else {
+        console.log("resize");
+        imageWidth = document.querySelector(".bg-image").clientWidth;
+        imageHeight = document.querySelector(".bg-image").clientHeight;
+        buttonPositionCalcurate(coordinateArray[pageVariable]);
+        for (i = 0; i < inputPage.length; i++) {
+            if (pageVariable === inputPage[i].page) {
+                DrawInputBox(coordinateArray[pageVariable]);
+            }
         }
     }
 });
