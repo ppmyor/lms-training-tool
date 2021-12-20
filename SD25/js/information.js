@@ -75,9 +75,9 @@ pageDescArray.push(
 const inputPage = [
     { page: 2, correctAnswer: "이름을" },
     { page: 3, correctAnswer: "숫자 6자리를" },
-    { page: 4, correctAnswer: "숫자 1자리를" },
+    { page: 4, correctAnswer: "숫자 1자리" },
     { page: 5, correctAnswer: "휴대폰 번호를 숫자만" },
-    { page: 9, correctAnswer: "759774를" },
+    { page: 9, correctAnswer: "759774" },
 ];
 
 function handleInput(pageNumber) {
@@ -103,6 +103,7 @@ function handleInput(pageNumber) {
                         }
                     } else if (pageNumber === 4) {
                         if (
+                            this.value === "0" ||
                             this.value === "1" ||
                             this.value === "2" ||
                             this.value === "3" ||
