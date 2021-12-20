@@ -74,7 +74,7 @@ pageDescArray.push(
 );
 
 const inputPage = [
-    { page: 14, correctAnswer: "11가1234" },
+    { page: 14, correctAnswer: "차량번호" },
     { page: 15, correctAnswer: "숫자 10~11자리" },
     { page: 16, correctAnswer: "95770" },
     { page: 19, correctAnswer: "202112" },
