@@ -1,3 +1,10 @@
+// 콘텐츠 연동
+var JS = document.createElement("script");
+JS.type = "text/javascript";
+JS.charset = "UTF-8";
+JS.src = "/common/js/content_tracking.js";
+document.getElementsByTagName("head")[0].appendChild(JS);
+
 // Audio Section
 const pauseButton = document.querySelector(".pause-button");
 const playButton = document.querySelector(".play-button");
@@ -251,6 +258,7 @@ function loadBackgroundImage(pageNumber) {
 }
 
 function goToMain(pageNumber) {
+    fn_FinishPage();
     if (pageNumber === 0) {
         workingArea.src = pageArray[0];
         audioArray[pageNumber].load();
@@ -262,17 +270,21 @@ function goToMain(pageNumber) {
     } else {
         console.log("done");
     }
+    fn_StartPage(pageNumber);
 }
 
 function goToIndex(pageNumber) {
+    fn_FinishPage();
     pageVariable = 0;
     const previousPageNumber = parseInt(localStorage.getItem("pageNumber"));
     audioArray[previousPageNumber].pause();
     handleLocalStorage(pageNumber);
     workingArea.src = pageArray[0];
+    fn_StartPage(pageNumber);
 }
 
 function goToNext(pageNumber) {
+    fn_FinishPage();
     if (document.querySelector(".input-answer") !== null) {
         deleteInputBox();
     }
@@ -287,9 +299,11 @@ function goToNext(pageNumber) {
     buttonPositionCalcurate(coordinateArray[pageNumber]);
     handleInput(pageNumber);
     console.log(pageNumber);
+    fn_StartPage(pageNumber);
 }
 
 function goToPrevious(pageNumber) {
+    fn_FinishPage();
     if (document.querySelector(".input-answer") !== null) {
         deleteInputBox();
     }
@@ -302,6 +316,7 @@ function goToPrevious(pageNumber) {
     buttonPositionCalcurate(coordinateArray[pageNumber]);
     handleInput(pageNumber);
     console.log(pageNumber);
+    fn_StartPage(pageNumber);
 }
 
 function showDescriptionText(pageNumber) {
@@ -309,6 +324,7 @@ function showDescriptionText(pageNumber) {
 }
 
 function handleClickBox() {
+    fn_FinishPage();
     pageVariable++;
     if (pageVariable >= 0 && pageVariable < contentImage.length) {
         goToNext(pageVariable);
@@ -328,6 +344,7 @@ function handleClickBox() {
             mainDesc.classList.toggle(HIDDEN_MOBILE_CLASSNAME);
         }
     }
+    fn_StartPage(pageNumber);
 }
 
 // handle Click Button
