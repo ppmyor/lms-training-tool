@@ -131,10 +131,11 @@ goToNextPage.addEventListener("click", function () {
         goToNext(pageVariable);
         showDescriptionText(pageVariable);
         inputSizeHandler();
-    } else {
-        console.log("last page");
-        pageVariable = contentImage.length - 1;
-        console.log(pageVariable);
+    } else if (pageVariable === contentImage.length) {
+        goToIndex(pageVariable);
+        loadBackgroundImage(pageVariable);
+        indexNav.classList.toggle(HIDDEN_CLASSNAME);
+        MainNav.classList.toggle(HIDDEN_CLASSNAME);
     }
 });
 
@@ -143,10 +144,15 @@ mobileGoToNextPage.addEventListener("click", function () {
     if (pageVariable >= 0 && pageVariable < contentImage.length) {
         goToNext(pageVariable);
         inputSizeHandler();
-    } else {
-        console.log("last page");
-        pageVariable = contentImage.length - 1;
-        console.log(pageVariable);
+    } else if (pageVariable === contentImage.length) {
+        goToIndex(pageVariable);
+        loadBackgroundImage(pageVariable);
+        indexNav.classList.toggle(HIDDEN_CLASSNAME);
+        MainNav.classList.toggle(HIDDEN_CLASSNAME);
+
+        indexNav.classList.toggle(HIDDEN_MOBILE_CLASSNAME);
+        MainNav.classList.toggle(HIDDEN_MOBILE_CLASSNAME);
+        mainDesc.classList.toggle(HIDDEN_MOBILE_CLASSNAME);
     }
 });
 
@@ -314,10 +320,20 @@ function handleClickBox() {
     if (pageVariable >= 0 && pageVariable < contentImage.length) {
         goToNext(pageVariable);
         showDescriptionText(pageVariable);
-    } else {
-        console.log("last page");
-        pageVariable = contentImage.length - 1;
-        console.log(pageVariable);
+    } else if (pageVariable === contentImage.length) {
+        goToIndex(pageVariable);
+        loadBackgroundImage(pageVariable);
+        if (screen.width > 750) {
+            indexNav.classList.toggle(HIDDEN_CLASSNAME);
+            MainNav.classList.toggle(HIDDEN_CLASSNAME);
+        } else if (screen.width <= 750) {
+            indexNav.classList.toggle(HIDDEN_CLASSNAME);
+            MainNav.classList.toggle(HIDDEN_CLASSNAME);
+
+            indexNav.classList.toggle(HIDDEN_MOBILE_CLASSNAME);
+            MainNav.classList.toggle(HIDDEN_MOBILE_CLASSNAME);
+            mainDesc.classList.toggle(HIDDEN_MOBILE_CLASSNAME);
+        }
     }
 }
 
