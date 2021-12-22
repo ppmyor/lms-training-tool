@@ -51,6 +51,10 @@ const fontResizeSmall = document.querySelector(".small");
 const fontResizeMedium = document.querySelector(".medium");
 const fontResizeLarge = document.querySelector(".large");
 
+const playSpeedSlow = document.querySelector(".speed-slow");
+const playSpeedMedium = document.querySelector(".speed-medium");
+const playSpeedFast = document.querySelector(".speed-fast");
+
 const clickButton = document.createElement("button");
 clickButton.className = "click-button";
 let isClick = false;
@@ -186,6 +190,19 @@ mobileGoToPreviousPage.addEventListener("click", function () {
         pageVariable = 0;
         console.log(pageVariable);
     }
+});
+
+// Play Speed Control
+playSpeedSlow.addEventListener("click", function () {
+    audioArray[pageVariable].playbackRate = 0.5;
+});
+
+playSpeedMedium.addEventListener("click", function () {
+    audioArray[pageVariable].playbackRate = 1;
+});
+
+playSpeedFast.addEventListener("click", function () {
+    audioArray[pageVariable].playbackRate = 1.5;
 });
 
 // About hint button
