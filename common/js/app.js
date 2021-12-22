@@ -83,15 +83,12 @@ window.addEventListener("resize", function () {
 
 function inputSizeHandler() {
     if (document.querySelector(".input-answer") !== null) {
-        console.log("input");
         document.querySelector(".input-answer").addEventListener("focusin", function () {
-            console.log("focus in");
             imageWidth = document.querySelector(".bg-image").clientWidth;
             imageHeight = document.querySelector(".bg-image").clientHeight;
         });
 
         document.querySelector(".input-answer").addEventListener("focusout", function () {
-            console.log("focus out");
             imageWidth = document.querySelector(".bg-image").clientWidth;
             imageHeight = document.querySelector(".bg-image").clientHeight;
         });
@@ -176,9 +173,7 @@ goToPreviousPage.addEventListener("click", function () {
         goToPrevious(pageVariable);
         showDescriptionText(pageVariable);
     } else {
-        console.log("first page");
         pageVariable = 0;
-        console.log(pageVariable);
     }
 });
 
@@ -187,9 +182,7 @@ mobileGoToPreviousPage.addEventListener("click", function () {
     if (pageVariable >= 0) {
         goToPrevious(pageVariable);
     } else {
-        console.log("first page");
         pageVariable = 0;
-        console.log(pageVariable);
     }
 });
 
@@ -281,9 +274,6 @@ function goToMain(pageNumber) {
         loadBackgroundImage(pageNumber);
         buttonPositionCalcurate(coordinateArray[pageNumber]);
         handleInput(pageNumber);
-        console.log(pageNumber);
-    } else {
-        console.log("done");
     }
 }
 
@@ -310,7 +300,6 @@ function goToNext(pageNumber) {
     loadBackgroundImage(pageNumber);
     buttonPositionCalcurate(coordinateArray[pageNumber]);
     handleInput(pageNumber);
-    console.log(pageNumber);
 }
 
 function goToPrevious(pageNumber) {
@@ -326,7 +315,6 @@ function goToPrevious(pageNumber) {
     loadBackgroundImage(pageNumber);
     buttonPositionCalcurate(coordinateArray[pageNumber]);
     handleInput(pageNumber);
-    console.log(pageNumber);
 }
 
 function showDescriptionText(pageNumber) {
@@ -370,25 +358,21 @@ function buttonPositionCalcurate(coordinate) {
         nowY = coordinate.startRateY * imageHeight;
         nowWidth = coordinate.endRateX * imageWidth - nowX;
         nowHeight = coordinate.endRateY * imageHeight - nowY;
-        console.log(nowX, nowY, nowWidth, nowHeight);
     } else if (coordinate.startRateX > coordinate.endRateX && coordinate.startRateY < coordinate.endRateY) {
         nowX = coordinate.endRateX * imageWidth;
         nowY = coordinate.startRateY * imageHeight;
         nowWidth = coordinate.startRateX * imageWidth - nowX;
         nowHeight = coordinate.endRateY * imageHeight - nowY;
-        console.log(nowX, nowY, nowWidth, nowHeight);
     } else if (coordinate.startRateX > coordinate.endRateX && coordinate.startRateY > coordinate.endRateY) {
         nowX = coordinate.endRateX * imageWidth;
         nowY = coordinate.endRateY * imageHeight;
         nowWidth = coordinate.startRateX * imageWidth - nowX;
         nowHeight = coordinate.startRateY * imageHeight - nowY;
-        console.log(nowX, nowY, nowWidth, nowHeight);
     } else {
         nowX = coordinate.startRateX * imageWidth;
         nowY = coordinate.endRateY * imageHeight;
         nowWidth = coordinate.endRateX * imageWidth - nowX;
         nowHeight = coordinate.startRateY * imageHeight - nowY;
-        console.log(nowX, nowY, nowWidth, nowHeight);
     }
     createButton(nowX, nowY, nowWidth, nowHeight);
 }
@@ -401,7 +385,6 @@ function positionCalcurate(coordinate) {
         endY = coordinate.endRateY * imageHeight;
         nowWidth = endX - nowX;
         nowHeight = endY - nowY;
-        console.log(nowX, nowY, nowWidth, nowHeight);
     } else if (coordinate.startRateX > coordinate.endRateX && coordinate.startRateY < coordinate.endRateY) {
         nowX = coordinate.endRateX * imageWidth;
         nowY = coordinate.startRateY * imageHeight;
@@ -409,7 +392,6 @@ function positionCalcurate(coordinate) {
         endY = coordinate.endRateY * imageHeight;
         nowWidth = endX - nowX;
         nowHeight = endY - nowY;
-        console.log(nowX, nowY, nowWidth, nowHeight);
     } else if (coordinate.startRateX > coordinate.endRateX && coordinate.startRateY > coordinate.endRateY) {
         nowX = coordinate.endRateX * imageWidth;
         nowY = coordinate.endRateY * imageHeight;
@@ -417,7 +399,6 @@ function positionCalcurate(coordinate) {
         endY = coordinate.startRateY * imageHeight;
         nowWidth = endX - nowX;
         nowHeight = endY - nowY;
-        console.log(nowX, nowY, nowWidth, nowHeight);
     } else {
         nowX = coordinate.startRateX * imageWidth;
         nowY = coordinate.endRateY * imageHeight;
@@ -425,7 +406,6 @@ function positionCalcurate(coordinate) {
         endY = coordinate.startRateY * imageHeight;
         nowWidth = endX - nowX;
         nowHeight = endY - nowY;
-        console.log(nowX, nowY, nowWidth, nowHeight);
     }
 }
 
@@ -461,7 +441,6 @@ function createInput(currentX, currentY, currentWidth, currentHeight) {
     inputAnswer.style.position = "absolute";
     inputAnswer.style.left = currentX + "px";
     inputAnswer.style.top = currentY + "px";
-    console.log(inputAnswer.style.left, inputAnswer.style.top);
     inputAnswer.style.width = currentWidth + "px";
     inputAnswer.style.height = currentHeight + "px";
     inputAnswer.placeholder = "여기에 정답을 입력해주세요.";
