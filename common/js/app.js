@@ -283,6 +283,9 @@ function goToIndex(pageNumber) {
     audioArray[previousPageNumber].pause();
     handleLocalStorage(pageNumber);
     workingArea.src = pageArray[0];
+    if (document.querySelector(".input-answer") !== null) {
+        deleteInputBox();
+    }
 }
 
 function goToNext(pageNumber) {
