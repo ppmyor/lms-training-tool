@@ -109,23 +109,30 @@ window.addEventListener("load", function () {
 // About Move Page
 // Index 의 시작 버튼 기능 구현
 goToMainPage.addEventListener("click", function () {
+    fn_FinishPage();
     goToMain(pageVariable);
     showDescriptionText(pageVariable);
+    fn_StartPage(pageVariable);
 });
 
 // 처음 단계, 이전 단계, 다음 단계 버튼 기능 구현
 // 처음 단계 버튼 기능 구현
 goToIndexPage.addEventListener("click", function () {
+    fn_FinishPage();
     goToIndex(pageVariable);
     loadBackgroundImage(pageVariable);
+    fn_StartPage(pageVariable);
 });
 
 mobileGoToIndexPage.addEventListener("click", function () {
+    fn_FinishPage();
     goToIndex(pageVariable);
+    fn_StartPage(pageVariable);
 });
 
 // 다음 단계 버튼 기능 구현
 goToNextPage.addEventListener("click", function () {
+    fn_FinishPage();
     pageVariable++;
     if (pageVariable >= 0 && pageVariable < contentImage.length) {
         goToNext(pageVariable);
@@ -137,9 +144,11 @@ goToNextPage.addEventListener("click", function () {
         indexNav.classList.toggle(HIDDEN_CLASSNAME);
         MainNav.classList.toggle(HIDDEN_CLASSNAME);
     }
+    fn_StartPage(pageVariable);
 });
 
 mobileGoToNextPage.addEventListener("click", function () {
+    fn_FinishPage();
     pageVariable++;
     if (pageVariable >= 0 && pageVariable < contentImage.length) {
         goToNext(pageVariable);
@@ -154,6 +163,7 @@ mobileGoToNextPage.addEventListener("click", function () {
         MainNav.classList.toggle(HIDDEN_MOBILE_CLASSNAME);
         mainDesc.classList.toggle(HIDDEN_MOBILE_CLASSNAME);
     }
+    fn_StartPage(pageVariable);
 });
 
 clickButton.addEventListener("click", function () {
@@ -162,8 +172,10 @@ clickButton.addEventListener("click", function () {
 
 practiceClickArea.addEventListener("click", function () {
     if (isClick === true) {
+        fn_FinishPage();
         handleClickBox();
         isClick = false;
+        fn_StartPage(pageVariable);
     } else if (document.querySelector(".click-button") === null) {
         return;
     } else {
@@ -173,6 +185,7 @@ practiceClickArea.addEventListener("click", function () {
 
 // 이전 단계 버튼 기능 구현
 goToPreviousPage.addEventListener("click", function () {
+    fn_FinishPage();
     pageVariable--;
     if (pageVariable >= 0) {
         goToPrevious(pageVariable);
@@ -182,9 +195,11 @@ goToPreviousPage.addEventListener("click", function () {
         pageVariable = 0;
         console.log(pageVariable);
     }
+    fn_StartPage(pageVariable);
 });
 
 mobileGoToPreviousPage.addEventListener("click", function () {
+    fn_FinishPage();
     pageVariable--;
     if (pageVariable >= 0) {
         goToPrevious(pageVariable);
@@ -193,6 +208,7 @@ mobileGoToPreviousPage.addEventListener("click", function () {
         pageVariable = 0;
         console.log(pageVariable);
     }
+    fn_StartPage(pageVariable);
 });
 
 // About hint button
@@ -258,7 +274,6 @@ function loadBackgroundImage(pageNumber) {
 }
 
 function goToMain(pageNumber) {
-    fn_FinishPage();
     if (pageNumber === 0) {
         workingArea.src = pageArray[0];
         audioArray[pageNumber].load();
@@ -270,21 +285,17 @@ function goToMain(pageNumber) {
     } else {
         console.log("done");
     }
-    fn_StartPage(pageNumber);
 }
 
 function goToIndex(pageNumber) {
-    fn_FinishPage();
     pageVariable = 0;
     const previousPageNumber = parseInt(localStorage.getItem("pageNumber"));
     audioArray[previousPageNumber].pause();
     handleLocalStorage(pageNumber);
     workingArea.src = pageArray[0];
-    fn_StartPage(pageNumber);
 }
 
 function goToNext(pageNumber) {
-    fn_FinishPage();
     if (document.querySelector(".input-answer") !== null) {
         deleteInputBox();
     }
@@ -299,11 +310,9 @@ function goToNext(pageNumber) {
     buttonPositionCalcurate(coordinateArray[pageNumber]);
     handleInput(pageNumber);
     console.log(pageNumber);
-    fn_StartPage(pageNumber);
 }
 
 function goToPrevious(pageNumber) {
-    fn_FinishPage();
     if (document.querySelector(".input-answer") !== null) {
         deleteInputBox();
     }
@@ -316,7 +325,6 @@ function goToPrevious(pageNumber) {
     buttonPositionCalcurate(coordinateArray[pageNumber]);
     handleInput(pageNumber);
     console.log(pageNumber);
-    fn_StartPage(pageNumber);
 }
 
 function showDescriptionText(pageNumber) {
@@ -324,7 +332,6 @@ function showDescriptionText(pageNumber) {
 }
 
 function handleClickBox() {
-    fn_FinishPage();
     pageVariable++;
     if (pageVariable >= 0 && pageVariable < contentImage.length) {
         goToNext(pageVariable);
@@ -344,7 +351,6 @@ function handleClickBox() {
             mainDesc.classList.toggle(HIDDEN_MOBILE_CLASSNAME);
         }
     }
-    fn_StartPage(pageNumber);
 }
 
 // handle Click Button
