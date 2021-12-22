@@ -54,6 +54,7 @@ const fontResizeLarge = document.querySelector(".large");
 const playSpeedSlow = document.querySelector(".speed-slow");
 const playSpeedMedium = document.querySelector(".speed-medium");
 const playSpeedFast = document.querySelector(".speed-fast");
+let currentSpeed = 1;
 
 const clickButton = document.createElement("button");
 clickButton.className = "click-button";
@@ -194,15 +195,18 @@ mobileGoToPreviousPage.addEventListener("click", function () {
 
 // Play Speed Control
 playSpeedSlow.addEventListener("click", function () {
-    audioArray[pageVariable].playbackRate = 0.5;
+    currentSpeed = 0.7;
+    audioArray[pageVariable].playbackRate = currentSpeed;
 });
 
 playSpeedMedium.addEventListener("click", function () {
-    audioArray[pageVariable].playbackRate = 1;
+    currentSpeed = 1;
+    audioArray[pageVariable].playbackRate = currentSpeed;
 });
 
 playSpeedFast.addEventListener("click", function () {
-    audioArray[pageVariable].playbackRate = 1.5;
+    currentSpeed = 1.3;
+    audioArray[pageVariable].playbackRate = currentSpeed;
 });
 
 // About hint button
@@ -237,6 +241,7 @@ pauseButton.addEventListener("click", function () {
 });
 
 playButton.addEventListener("click", function () {
+    audioArray[pageVariable].playbackRate = currentSpeed;
     audioArray[pageVariable].play();
 });
 
@@ -271,6 +276,7 @@ function goToMain(pageNumber) {
     if (pageNumber === 0) {
         workingArea.src = pageArray[0];
         audioArray[pageNumber].load();
+        audioArray[pageVariable].playbackRate = currentSpeed;
         audioArray[pageNumber].play();
         loadBackgroundImage(pageNumber);
         buttonPositionCalcurate(coordinateArray[pageNumber]);
@@ -298,6 +304,7 @@ function goToNext(pageNumber) {
     handleLocalStorage(pageNumber);
     workingArea.src = pageArray[0];
     audioArray[pageNumber].load();
+    audioArray[pageVariable].playbackRate = currentSpeed;
     audioArray[pageNumber].play();
     audioArray[pageNumber - 1].pause();
     loadBackgroundImage(pageNumber);
@@ -313,6 +320,7 @@ function goToPrevious(pageNumber) {
     handleLocalStorage(pageNumber);
     workingArea.src = pageArray[0];
     audioArray[pageNumber].load();
+    audioArray[pageVariable].playbackRate = currentSpeed;
     audioArray[pageNumber].play();
     audioArray[pageNumber + 1].pause();
     loadBackgroundImage(pageNumber);
