@@ -1,3 +1,10 @@
+// 콘텐츠 연동
+var JS = document.createElement("script");
+JS.type = "text/javascript";
+JS.charset = "UTF-8";
+JS.src = "https://ssc.seoul.kr/common/js/content_tracking.js";
+document.getElementsByTagName("head")[0].appendChild(JS);
+
 // Audio Section
 const pauseButton = document.querySelector(".pause-button");
 const playButton = document.querySelector(".play-button");
@@ -83,12 +90,15 @@ window.addEventListener("resize", function () {
 
 function inputSizeHandler() {
     if (document.querySelector(".input-answer") !== null) {
+        console.log("input");
         document.querySelector(".input-answer").addEventListener("focusin", function () {
+            console.log("focus in");
             imageWidth = document.querySelector(".bg-image").clientWidth;
             imageHeight = document.querySelector(".bg-image").clientHeight;
         });
 
         document.querySelector(".input-answer").addEventListener("focusout", function () {
+            console.log("focus out");
             imageWidth = document.querySelector(".bg-image").clientWidth;
             imageHeight = document.querySelector(".bg-image").clientHeight;
         });
@@ -104,23 +114,30 @@ window.addEventListener("load", function () {
 // About Move Page
 // Index 의 시작 버튼 기능 구현
 goToMainPage.addEventListener("click", function () {
+    fn_FinishPage();
     goToMain(pageVariable);
     showDescriptionText(pageVariable);
+    fn_StartPage(pageVariable);
 });
 
 // 처음 단계, 이전 단계, 다음 단계 버튼 기능 구현
 // 처음 단계 버튼 기능 구현
 goToIndexPage.addEventListener("click", function () {
+    fn_FinishPage();
     goToIndex(pageVariable);
     loadBackgroundImage(pageVariable);
+    fn_StartPage(pageVariable);
 });
 
 mobileGoToIndexPage.addEventListener("click", function () {
+    fn_FinishPage();
     goToIndex(pageVariable);
+    fn_StartPage(pageVariable);
 });
 
 // 다음 단계 버튼 기능 구현
 goToNextPage.addEventListener("click", function () {
+    fn_FinishPage();
     pageVariable++;
     if (pageVariable >= 0 && pageVariable < contentImage.length) {
         goToNext(pageVariable);
@@ -132,9 +149,11 @@ goToNextPage.addEventListener("click", function () {
         indexNav.classList.toggle(HIDDEN_CLASSNAME);
         MainNav.classList.toggle(HIDDEN_CLASSNAME);
     }
+    fn_StartPage(pageVariable);
 });
 
 mobileGoToNextPage.addEventListener("click", function () {
+    fn_FinishPage();
     pageVariable++;
     if (pageVariable >= 0 && pageVariable < contentImage.length) {
         goToNext(pageVariable);
@@ -149,6 +168,7 @@ mobileGoToNextPage.addEventListener("click", function () {
         MainNav.classList.toggle(HIDDEN_MOBILE_CLASSNAME);
         mainDesc.classList.toggle(HIDDEN_MOBILE_CLASSNAME);
     }
+    fn_StartPage(pageVariable);
 });
 
 clickButton.addEventListener("click", function () {
@@ -157,8 +177,10 @@ clickButton.addEventListener("click", function () {
 
 practiceClickArea.addEventListener("click", function () {
     if (isClick === true) {
+        fn_FinishPage();
         handleClickBox();
         isClick = false;
+        fn_StartPage(pageVariable);
     } else if (document.querySelector(".click-button") === null) {
         return;
     } else {
@@ -168,22 +190,30 @@ practiceClickArea.addEventListener("click", function () {
 
 // 이전 단계 버튼 기능 구현
 goToPreviousPage.addEventListener("click", function () {
+    fn_FinishPage();
     pageVariable--;
     if (pageVariable >= 0) {
         goToPrevious(pageVariable);
         showDescriptionText(pageVariable);
     } else {
+        console.log("first page");
         pageVariable = 0;
+        console.log(pageVariable);
     }
+    fn_StartPage(pageVariable);
 });
 
 mobileGoToPreviousPage.addEventListener("click", function () {
+    fn_FinishPage();
     pageVariable--;
     if (pageVariable >= 0) {
         goToPrevious(pageVariable);
     } else {
+        console.log("first page");
         pageVariable = 0;
+        console.log(pageVariable);
     }
+    fn_StartPage(pageVariable);
 });
 
 // Play Speed Control
@@ -234,7 +264,6 @@ pauseButton.addEventListener("click", function () {
 });
 
 playButton.addEventListener("click", function () {
-    audioArray[pageVariable].playbackRate = currentSpeed;
     audioArray[pageVariable].play();
 });
 
@@ -269,11 +298,13 @@ function goToMain(pageNumber) {
     if (pageNumber === 0) {
         workingArea.src = pageArray[0];
         audioArray[pageNumber].load();
-        audioArray[pageVariable].playbackRate = currentSpeed;
         audioArray[pageNumber].play();
         loadBackgroundImage(pageNumber);
         buttonPositionCalcurate(coordinateArray[pageNumber]);
         handleInput(pageNumber);
+        console.log(pageNumber);
+    } else {
+        console.log("done");
     }
 }
 
@@ -283,9 +314,6 @@ function goToIndex(pageNumber) {
     audioArray[previousPageNumber].pause();
     handleLocalStorage(pageNumber);
     workingArea.src = pageArray[0];
-    if (document.querySelector(".input-answer") !== null) {
-        deleteInputBox();
-    }
 }
 
 function goToNext(pageNumber) {
@@ -297,12 +325,12 @@ function goToNext(pageNumber) {
     handleLocalStorage(pageNumber);
     workingArea.src = pageArray[0];
     audioArray[pageNumber].load();
-    audioArray[pageVariable].playbackRate = currentSpeed;
     audioArray[pageNumber].play();
     audioArray[pageNumber - 1].pause();
     loadBackgroundImage(pageNumber);
     buttonPositionCalcurate(coordinateArray[pageNumber]);
     handleInput(pageNumber);
+    console.log(pageNumber);
 }
 
 function goToPrevious(pageNumber) {
@@ -312,12 +340,12 @@ function goToPrevious(pageNumber) {
     handleLocalStorage(pageNumber);
     workingArea.src = pageArray[0];
     audioArray[pageNumber].load();
-    audioArray[pageVariable].playbackRate = currentSpeed;
     audioArray[pageNumber].play();
     audioArray[pageNumber + 1].pause();
     loadBackgroundImage(pageNumber);
     buttonPositionCalcurate(coordinateArray[pageNumber]);
     handleInput(pageNumber);
+    console.log(pageNumber);
 }
 
 function showDescriptionText(pageNumber) {
@@ -361,21 +389,25 @@ function buttonPositionCalcurate(coordinate) {
         nowY = coordinate.startRateY * imageHeight;
         nowWidth = coordinate.endRateX * imageWidth - nowX;
         nowHeight = coordinate.endRateY * imageHeight - nowY;
+        console.log(nowX, nowY, nowWidth, nowHeight);
     } else if (coordinate.startRateX > coordinate.endRateX && coordinate.startRateY < coordinate.endRateY) {
         nowX = coordinate.endRateX * imageWidth;
         nowY = coordinate.startRateY * imageHeight;
         nowWidth = coordinate.startRateX * imageWidth - nowX;
         nowHeight = coordinate.endRateY * imageHeight - nowY;
+        console.log(nowX, nowY, nowWidth, nowHeight);
     } else if (coordinate.startRateX > coordinate.endRateX && coordinate.startRateY > coordinate.endRateY) {
         nowX = coordinate.endRateX * imageWidth;
         nowY = coordinate.endRateY * imageHeight;
         nowWidth = coordinate.startRateX * imageWidth - nowX;
         nowHeight = coordinate.startRateY * imageHeight - nowY;
+        console.log(nowX, nowY, nowWidth, nowHeight);
     } else {
         nowX = coordinate.startRateX * imageWidth;
         nowY = coordinate.endRateY * imageHeight;
         nowWidth = coordinate.endRateX * imageWidth - nowX;
         nowHeight = coordinate.startRateY * imageHeight - nowY;
+        console.log(nowX, nowY, nowWidth, nowHeight);
     }
     createButton(nowX, nowY, nowWidth, nowHeight);
 }
@@ -388,6 +420,7 @@ function positionCalcurate(coordinate) {
         endY = coordinate.endRateY * imageHeight;
         nowWidth = endX - nowX;
         nowHeight = endY - nowY;
+        console.log(nowX, nowY, nowWidth, nowHeight);
     } else if (coordinate.startRateX > coordinate.endRateX && coordinate.startRateY < coordinate.endRateY) {
         nowX = coordinate.endRateX * imageWidth;
         nowY = coordinate.startRateY * imageHeight;
@@ -395,6 +428,7 @@ function positionCalcurate(coordinate) {
         endY = coordinate.endRateY * imageHeight;
         nowWidth = endX - nowX;
         nowHeight = endY - nowY;
+        console.log(nowX, nowY, nowWidth, nowHeight);
     } else if (coordinate.startRateX > coordinate.endRateX && coordinate.startRateY > coordinate.endRateY) {
         nowX = coordinate.endRateX * imageWidth;
         nowY = coordinate.endRateY * imageHeight;
@@ -402,6 +436,7 @@ function positionCalcurate(coordinate) {
         endY = coordinate.startRateY * imageHeight;
         nowWidth = endX - nowX;
         nowHeight = endY - nowY;
+        console.log(nowX, nowY, nowWidth, nowHeight);
     } else {
         nowX = coordinate.startRateX * imageWidth;
         nowY = coordinate.endRateY * imageHeight;
@@ -409,6 +444,7 @@ function positionCalcurate(coordinate) {
         endY = coordinate.startRateY * imageHeight;
         nowWidth = endX - nowX;
         nowHeight = endY - nowY;
+        console.log(nowX, nowY, nowWidth, nowHeight);
     }
 }
 
@@ -444,6 +480,7 @@ function createInput(currentX, currentY, currentWidth, currentHeight) {
     inputAnswer.style.position = "absolute";
     inputAnswer.style.left = currentX + "px";
     inputAnswer.style.top = currentY + "px";
+    console.log(inputAnswer.style.left, inputAnswer.style.top);
     inputAnswer.style.width = currentWidth + "px";
     inputAnswer.style.height = currentHeight + "px";
     inputAnswer.placeholder = "여기에 정답을 입력해주세요.";
