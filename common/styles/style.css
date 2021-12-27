@@ -321,6 +321,7 @@ input {
 
     body {
         flex-direction: column;
+        overflow: auto;
     }
 
     /* Index */
